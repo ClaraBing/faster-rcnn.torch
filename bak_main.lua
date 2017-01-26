@@ -23,12 +23,10 @@ cmd:text('Training a convnet for region proposals')
 cmd:text()
 
 cmd:text('=== Training ===')
--- cmd:option('-cfg', 'config/imagenet.lua', 'configuration file')
-cmd:option('-cfg', 'config/imagenet_test.lua', 'configuration file')
+cmd:option('-cfg', 'config/imagenet.lua', 'configuration file')
 cmd:option('-model', 'models/vgg_small.lua', 'model factory file')
 cmd:option('-name', 'imgnet', 'experiment name, snapshot prefix') 
-cmd:option('-train', 'data_mine/ILSVRC2015_VID_test.t7', 'training data file name')
--- Mark
+cmd:option('-train', 'ILSVRC2015_DET.t7', 'training data file name')
 cmd:option('-restore', '', 'network snapshot file name to load')
 cmd:option('-snapshot', 1000, 'snapshot interval')
 cmd:option('-plot', 100, 'plot training progress interval')
@@ -125,8 +123,7 @@ function graph_training(cfg, model_path, snapshot_prefix, training_data_filename
   --local nag_state = { learningRate = opt.lr, weightDecay = 0, momentum = opt.rms_decay }
   local sgd_state = { learningRate = opt.lr, weightDecay = 0.0005, momentum = 0.9 }
   
--- Iterations: originally set to 50000; for feasibility testing, change to 10
-  for i=1,10 do
+  for i=1,50000 do
     if i % 5000 == 0 then
       opt.lr = opt.lr / 2
       rmsprop_state.lr = opt.lr
@@ -151,10 +148,6 @@ function graph_training(cfg, model_path, snapshot_prefix, training_data_filename
     end
     
   end
-
-  -- save trained model
-  save_model(string.format('%s.t7', snapshot_prefix), weights, opt, training_stats)
-
   
   -- compute positive anchors, add anchors to ground-truth file
 end
@@ -195,12 +188,11 @@ function evaluation_demo(cfg, model_path, training_data_filename, network_filena
   local model = load_model(cfg, model_path, network_filename, true)
   local batch_iterator = BatchIterator.new(model, training_data)
     
--- Note by Bingbin: what are these colors for?
---  local red = torch.Tensor({1,0,0})
---  local green = torch.Tensor({0,1,0})
---  local blue = torch.Tensor({0,0,1})
---  local white = torch.Tensor({1,1,1})
---  local colors = { red, green, blue, white }
+  local red = torch.Tensor({1,0,0})
+  local green = torch.Tensor({0,1,0})
+  local blue = torch.Tensor({0,0,1})
+  local white = torch.Tensor({1,1,1})
+  local colors = { red, green, blue, white }
   
   -- create detector
   local d = Detector(model)
@@ -212,33 +204,17 @@ function evaluation_demo(cfg, model_path, training_data_filename, network_filena
     local img = b.img
     
     local matches = d:detect(img)
-    -- print('distinct')
-    -- print(#matches)
-
     img = image.yuv2rgb(img)
     -- draw bounding boxes and save image
     for i,m in ipairs(matches) do
-      -- Modified on Jan 23rd
---      local keys = {}
---      for k,v in pairs(match) do
---        table.insert(keys, k)
---      end
-      print('m:\n')
-      print(m)
-      print('\n\n\n')
       draw_rectangle(img, m.r, green)
     end
-    -- Modified on Jan 23rd
-    if #matches ~= 0 then
-      break
-    end
+    
     image.saveJPG(string.format('output%d.jpg', i), img)
   end
   
 end
 
--- graph_training(cfg, opt.model, opt.name, opt.train, opt.restore)
+graph_training(cfg, opt.model, opt.name, opt.train, opt.restore)
 --evaluation_demo(cfg, opt.model, opt.train, opt.restore)
-evaluation_demo(cfg, opt.model, opt.train, 'output_mine/imgnet.t7')
-
 

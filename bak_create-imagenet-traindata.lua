@@ -1,5 +1,5 @@
 -- specify the base path of the ILSVRC2015 dataset: 
-ILSVRC2015_BASE_DIR = '/disk2/bingbin/ILSVRC2015_test/'
+ILSVRC2015_BASE_DIR = '/data/imagenet/ILSVRC2015/'
 
 require 'lfs'
 require 'LuaXML'      -- if missing use luarocks install LuaXML
@@ -92,16 +92,16 @@ function create_ground_truth_file(dataset_name, base_dir, train_annotation_dir, 
   
   -- compile list of background images
   local background_files = {}
---  for i,directory_path in ipairs(background_dirs) do
---    directory_path = expand(directory_path)
---    for fn in lfs.dir(directory_path) do
---      local full_fn = path.join(directory_path, fn)
---      local mode = lfs.attributes(full_fn, 'mode')
---      if mode == 'file' and string.sub(fn, -5):lower() == '.jpeg' then
---        table.insert(background_files, full_fn)
---      end
---    end
---  end
+  for i,directory_path in ipairs(background_dirs) do
+    directory_path = expand(directory_path)
+    for fn in lfs.dir(directory_path) do
+      local full_fn = path.join(directory_path, fn)
+      local mode = lfs.attributes(full_fn, 'mode')
+      if mode == 'file' and string.sub(fn, -5):lower() == '.jpeg' then
+        table.insert(background_files, full_fn)
+      end
+    end
+  end
   
   print(string.format('Total images: %d; classes: %d; train_set: %d; validation_set: %d; (Background: %d)', 
     #file_names, #class_names, #training_set, #validation_set, #background_files
@@ -124,16 +124,16 @@ end
 
 background_folders = {}
 for i=0,10 do
-  table.insert(background_folders, 'Data/VID/train/' .. i)
+  table.insert(background_folders, 'Data/DET/train/ILSVRC2013_train_extra' .. i)
 end
 
 create_ground_truth_file(
-  'ILSVRC2015_VID',
+  'ILSVRC2015_DET',
   ILSVRC2015_BASE_DIR,
-  'Annotations/VID/train', 
-  'Annotations/VID/val', -- Note: validation data is also from VID train set
-  'Data/VID/train',
-  'Data/VID/val',
+  'Annotations/DET/train', 
+  'Annotations/DET/val',
+  'Data/DET/train',
+  'Data/DET/val',
   background_folders,
-  'ILSVRC2015_VID_test.t7'
+  'ILSVRC2015_DET.t7'
 )
