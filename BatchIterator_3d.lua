@@ -1,6 +1,8 @@
 require 'image'
 require 'utilities'
-require 'Anchors'
+require 'Anchors_3d'
+
+local debug = false
 
 local BatchIterator_3d = torch.class('BatchIterator_3d')
 
@@ -8,9 +10,9 @@ local function randomize_order(...)
   local sets = { ... }
   for i,x in ipairs(sets) do
     if x.list and #x.list > 0 then   -- e.g. background examples are optional and randperm does not like 0 count
-    -- Modified on Feb 12th: do not shuffle
-    --  x.order:randperm(#x.list)   -- shuffle
-       x.order:range(1,#x.list)
+       -- Modified on Feb 19th: shuffle since only mid file presented
+       x.order:randperm(#x.list)   -- shuffle
+       -- x.order:range(1,#x.list)
     end
     x.i = 1   -- reset index positions
   end
@@ -24,30 +26,24 @@ local function next_entry(set)
     -- Modified on Feb 12th: do not randomize
   local idx = set.order[set.i]
   local fn = set.list[idx]
-  print(fn)
-  local pos = #(fn:split('/')) - 1
-  local prev_fn, next_fn
-  if idx == 1 then
-    prev_fn = set.list[idx]
-  else
-    prev_fn = set.list[idx-1]
-    -- check whether the prev img belongs to the same video
-    if prev_fn:split('/')[pos] ~= fn:split('/')[pos] then
-      prev_fn = set.list[idx]
-    end
+  -- print(fn)
+  local fidx = tonumber(fn:split('/')[9]:sub(1,6))
+  local prev_fidx, next_fidx = fidx-3, fidx+3
+  local fn_prefix = fn:sub(1, -11)
+  local prev_fn = fn_prefix .. string.format('%06d', fidx-3) .. '.xml'
+  local next_fn = fn_prefix .. string.format('%06d', fidx+3) .. '.xml'
+  -- local pos = #(fn:split('/')) - 1
+  -- local prev_fn, next_fn
+  if io.open(prev_fn, 'r') == nil then
+    prev_fn = fn
   end
-  if idx+1>#set.list then
-    next_fn = set.list[idx]
-  else
-    next_fn = set.list[idx+1]
-    -- check whether the next img belongs to the same video
-    if next_fn:split('/')[pos] ~= fn:split('/')[pos] then
-      next_fn = set.list[idx]
-    end
+  if io.open(next_fn, 'r') == nil then
+    next_fn = fn
   end
 
   set.i = set.i + 1
-  print('next_entry: ' .. prev_fn .. ' / ' .. fn .. ' / ' .. next_fn)
+  -- debug
+  -- print('next_entry: ' .. prev_fn .. ' / ' .. fn .. ' / ' .. next_fn)
   return {[1]=prev_fn, [2]=fn, [3]=next_fn}
 --  return prev_fn, fn, next_fn
 end
@@ -116,10 +112,7 @@ function BatchIterator_3d:__init(model, training_data)
     self.normalization = nn.Identity()
   end
   
-  -- debug
-  save_obj('output_mine/tmp_test/input_net', model.input_net)
-  save_obj('output_mine/tmp_test/pnet', model.pnet)
-  self.anchors = Anchors.new(model.pnet, cfg.scales)
+  self.anchors = Anchors_3d.new(model.input_net, model.pnet, cfg.scales)
   
   -- index tensors define evaluation order
   self.training = { order = torch.IntTensor(), list = training_data.training_set }
@@ -244,16 +237,18 @@ function BatchIterator_3d:nextTraining(count)
     
     -- Modified on Feb 12th: use the current image (i.e. index=2)
     local img_size = img_3d[2]:size()
-    -- debug
-    print('img_size (nextTraining):')
-    print(img_size)
     local rois = rois_3d[2]
     -- end of Modified
     -- find positive examples
     local img_rect = Rect.new(0, 0, img_size[3], img_size[2])
     local positive = self.anchors:findPositive(rois, img_rect, cfg.positive_threshold, cfg.negative_threshold, cfg.best_match)
-    print('positive[1] (after findPositive):')
-    print(positive[1])
+    -- debug
+    if debug then
+      print('img_size (nextTraining):')
+      print(img_size)
+      print('positive[1] (after findPositive):')
+      print(positive[1])
+    end
     
     -- random negative examples
     local negative = self.anchors:sampleNegative(img_rect, rois, cfg.negative_threshold, 16)
@@ -308,17 +303,19 @@ function BatchIterator_3d:nextTraining(count)
 
     -- Modified on Feb 12th: change img to 3D: nInputPlane x time x W x H
     -- img_3d = torch.cat({img_3d[1], img_3d[2], img_3d[3]})
-    print('img_3d size: ')
-    print(img_3d[1]:size())
-    print('concated img_3d size:')
-    print(torch.cat({img_3d[1], img_3d[2], img_3d[3]}, 1):size())
-    print('positive[1]:')
-    print(positive[1])
-    print('negative[1]:')
-    print(negative[1])
+    if debug then
+      print('img_3d size: ')
+      print(img_3d[1]:size())
+      print('concated img_3d size:')
+      print(torch.cat({img_3d[1], img_3d[2], img_3d[3]}, 1):size())
+      print('positive[1]:')
+      print(positive[1])
+      print('negative[1]:')
+      print(negative[1])
+      print(string.format("'%s' (%dx%d); p: %d; n: %d", fn, img_size[2], img_size[3], #positive, #negative))
+    end
     img_3d = torch.reshape(torch.cat({img_3d[1], img_3d[2], img_3d[3]}, 1), img_size[1], 3, img_size[2], img_size[3])
     table.insert(batch, { img = img_3d, positive = positive, negative = negative })
-    print(string.format("'%s' (%dx%d); p: %d; n: %d", fn, img_size[2], img_size[3], #positive, #negative))
     return count
   end -- end of try_add_next
   

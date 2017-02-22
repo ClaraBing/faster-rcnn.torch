@@ -91,6 +91,11 @@ function create_ground_truth_file(dataset_name, base_dir, train_annotation_dir, 
   import_directory(expand(train_annotation_dir), expand(train_data_dir), expand(train_annotation_dir), true, training_set)
   import_directory(expand(val_annotation_dir), expand(val_data_dir), expand(val_annotation_dir), true, validation_set)
   local file_names = keys(ground_truth)
+
+  -- Modified on Feb 12th: sort img files
+  table.sort(training_set)
+  table.sort(validation_set)
+  table.sort(ground_truth)
   
   -- compile list of background images
   local background_files = {}
@@ -138,5 +143,5 @@ create_ground_truth_file(
   'Data/VID/val',
   background_folders,
   -- 'ILSVRC2015_VID_test.t7'
-  'data_mine/ILSVRC2015_VID_sampled_double.t7'
+  'data_mine/ILSVRC2015_VID_sampled_double_sorted.t7'
 )

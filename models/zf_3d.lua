@@ -1,11 +1,13 @@
-require 'models.ZF_model_utilities'
+require 'models.ZF_model_utilities_3d'
 
 function zf(cfg)
   -- layer here means a block of one or more convolution layers followed by a max-pooling layer
+  local input = {filters= 96, kW=7, kH=7, padW=3, padH=3, dropout=0.0, conv_steps=1, stride=2, maxPool=true}
+
   -- Modified on Jan 24th: +2 parameters for stride & whether to pool
   local layers = { 
     -- Conv1
-    { filters= 96, kW=7, kH=7, padW=3, padH=3, dropout=0.0, conv_steps=1, stride=2, maxPool=true},
+--    { filters= 96, kW=7, kH=7, padW=3, padH=3, dropout=0.0, conv_steps=1, stride=2, maxPool=true},
     -- Conv2
     { filters=256, kW=5, kH=5, padW=2, padH=2, dropout=0.4, conv_steps=1, stride=2, maxPool=true},
     -- Conv 3, 4
@@ -26,7 +28,7 @@ function zf(cfg)
     { n=512, dropout=0.5 },
   }
   
-  return create_model(cfg, layers, anchor_nets, class_layers)
+  return create_model(cfg, input, layers, anchor_nets, class_layers)
 end
 
 return zf

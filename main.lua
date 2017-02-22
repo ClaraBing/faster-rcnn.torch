@@ -25,19 +25,23 @@ cmd:text()
 cmd:text('=== Training ===')
 -- cmd:option('-cfg', 'config/imagenet.lua', 'configuration file')
 cmd:option('-cfg', 'config/imagenet_test.lua', 'configuration file')
-cmd:option('-model', 'models/vgg_small.lua', 'model factory file')
-cmd:option('-name', 'imgnet', 'experiment name, snapshot prefix') 
-cmd:option('-train', 'data_mine/ILSVRC2015_VID_test.t7', 'training data file name')
--- Mark
+-- cmd:option('-model', 'models/vgg_small.lua', 'model factory file')
+cmd:option('-model', 'models/zf.lua', 'model factory file')
+-- cmd:option('-name', '/disk/bingbin/faster-rcnn-torch/imgnet', 'experiment name, snapshot prefix') 
+cmd:option('-name', '/disk/bingbin/faster-rcnn-torch/train_100k_doubleData/imgnet', 'experiment name, snapshot prefix') 
+cmd:option('-train', 'data_mine/ILSVRC2015_VID_sampled_double.t7', 'training data file name')
+-- Modified on Feb 4th: set restore model
 cmd:option('-restore', '', 'network snapshot file name to load')
+-- cmd:option('-restore', 'output_mine/imgnet_zf.t7', 'network snapshot file name to load')
+-- cmd:option('-restore', 'output_mine/imgnet_vgg_small.t7', 'network snapshot file name to load')
 cmd:option('-snapshot', 1000, 'snapshot interval')
-cmd:option('-plot', 100, 'plot training progress interval')
-cmd:option('-lr', 1E-4, 'learn rate')
+cmd:option('-plot', 200, 'plot training progress interval')
+cmd:option('-lr', 1E-5, 'learn rate')
 cmd:option('-rms_decay', 0.9, 'RMSprop moving average dissolving factor')
 cmd:option('-opti', 'rmsprop', 'Optimizer')
 
 cmd:text('=== Misc ===')
-cmd:option('-threads', 8, 'number of threads')
+cmd:option('-threads', 2, 'number of threads')
 cmd:option('-gpuid', 0, 'device ID (CUDA), (use -1 for CPU)')
 cmd:option('-seed', 0, 'random seed (0 = no fixed seed)')
 
@@ -125,9 +129,10 @@ function graph_training(cfg, model_path, snapshot_prefix, training_data_filename
   --local nag_state = { learningRate = opt.lr, weightDecay = 0, momentum = opt.rms_decay }
   local sgd_state = { learningRate = opt.lr, weightDecay = 0.0005, momentum = 0.9 }
   
--- Iterations: originally set to 50000; for feasibility testing, change to 10
-  for i=1,10 do
+-- Iterations: originally set to 50000; for feasibility testing, change to 100
+  for i=1,80000 do
     if i % 5000 == 0 then
+--    if i % 10 == 0 then
       opt.lr = opt.lr / 2
       rmsprop_state.lr = opt.lr
     end
@@ -139,7 +144,9 @@ function graph_training(cfg, model_path, snapshot_prefix, training_data_filename
     
     local time = timer:time().real
 
-    print(string.format('%d: loss: %f', i, loss[1]))
+    if i % 200 == 0 then
+      print(string.format('%d: loss: %f / lr: %f', i, loss[1], opt.lr))
+    end
     
     if i%opt.plot == 0 then
       plot_training_progress(snapshot_prefix, training_stats)
@@ -189,11 +196,18 @@ end
 
 function evaluation_demo(cfg, model_path, training_data_filename, network_filename)
   -- load trainnig data
+  local t_start = os.clock()
   local training_data = load_obj(training_data_filename)
+  print(string.format('training_data loaded: %.3f\n', os.clock()-t_start))
   
   -- load model
+  t_start = os.clock()
   local model = load_model(cfg, model_path, network_filename, true)
+  print(string.format('model loaded: %.3f\n', os.clock()-t_start))
+
+  t_start = os.clock()
   local batch_iterator = BatchIterator.new(model, training_data)
+  print(string.format('batch_iterator created: %.3f\n', os.clock()-t_start))
     
 -- Note by Bingbin: what are these colors for?
 --  local red = torch.Tensor({1,0,0})
@@ -205,13 +219,16 @@ function evaluation_demo(cfg, model_path, training_data_filename, network_filena
   -- create detector
   local d = Detector(model)
     
-  for i=1,50 do
+  for i=1,1 do
   
     -- pick random validation image
-    local b = batch_iterator:nextValidation(1)[1]
+    -- local b = batch_iterator:nextValidation(1)[1]
+    local b = batch_iterator:nextTraining(1)[1]
     local img = b.img
     
+    t_start = os.clock()
     local matches = d:detect(img)
+    print(string.format('img %d: %.3f\n', i, os.clock()-t_start))
     -- print('distinct')
     -- print(#matches)
 
@@ -230,15 +247,17 @@ function evaluation_demo(cfg, model_path, training_data_filename, network_filena
     end
     -- Modified on Jan 23rd
     if #matches ~= 0 then
+      print('have matches. Break.')
+      image.saveJPG(string.format('output%d.jpg', i), img)
       break
     end
-    image.saveJPG(string.format('output%d.jpg', i), img)
+    -- image.saveJPG(string.format('output%d.jpg', i), img)
   end
   
 end
 
--- graph_training(cfg, opt.model, opt.name, opt.train, opt.restore)
---evaluation_demo(cfg, opt.model, opt.train, opt.restore)
-evaluation_demo(cfg, opt.model, opt.train, 'output_mine/imgnet.t7')
+graph_training(cfg, opt.model, opt.name, opt.train, opt.restore)
+-- evaluation_demo(cfg, opt.model, opt.train, opt.restore)
+-- evaluation_demo(cfg, opt.model, opt.train, 'output_mine/imgnet.t7')
 
 

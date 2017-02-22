@@ -16,14 +16,14 @@ function create_objective_pnet(model, weights, gradient, batch_iterator, stats)
   local cfg = model.cfg
   local pnet = model.pnet
 -- Mark: comment out cnet part
--- local cnet = model.cnet
-  
-  local bgclass = cfg.class_count + 1   -- background class
+-- local cnet = model.cnet 
+--  local bgclass = cfg.class_count + 1   -- background class
+
   local anchors = batch_iterator.anchors    
   local localizer = Localizer.new(pnet.outnode.children[5])
     
-  -- local softmax = nn.CrossEntropyCriterion():cuda()
-  -- local cnll = nn.ClassNLLCriterion():cuda() -- Note by Bingbin: Negative Log Likelihood
+  local softmax = nn.CrossEntropyCriterion():cuda()
+  local cnll = nn.ClassNLLCriterion():cuda() -- Note by Bingbin: Negative Log Likelihood
   local smoothL1 = nn.SmoothL1Criterion():cuda()
   smoothL1.sizeAverage = false
   local kh, kw = cfg.roi_pooling.kh, cfg.roi_pooling.kw
@@ -66,7 +66,7 @@ function create_objective_pnet(model, weights, gradient, batch_iterator, stats)
       pnet:training()
       -- cnet:training()
       
-      t_batch_start = os.time()
+      t_batch_start = os.clock()
       local batch = batch_iterator:nextTraining()
       for i,x in ipairs(batch) do
         local img = x.img:cuda()    -- convert batch to cuda if we are running on the gpu
@@ -213,7 +213,7 @@ function create_objective_pnet(model, weights, gradient, batch_iterator, stats)
 --         ccls_count = ccls_count + 1
         
       end
-      print('time per batch: ' .. (os.time()-t_batch_start))
+      print('time per batch: ' .. (os.clock()-t_batch_start))
       
       -- scale gradient
       gradient:div(cls_count)
@@ -245,20 +245,21 @@ end
 
 function create_objective_cnet(model, weights, gradient, batch_iterator, stats)
   local cfg = model.cfg
-  local pnet = model.pnet
+-- Mark: comment out pnet part
+--  local pnet = model.pnet
   local cnet = model.cnet
   
   local bgclass = cfg.class_count + 1   -- background class
-  local anchors = batch_iterator.anchors    
-  local localizer = Localizer.new(pnet.outnode.children[5])
+--  local anchors = batch_iterator.anchors    
+--  local localizer = Localizer.new(pnet.outnode.children[5])
     
-  local softmax = nn.CrossEntropyCriterion():cuda()
-  local cnll = nn.ClassNLLCriterion():cuda() -- Note by Bingbin: Negative Log Likelihood
-  local smoothL1 = nn.SmoothL1Criterion():cuda()
-  smoothL1.sizeAverage = false
-  local kh, kw = cfg.roi_pooling.kh, cfg.roi_pooling.kw
-  local cnet_input_planes = model.layers[#model.layers].filters
-  local amp = nn.SpatialAdaptiveMaxPooling(kw, kh):cuda()
+--   local softmax = nn.CrossEntropyCriterion():cuda()
+--   local cnll = nn.ClassNLLCriterion():cuda() -- Note by Bingbin: Negative Log Likelihood
+--   local smoothL1 = nn.SmoothL1Criterion():cuda()
+--   smoothL1.sizeAverage = false
+--   local kh, kw = cfg.roi_pooling.kh, cfg.roi_pooling.kw
+--   local cnet_input_planes = model.layers[#model.layers].filters
+--   local amp = nn.SpatialAdaptiveMaxPooling(kw, kh):cuda()
   
   local function cleanAnchors(examples, outputs)
     local i = 1
@@ -284,8 +285,8 @@ function create_objective_cnet(model, weights, gradient, batch_iterator, stats)
       gradient:zero()
 
       -- statistics for proposal stage      
-      local cls_loss, reg_loss = 0, 0
-      local cls_count, reg_count = 0, 0
+--       local cls_loss, reg_loss = 0, 0
+--       local cls_count, reg_count = 0, 0
       local delta_outputs = {}
    
       -- statistics for fine-tuning and classification stage
@@ -293,11 +294,11 @@ function create_objective_cnet(model, weights, gradient, batch_iterator, stats)
       local ccls_loss, ccls_count = 0, 0
       
       -- enable dropouts 
-      pnet:training()
+--      pnet:training()
       cnet:training()
       
       t_batch_start = os.time()
-      local batch = batch_iterator:nextTraining()
+--      local batch = batch_iterator:nextTraining()
       for i,x in ipairs(batch) do
         local img = x.img:cuda()    -- convert batch to cuda if we are running on the gpu
         local p = x.positive        -- get positive and negative anchors examples

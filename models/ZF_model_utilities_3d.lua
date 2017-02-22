@@ -1,4 +1,45 @@
 require 'nngraph'
+require '../utilities'
+
+function create_input_net(l)
+  -- Modified on Feb 12th: added "time" for # of input imgs
+  local nInputPlane = 3
+  local time = 3
+  local net = nn.Sequential()
+
+  -- kT = 1 for weight sharing
+  net:add(nn.VolumetricConvolution(nInputPlane, l.filters, 1,l.kW,l.kH, 1,l.stride,l.stride, 0,l.padW,l.padH))
+  -- VGG style 3x3 convolution building block
+  net:add(nn.PReLU():cuda())
+  net:add(nn.VolumetricMaxPooling(1,3,3, 1,2,2, 0,1,1):ceil())
+
+  local input = nn.Identity()()
+  local prev = net(input)
+  local conv_outputs = {}
+  table.insert(conv_outputs, prev)
+    
+  -- create proposal net module, outputs: anchor net outputs followed by last conv-layer output
+  local model = nn.gModule({ input }, conv_outputs)
+  
+  local function init(module, name)
+    local function init_module(m)
+      for k,v in pairs(m:findModules(name)) do
+        local n = v.kW * v.kH * v.nOutputPlane
+        v.weight:normal(0, math.sqrt(2 / n))
+        v.bias:zero()
+      end
+    end
+    module:apply(init_module)
+  end
+
+  init(model, 'nn.VolumetricConvolution')
+
+  -- debug
+  print('\n\n=========\ninput_net ready\n=========\n\n')
+  -- print(model)
+  save_obj('input_net.obj', model)
+  return model
+end
 
 function create_proposal_net(layers, anchor_nets)
   -- define  building block functions first
@@ -44,8 +85,18 @@ function create_proposal_net(layers, anchor_nets)
     
   local conv_outputs = {}
   
-  local inputs = 3
+  -- Modified on Feb 12th: 1. change inputs from 3 to 96; 2. added "time" for # of input imgs
+  local inputs = 96
+  local time = 3
   local prev = input
+
+  -- 1x1 conv to reduce dimension
+  local net = nn.Sequential()
+  net:add(nn.SpatialConvolution(time*inputs, inputs, 1,1, 1,1, 0,0))
+  net:add(nn.PReLU())
+  prev = net(prev)
+  table.insert(conv_outputs, prev)
+
   for i,l in ipairs(layers) do
     local net = nn.Sequential()
     ConvPoolBlock(net, inputs, l.filters, l.kW, l.kH, l.padW, l.padH, l.dropout, l.conv_steps, l.stride, l.maxPool)
@@ -58,7 +109,11 @@ function create_proposal_net(layers, anchor_nets)
   
   local proposal_outputs = {}
   for i,a in ipairs(anchor_nets) do
-    table.insert(proposal_outputs, AnchorNetwork(layers[a.input].filters, a.n, a.kW)(conv_outputs[a.input]))
+--     print('layers[a.input] (a.input=' .. a.input .. '):')
+--     print(layers[a.input])
+--     print('conv_outputs[a.input]:')
+--     print(conv_outputs[a.input])
+    table.insert(proposal_outputs, AnchorNetwork(layers[a.input-1].filters, a.n, a.kW)(conv_outputs[a.input]))
   end
   table.insert(proposal_outputs, conv_outputs[#conv_outputs])
   
@@ -79,7 +134,10 @@ function create_proposal_net(layers, anchor_nets)
   init(model, 'nn.SpatialConvolution')
 
   -- debug
-  print('\n\n=========\npnet ready\n=========\n\n')
+  print('\n\n=========\npnet ready\n=========')
+  -- print(model)
+  print('\n\n')
+  save_obj('pnet.obj', 'w')
   return model
 end
 
@@ -131,16 +189,20 @@ function create_classification_net(inputs, class_count, class_layers)
   init(model, 'nn.SpatialConvolution')
 
   -- debug
-  print('\n\n=========\ncnet ready\n=========\n\n')
+  print('\n\n=========\ncnet ready\n=========')
+  -- print(model)
+  print('\n\n')
+  save_obj('cnet_3d.obj', model)
   return model
 end
 
-function create_model(cfg, layers, anchor_nets, class_layers)
+function create_model(cfg, input, layers, anchor_nets, class_layers)
   local cnet_ninputs = cfg.roi_pooling.kh * cfg.roi_pooling.kw * layers[#layers].filters
   local model = 
   {
     cfg = cfg,
     layers = layers,
+    input_net = create_input_net(input),
     pnet = create_proposal_net(layers, anchor_nets),
     cnet = create_classification_net(cnet_ninputs, cfg.class_count + 1, class_layers)
   }
