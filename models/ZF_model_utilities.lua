@@ -14,16 +14,18 @@ function create_proposal_net(layers, anchor_nets)
   end
   
   -- multiple convolution layers followed by a max-pooling layer
-  local function ConvPoolBlock(container, nInputPlane, nOutputPlane, kW, kH, padW, padH, dropout, conv_steps, stride, maxPool)
+  local function ConvPoolBlock(container, nInputPlane, nOutputPlane, kW, kH, padW, padH, dropout, conv_steps, stride, LRN, maxPool)
     for i=1,conv_steps do
       ConvPReLU(container, nInputPlane, nOutputPlane, kW, kH, padW, padH, dropout, stride)
       nInputPlane = nOutputPlane
       dropout = nil -- only one dropout layer per conv-pool block 
     end
-    if maxPool then
+    if LRN then
       -- NOTE: not sure whether LRN is within or across channel
       -- size / alpha=0.0001 / beta=0.75 / k=1
       container:add(nn.SpatialCrossMapLRN(3, 0.00005, 0.75))
+    end
+    if maxPool then
       -- kW / kH / dW / dH / padW / padH
       container:add(nn.SpatialMaxPooling(3, 3, 2, 2, 1, 1):ceil())
     end
@@ -48,7 +50,7 @@ function create_proposal_net(layers, anchor_nets)
   local prev = input
   for i,l in ipairs(layers) do
     local net = nn.Sequential()
-    ConvPoolBlock(net, inputs, l.filters, l.kW, l.kH, l.padW, l.padH, l.dropout, l.conv_steps, l.stride, l.maxPool)
+    ConvPoolBlock(net, inputs, l.filters, l.kW, l.kH, l.padW, l.padH, l.dropout, l.conv_steps, l.stride, l.LRN, l.maxPool)
     inputs = l.filters
     prev = net(prev)
     table.insert(conv_outputs, prev)
