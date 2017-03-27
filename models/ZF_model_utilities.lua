@@ -6,7 +6,7 @@ function create_proposal_net(layers, anchor_nets)
   -- VGG style 3x3 convolution building block
   local function ConvPReLU(container, nInputPlane, nOutputPlane, kW, kH, padW, padH, dropout, stride)
     container:add(nn.SpatialConvolution(nInputPlane, nOutputPlane, kW,kH, stride,stride, padW,padH))
-    container:add(nn.PReLU())
+    container:add(nn.ReLU())
     if dropout and dropout > 0 then
       container:add(nn.SpatialDropout(dropout))
     end
@@ -14,12 +14,11 @@ function create_proposal_net(layers, anchor_nets)
   end
   
   -- multiple convolution layers followed by a max-pooling layer
-  local function ConvPoolBlock(container, nInputPlane, nOutputPlane, kW, kH, padW, padH, dropout, conv_steps, stride, LRN, maxPool)
-    for i=1,conv_steps do
-      ConvPReLU(container, nInputPlane, nOutputPlane, kW, kH, padW, padH, dropout, stride)
-      nInputPlane = nOutputPlane
-      dropout = nil -- only one dropout layer per conv-pool block 
-    end
+  local function ConvPoolBlock(container, nInputPlane, nOutputPlane, kW, kH, padW, padH, dropout, stride, LRN, maxPool)
+    ConvPReLU(container, nInputPlane, nOutputPlane, kW, kH, padW, padH, dropout, stride)
+    nInputPlane = nOutputPlane
+    dropout = nil -- only one dropout layer per conv-pool block 
+
     if LRN then
       -- NOTE: not sure whether LRN is within or across channel
       -- size / alpha=0.0001 / beta=0.75 / k=1
@@ -27,7 +26,7 @@ function create_proposal_net(layers, anchor_nets)
     end
     if maxPool then
       -- kW / kH / dW / dH / padW / padH
-      container:add(nn.SpatialMaxPooling(3, 3, 2, 2, 1, 1):ceil())
+      container:add(nn.SpatialMaxPooling(3, 3, 2, 2):ceil())
     end
     return container
   end  
@@ -37,7 +36,7 @@ function create_proposal_net(layers, anchor_nets)
   local function AnchorNetwork(nInputPlane, n, kernelWidth)
     local net = nn.Sequential()
     net:add(nn.SpatialConvolution(nInputPlane, n, kernelWidth,kernelWidth, 1,1))
-    net:add(nn.PReLU())
+    net:add(nn.ReLU())
     net:add(nn.SpatialConvolution(n, 3 * (2 + 4), 1, 1))  -- aspect ratios { 1:1, 2:1, 1:2 } x { class, left, top, width, height }
     return net
   end
@@ -50,7 +49,7 @@ function create_proposal_net(layers, anchor_nets)
   local prev = input
   for i,l in ipairs(layers) do
     local net = nn.Sequential()
-    ConvPoolBlock(net, inputs, l.filters, l.kW, l.kH, l.padW, l.padH, l.dropout, l.conv_steps, l.stride, l.LRN, l.maxPool)
+    ConvPoolBlock(net, inputs, l.filters, l.kW, l.kH, l.padW, l.padH, l.dropout,l.stride, l.LRN, l.maxPool)
     inputs = l.filters
     prev = net(prev)
     table.insert(conv_outputs, prev)
@@ -86,6 +85,7 @@ function create_proposal_net(layers, anchor_nets)
 end
 
 function create_classification_net(inputs, class_count, class_layers)
+  print('cnet inputs = ' .. inputs)
   -- create classifiaction network
   local net = nn.Sequential()
   
@@ -95,7 +95,7 @@ function create_classification_net(inputs, class_count, class_layers)
     if l.batch_norm then
       net:add(nn.BatchNormalization(l.n))
     end
-    net:add(nn.PReLU())
+    net:add(nn.ReLU())
     if l.dropout and l.dropout > 0 then
       net:add(nn.Dropout(l.dropout))
     end
