@@ -62,6 +62,9 @@ end
 
 function deep_copy(obj, seen)
   if type(obj) ~= 'table' then 
+--    print('deep copy: not a table:')
+--    print(obj)
+--    print(' --- end')
     return obj 
   end
   if seen and seen[obj] then 
@@ -133,11 +136,16 @@ function save_model(file_name, weights, options, stats)
   })
 end
 
-function combine_and_flatten_parameters(...)
+-- Modified on Mar 27th: copy weights from Caffe model
+-- function combine_and_flatten_parameters(...) -- Note by Bingbin: parameters e.g. pnet and cnet
+function combine_and_flatten_parameters(pnet, cnet, w)
   local nets = { ... }
   local parameters,gradParameters = {}, {}
   for i=1,#nets do
     local w, g = nets[i]:parameters()
+    print('combine_and_flatten_parameters net #' .. i)
+    print(w)
+    print(g)
     for i=1,#w do
       table.insert(parameters, w[i])
       table.insert(gradParameters, g[i])
@@ -148,30 +156,78 @@ end
 
 function draw_rectangle(img, rect, color)
   local sz = img:size()
+
+  print('draw_rec: sz:')
+  print(sz)
+  local boundX, boundY = sz[3], sz[2]
   
   local x0 = math.max(1, rect.minX)
-  local x1 = math.min(sz[3], rect.maxX)
+  local x1 = math.min(boundX, rect.maxX)
   local w = math.floor(x1) - math.floor(x0)
   if w >= 0 then
     local v = color:view(3,1):expand(3, w + 1)
-    if rect.minY > 0 and rect.minY <= sz[2] then
+    if rect.minY > 0 and rect.minY <= boundY then
       img[{{}, rect.minY, {x0, x1}}] = v
     end
-    if rect.maxY > 0 and rect.maxY <= sz[2] then
+    if rect.maxY > 0 and rect.maxY <= boundY then
       img[{{}, rect.maxY, {x0, x1}}] = v
     end
   end
   
   local y0 = math.max(1, rect.minY)
-  local y1 = math.min(sz[2], rect.maxY)
+  local y1 = math.min(boundY, rect.maxY)
   local h = math.floor(y1) - math.floor(y0)
   if h >= 0 then
     local v = color:view(3,1):expand(3, h + 1)
-    if rect.minX > 0 and rect.minX <= sz[3] then
+    if rect.minX > 0 and rect.minX <= boundX then
       img[{{}, {y0, y1}, rect.minX}] = v 
     end
-    if rect.maxX > 0 and rect.maxX <= sz[3] then
+    if rect.maxX > 0 and rect.maxX <= boundX then
       img[{{}, {y0, y1}, rect.maxX}] = v
+    end
+  end
+end
+
+function draw_rectangle_gray(img, rect, color)  
+  local sz = img:size()
+
+  local boundX, boundY = sz[3], sz[2]
+  
+  local x0 = math.max(1, rect.minX)
+  local x1 = math.min(boundX, rect.maxX)
+  local w = math.floor(x1) - math.floor(x0)
+  if w >= 0 then
+    local v = color:view(3,1):expand(3, w + 1)
+    if rect.minY > 0 and rect.minY <= boundY then
+      img[{{}, rect.minY, {x0, x1}}] = v
+      if rect.minY+1<=boundY then
+        img[{{}, rect.minY+1, {x0, x1}}] = v
+      end
+    end
+    if rect.maxY > 0 and rect.maxY <= boundY then
+      img[{{}, rect.maxY, {x0, x1}}] = v
+      if rect.maxY+1<=boundY then
+        img[{{}, rect.maxY+1, {x0, x1}}] = v
+      end
+    end
+  end
+  
+  local y0 = math.max(1, rect.minY)
+  local y1 = math.min(boundY, rect.maxY)
+  local h = math.floor(y1) - math.floor(y0)
+  if h >= 0 then
+    local v = color:view(3,1):expand(3, h + 1)
+    if rect.minX > 0 and rect.minX <= boundX then
+      img[{{}, {y0, y1}, rect.minX}] = v
+      if rect.minX+1<=boundX then
+        img[{{}, {y0, y1}, rect.minX+1}] = v 
+      end
+    end
+    if rect.maxX > 0 and rect.maxX <= boundX then
+      img[{{}, {y0, y1}, rect.maxX}] = v
+      if rect.maxX+1<=boundX then
+        img[{{}, {y0, y1}, rect.maxX+1}] = v
+      end
     end
   end
 end
@@ -206,6 +262,8 @@ function load_image(fn, color_space, base_path)
   if not path.isabs(fn) and base_path then
     fn = path.join(base_path, fn)
   end
+  -- Modified on Mar 9th: got error in resizeAs about tensor type
+  -- therefore changed from 'float' to 'double'
   local img = image.load(fn, 3, 'float')
   if color_space == 'yuv' then
     img = image.rgb2yuv(img)
@@ -215,4 +273,34 @@ function load_image(fn, color_space, base_path)
     img = image.rgb2hsv(img)
   end
   return img
+end
+
+
+function range(t, low, high)
+  local nt = {}
+  for i=low,high do
+    nt[i+1-low] = t[i]
+  end
+  return nt
+end
+
+function mean(t)
+  if #t == 0 then
+    print('ERROR: mean(): empty table')
+    return
+  end
+  local sum = 0
+  for i,v in ipairs(t) do
+    sum = sum+v
+  end
+  return sum/#t
+end
+
+function lines_from(file)
+    if not paths.filep(file) then return {} end
+    local lines = {}
+    for line in io.lines(file) do
+        table.insert(lines, line)
+    end
+    return lines
 end
