@@ -1,8 +1,9 @@
 require 'image'
 require 'utilities'
-require 'Anchors_3d'
+require 'Anchors'
 
-local debug = false
+local debug = true
+local debug_boxes = false
 
 local BatchIterator_3d = torch.class('BatchIterator_3d')
 
@@ -12,7 +13,6 @@ local function randomize_order(...)
     if x.list and #x.list > 0 then   -- e.g. background examples are optional and randperm does not like 0 count
        -- Modified on Feb 19th: shuffle since only mid file presented
        x.order:randperm(#x.list)   -- shuffle
-       -- x.order:range(1,#x.list)
     end
     x.i = 1   -- reset index positions
   end
@@ -29,9 +29,14 @@ local function next_entry(set)
   -- print(fn)
   local fidx = tonumber(fn:split('/')[9]:sub(1,6))
   local prev_fidx, next_fidx = fidx-3, fidx+3
-  local fn_prefix = fn:sub(1, -11)
-  local prev_fn = fn_prefix .. string.format('%06d', fidx-3) .. '.xml'
-  local next_fn = fn_prefix .. string.format('%06d', fidx+3) .. '.xml'
+  local fn_prefix = fn:sub(1, -12)
+  local prev_fn = fn_prefix .. string.format('%06d', fidx-3) .. '.JPEG'
+  local next_fn = fn_prefix .. string.format('%06d', fidx+3) .. '.JPEG'
+  if debug then
+    print('fidx: ' .. fidx)
+    print('try prev_fn: ' .. prev_fn)
+    print('try next_fn: ' .. next_fn)
+  end
   -- local pos = #(fn:split('/')) - 1
   -- local prev_fn, next_fn
   if io.open(prev_fn, 'r') == nil then
@@ -43,7 +48,9 @@ local function next_entry(set)
 
   set.i = set.i + 1
   -- debug
-  -- print('next_entry: ' .. prev_fn .. ' / ' .. fn .. ' / ' .. next_fn)
+  if debug then
+    print('next_entry\n  ' .. prev_fn .. '\n  ' .. fn .. '\n  ' .. next_fn)
+  end
   return {[1]=prev_fn, [2]=fn, [3]=next_fn}
 --  return prev_fn, fn, next_fn
 end
@@ -112,7 +119,8 @@ function BatchIterator_3d:__init(model, training_data)
     self.normalization = nn.Identity()
   end
   
-  self.anchors = Anchors_3d.new(model.input_net, model.pnet, cfg.scales)
+  -- self.anchors = Anchors.new(model.input_net, model.pnet, cfg.scales)
+  self.anchors = Anchors.new(model.pnet, cfg.scales)
   
   -- index tensors define evaluation order
   self.training = { order = torch.IntTensor(), list = training_data.training_set }
@@ -121,7 +129,9 @@ function BatchIterator_3d:__init(model, training_data)
   
   randomize_order(self.training, self.validation, self.background)
 end
-  
+
+
+
 function BatchIterator_3d:processImage(img, rois)
   local cfg = self.cfg
   local aug = cfg.augmentation
@@ -186,6 +196,8 @@ function BatchIterator_3d:processImage(img, rois)
   
   return img, rois
 end
+
+
   
 function BatchIterator_3d:nextTraining(count)
   local cfg = self.cfg
@@ -199,8 +211,8 @@ function BatchIterator_3d:nextTraining(count)
 --    local rois = deep_copy(self.ground_truth[fn[2]].rois)   -- copy RoIs ground-truth data (will be manipulated)
   
     -- Modified on Feb 12th: change to 3d
-    img_3d = {}
-    rois_3d = {}
+    local img_seq = {}
+    local rois_mid -- rois for the mid (i.e. current) image
     for i=1,3 do
       -- load image, wrap with pcall since image net contains invalid non-jpeg files
       local status, img = pcall(function () return load_image(fn[i], cfg.color_space, cfg.examples_base_path) end)
@@ -226,22 +238,25 @@ function BatchIterator_3d:nextTraining(count)
       end
 
       -- Modified on Feb 17th: change deep_copy to this method
-      local tmp_img = torch.Tensor(img:size()):zero()
-      tmp_img[1]:add(img[1])
-      tmp_img[2]:add(img[2])
-      tmp_img[3]:add(img[3])
-      img_3d[i] = tmp_img
+      -- local tmp_img = torch.Tensor(img:size()):zero()
+      -- tmp_img[1]:add(img[1])
+      -- tmp_img[2]:add(img[2])
+      -- tmp_img[3]:add(img[3])
+      -- img_3d[i] = tmp_img
+      img_seq[i] = deep_copy(img)
 
-      rois_3d[i] = deep_copy(rois)
+      -- only keep the rois for the current image (i.e. ignoring the prev/next images)
+      if i== 2 then
+          rois_mid = deep_copy(rois)
+      end
     end
     
     -- Modified on Feb 12th: use the current image (i.e. index=2)
-    local img_size = img_3d[2]:size()
-    local rois = rois_3d[2]
+    local img_size = img_seq[2]:size()
     -- end of Modified
     -- find positive examples
     local img_rect = Rect.new(0, 0, img_size[3], img_size[2])
-    local positive = self.anchors:findPositive(rois, img_rect, cfg.positive_threshold, cfg.negative_threshold, cfg.best_match)
+    local positive = self.anchors:findPositive(rois_mid, img_rect, cfg.positive_threshold, cfg.negative_threshold, cfg.best_match)
     -- debug
     if debug then
       print('img_size (nextTraining):')
@@ -251,7 +266,7 @@ function BatchIterator_3d:nextTraining(count)
     end
     
     -- random negative examples
-    local negative = self.anchors:sampleNegative(img_rect, rois, cfg.negative_threshold, 16)
+    local negative = self.anchors:sampleNegative(img_rect, rois_mid, cfg.negative_threshold, 16)
     local count = #positive + #negative
      
     if cfg.nearby_aversion then
@@ -276,8 +291,8 @@ function BatchIterator_3d:nextTraining(count)
     end
     
     -- debug boxes
-    if true then
-      local dimg = image.yuv2rgb(img_3d[2])
+    if debug_boxes then
+      local dimg = image.yuv2rgb(img_seq[2])
       local gray_img = torch.Tensor(img_size[3], img_size[2]):zero()
       gray_img:add(0.21, dimg[1]):add(0.72, dimg[2]):add(0.07, dimg[3])
       dimg[1] = dimg[1]:zero():add(gray_img)
@@ -295,30 +310,39 @@ function BatchIterator_3d:nextTraining(count)
       for i=1,#positive do
         draw_rectangle_gray(dimg, positive[i][1], green)
       end
-      for i=1,#rois do
-        draw_rectangle_gray(dimg, rois[i].rect, blue)
+      for i=1,#rois_mid do
+        draw_rectangle_gray(dimg, rois_mid[i].rect, blue)
       end
-      image.saveJPG(string.format('img_out_mine/anchor/test-anchors%d_gray.jpg', self.training.i), dimg)
+      image.saveJPG(string.format('img_out_mine/anchor/3d-anchors%d_gray.jpg', self.training.i), dimg)
     end
 
     -- Modified on Feb 12th: change img to 3D: nInputPlane x time x W x H
     -- img_3d = torch.cat({img_3d[1], img_3d[2], img_3d[3]})
     if debug then
-      print('img_3d size: ')
-      print(img_3d[1]:size())
-      print('concated img_3d size:')
-      print(torch.cat({img_3d[1], img_3d[2], img_3d[3]}, 1):size())
+      print('img size: ')
+      print(img_size)
+      print('real img size: ')
+      print(img_seq[2]:size())
+      print('concated img_seq size:')
+      print(torch.cat({img_seq[1], img_seq[2], img_seq[3]}, 1):size())
       print('positive[1]:')
       print(positive[1])
       print('negative[1]:')
       print(negative[1])
-      print(string.format("'%s' (%dx%d); p: %d; n: %d", fn, img_size[2], img_size[3], #positive, #negative))
+      print(string.format("'%s' (%dx%d); p: %d; n: %d", fn[2], img_size[2], img_size[3], #positive, #negative))
     end
-    img_3d = torch.reshape(torch.cat({img_3d[1], img_3d[2], img_3d[3]}, 1), img_size[1], 3, img_size[2], img_size[3])
+    -- img_3d = torch.reshape(torch.cat({img_3d[1], img_3d[2], img_3d[3]}, 1), img_size[1], 3, img_size[2], img_size[3])
+    local img_3d = torch.Tensor(img_size[1], 3, img_size[2], img_size[3])
+    -- debug
+    print('img_3d size: ')
+    print(img_3d:size())
+    img_3d[{{},{1},{},{}}] = img_seq[1]
+    img_3d[{{},{2},{},{}}] = img_seq[2]
+    img_3d[{{},{3},{},{}}] = img_seq[3]
     table.insert(batch, { img = img_3d, positive = positive, negative = negative })
     return count
   end -- end of try_add_next
-  
+
   -- add a background examples
   if #self.background.list > 0 then
     -- Modified on Feb 12th: add WARNING when using bg img
@@ -341,8 +365,13 @@ function BatchIterator_3d:nextTraining(count)
     end
   end
   
-  while count > 0 do
-    count = count - try_add_next()
+  local batch_cnt = 0
+  local loop_cnt = 1
+  while count > 0 and batch_cnt == 0 do
+    loop_cnt = loop_cnt + 1
+    batch_cnt = try_add_next() -- break the loop if batch_cnt ~= 0: i.e. nly use1 image
+    -- debug
+    print('batch cnt = ' .. batch_cnt)
   end
   
   return batch

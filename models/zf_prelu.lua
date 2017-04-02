@@ -1,14 +1,13 @@
-require 'models.ZF_model_utilities_3d'
+require 'models.ZF_model_utilities_prelu'
+--require 'models.new-ZF_model_utilities'
+--require 'models.rpn_model_utilities'
 
-function zf_3d(cfg)
+function zf(cfg)
   -- layer here means a block of one or more convolution layers followed by a max-pooling layer
-  local input_layer = 
-    { filters=96, kW=7, kH=7, padW=1, padH=1, dropout=0.0, stride=2, LRN=true, maxPool=true}
-
   -- Modified on Jan 24th: +2 parameters for stride & whether to pool
   local shared_layers = { 
     -- Conv1 + ReLU + LRN + Pooling
-    { filters=96, kW=7, kH=7, padW=1, padH=1, dropout=0.0, stride=2, LRN=true, maxPool=true},
+    { filters= 96, kW=7, kH=7, padW=1, padH=1, dropout=0.0, stride=2, LRN=true, maxPool=true},
     -- Conv2 + ReLU + LRN + Pooling
     { filters=256, kW=5, kH=5, padW=2, padH=2, dropout=0.0, stride=1, LRN=true, maxPool=true},
     -- Conv 3 + ReLU
@@ -36,7 +35,7 @@ function zf_3d(cfg)
     { n=4096, dropout=0.5 },
   }
   
-  return create_model(cfg, input_layer, shared_layers, prop_layers, cls_layers)
+  return create_model(cfg, shared_layers, prop_layers, cls_layers)
 end
 
-return zf_3d
+return zf

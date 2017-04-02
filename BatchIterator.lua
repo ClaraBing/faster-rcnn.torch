@@ -1,3 +1,5 @@
+-- Modified
+-- (Relatively) original version in joint/
 require 'image'
 require 'utilities'
 require 'Anchors'
@@ -14,14 +16,32 @@ local function randomize_order(...)
   end
 end
 
-local function next_entry(set)
+-- Added on Mar 4th: for testing: fixed order s.t. every img gets visited once
+local function fixed_order(...)
+  local sets = { ... }
+  for i,x in ipairs(sets) do
+    if x.list and #x.list > 0 then   -- e.g. background examples are optional and randperm does not like 0 count
+      x.order:range(1, #x.list)   -- keep the original order
+    end
+    x.i = 1   -- reset index positions
+  end
+end
+
+-- Modified on Mar 4th: add an option for keeping the original order
+local function next_entry(set, randomize)
   if set.i > #set.list then
-    randomize_order(set)
+    print('(next_entry) set.i > #set.list. Permute again.')
+    if randomize then
+      randomize_order(set)
+    else
+      fixed_order(set)
+    end
   end
   
   local fn = set.list[set.order[set.i]]
   set.i = set.i + 1
   return fn
+--  return '/disk2/bingbin/ILSVRC2015_test/Data/VID/train/ILSVRC2015_VID_train_0001/ILSVRC2015_train_00149000/000003.JPEG'
 end
 
 local function transform_example(img, rois, fimg, froi)
@@ -75,7 +95,7 @@ local function crop(img, rois, rect)
   )
 end
 
-function BatchIterator:__init(model, training_data)
+function BatchIterator:__init(model, training_data, randomize)
   local cfg = model.cfg
   
   -- bounding box data (defined in pixels on original image)
@@ -89,13 +109,24 @@ function BatchIterator:__init(model, training_data)
   end
   
   self.anchors = Anchors.new(model.pnet, cfg.scales)
+  -- debug
+  -- save_obj('data_mine/batch_anchors.t7', self.anchors)
   
   -- index tensors define evaluation order
   self.training = { order = torch.IntTensor(), list = training_data.training_set }
+  -- debug
+  -- print('BatchIterator: self.training: #list=' .. #(self.training.list))
   self.validation = { order = torch.IntTensor(), list = training_data.validation_set }
   self.background = { order = torch.IntTensor(), list = training_data.background_files or {} }
   
-  randomize_order(self.training, self.validation, self.background)
+  self.randomize = randomize
+  if self.randomize then
+    randomize_order(self.training, self.validation, self.background)
+  else
+    -- Modified on Mar 4th: add an option that keeps the original order
+    print('BatchIterator: use fixed_order')
+    fixed_order(self.training, self.validation, self.background)
+  end
 end
   
 function BatchIterator:processImage(img, rois)
@@ -170,8 +201,17 @@ function BatchIterator:nextTraining(count)
   
   -- use local function to allow early exits in case of to image load failures
   local function try_add_next()
-    local fn = next_entry(self.training)
+    local fn = next_entry(self.training, self.randomize)
     local rois = deep_copy(self.ground_truth[fn].rois)   -- copy RoIs ground-truth data (will be manipulated)
+
+    if false then -- debug
+        print('deep copying rois (1) / rois:')
+        print(type(self.ground_truth[fn].rois))
+        print(self.ground_truth[fn].rois)
+        print('#rois = ' .. #rois)
+        print('rois')
+        print(rois)
+    end
   
     -- load image, wrap with pcall since image net contains invalid non-jpeg files
     local status, img = pcall(function () return load_image(fn, cfg.color_space, cfg.examples_base_path) end)
@@ -198,7 +238,14 @@ function BatchIterator:nextTraining(count)
     -- find positive examples
     local img_rect = Rect.new(0, 0, img_size[3], img_size[2])
     local positive = self.anchors:findPositive(rois, img_rect, cfg.positive_threshold, cfg.negative_threshold, cfg.best_match)
-    
+
+    if false then -- debug
+        print('img_size (nextTraining):')
+        print(img_size)
+        print('positive[1] (after findPositive):')
+        print(positive[1])
+    end
+
     -- random negative examples
     local negative = self.anchors:sampleNegative(img_rect, rois, cfg.negative_threshold, 16)
     local count = #positive + #negative
@@ -217,41 +264,52 @@ function BatchIterator:nextTraining(count)
       end
       
       local c = math.min(#positive, count)
+      if c == count then
+        print('in try_add_next: c == count')
+      end
       shuffle_n(nearby_negative, c)
       for i=1,c do
         table.insert(negative, nearby_negative[i])
         count = count + 1
       end
-    end
+    end -- if cfg.nearby_aversion
     
     -- debug boxes
     if false then
       local dimg = image.yuv2rgb(img)
+      local gray_img = torch.Tensor(img:size()[3], img:size()[2]):zero()
+      gray_img:add(0.21, dimg[1]):add(0.72, dimg[2]):add(0.07, dimg[3])
+      dimg[1] = dimg[1]:zero():add(gray_img)
+      dimg[2] = dimg[2]:zero():add(gray_img)
+      dimg[3] = dimg[3]:zero():add(gray_img)
+
+      -- Note: when using rgb, remember to switch back to draw_rectangle
       local red = torch.Tensor({1,0,0})
-      local white = torch.Tensor({1,1,1})
-      
-      for i=1,#negative do
-        draw_rectangle(dimg, negative[i][1], red)
-      end
       local green = torch.Tensor({0,1,0})
+      local blue = torch.Tensor({0,0,1})
+      -- local white = torch.Tensor({1,1,1})
+
+      for i=1,#negative do
+        draw_rectangle_gray(dimg, negative[i][1], red)
+      end
       for i=1,#positive do
-        draw_rectangle(dimg, positive[i][1], green)
+        draw_rectangle_gray(dimg, positive[i][1], green)
       end
-      
       for i=1,#rois do
-        draw_rectangle(dimg, rois[i].rect, white)
+        draw_rectangle_gray(dimg, rois[i].rect, blue)
       end
-      image.saveJPG(string.format('anchors%d.jpg', self.training.i), dimg)
-    end
+      image.saveJPG(string.format('img_out_mine/anchor/orig-anchors%d_gray.jpg', self.training.i), dimg)
+    end -- debug draw proposals
   
-    table.insert(batch, { img = img, positive = positive, negative = negative })
-    print(string.format("'%s' (%dx%d); p: %d; n: %d", fn, img_size[3], img_size[2], #positive, #negative))
+    table.insert(batch, { img = img, positive = positive, negative = negative, fn=fn })
+    -- debug
+    -- print(string.format("'%s' (%dx%d); p: %d; n: %d", fn, img_size[3], img_size[2], #positive, #negative))
     return count
-  end
+  end -- try_add_next
   
   -- add a background examples
   if #self.background.list > 0 then
-    local fn = next_entry(self.background)
+    local fn = next_entry(self.background, self.randomize)
     local status, img = pcall(function () return load_image(fn, cfg.color_space, cfg.background_base_path) end)
     if status then
       img = self:processImage(img)
@@ -270,7 +328,10 @@ function BatchIterator:nextTraining(count)
   end
   
   while count > 0 do
-    count = count - try_add_next()
+    local t_count = try_add_next()
+    if false then print('count = ' .. count .. ' - ' .. t_count) end -- debug
+    count = count - t_count-- try_add_next()
+    -- break -- Modified on Mar 4th: only 1 image per batch
   end
   
   return batch
@@ -283,7 +344,7 @@ function BatchIterator:nextValidation(count)
   
   -- use local function to allow early exits in case of to image load failures
   while count > 0 do
-    local fn = next_entry(self.validation)
+    local fn = next_entry(self.validation, self.randomize)
   
     -- load image, wrap with pcall since image net contains invalid non-jpeg files
     local status, img = pcall(function () return load_image(fn, cfg.color_space, cfg.examples_base_path) end)
@@ -298,7 +359,7 @@ function BatchIterator:nextValidation(count)
       print(string.format("Warning: Skipping image '%s'. Unexpected channel count: %d (dim: %d)", fn, img_size[1], img:nDimension()))
       goto continue
     end 
-    
+   
     local rois = deep_copy(self.ground_truth[fn].rois)   -- copy RoIs ground-truth data (will be manipulated, e.g. scaled)
     local img, rois = self:processImage(img, rois)
     img_size = img:size()        -- get final size
@@ -307,9 +368,56 @@ function BatchIterator:nextValidation(count)
       goto continue
     end
       
-    table.insert(batch, { img = img, rois = rois })
+    table.insert(batch, { img = img, rois = rois, fn=fn })
   
     count = count - 1
+    ::continue::
+  end
+  
+  return batch  
+end
+
+function BatchIterator:getImage(set)
+  local cfg = self.cfg
+  local batch = {}
+  succ = false
+  
+  -- use local function to allow early exits in case of to image load failures
+  while not succ do
+    local fn
+    if set == 'training' then
+        fn = next_entry(self.training, false)
+    else if set == 'validation' then
+        fn = next_entry(self.validation, false)
+    else if set == 'background' then
+        fn = next_entry(self.background, false)
+    end; end; end
+  
+    -- load image, wrap with pcall since image net contains invalid non-jpeg files
+    local status, img = pcall(function () return load_image(fn, cfg.color_space, cfg.examples_base_path) end)
+    if not status then
+      -- pcall failed, corrupted image file?
+      print(string.format("Invalid image '%s': %s", fn, img))
+      goto continue
+    end
+
+    local img_size = img:size()
+    if img:nDimension() ~= 3 or img_size[1] ~= 3 then
+      print(string.format("Warning: Skipping image '%s'. Unexpected channel count: %d (dim: %d)", fn, img_size[1], img:nDimension()))
+      goto continue
+    end 
+   
+    local rois = deep_copy(self.ground_truth[fn].rois)   -- copy RoIs ground-truth data (will be manipulated, e.g. scaled)
+    local img, rois = self:processImage(img, rois)
+    img_size = img:size()        -- get final size
+    if img_size[2] < 128 or img_size[3] < 128 then
+      print(string.format("Warning: Skipping image '%s'. Invalid size after process: (%dx%d)", fn, img_size[3], img_size[2]))  
+      goto continue
+    end
+      
+    table.insert(batch, { img = img, rois = rois, fn=fn })
+  
+    succ = true
     ::continue::
   end
   
