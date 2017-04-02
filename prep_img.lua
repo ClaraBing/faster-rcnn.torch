@@ -33,7 +33,7 @@ function prep_img_for_blob(img, img_means_file_name, target_size, max_size)
         local y_start = math.floor((img_means:size()[2]-img:size()[2])/2) + 1
         local x_start = math.floor((img_means:size()[3]-img:size()[3])/2) + 1
         print('x_start = ' .. x_start .. ' / y_start = ' .. y_start)
-        img_means = img_means[{{}, {y_start,y_start+img:size()[2]-1}, {x_start,x_start+img:size()[3]-1}}]
+        img_means = img_means[{{}, {y_start, y_start+img:size()[2]-1}, {x_start, x_start+img:size()[3]-1}}]
         print('img_means:size() vs img:size():')
         print(img_means:size())
         print(img:size())
@@ -44,6 +44,9 @@ function prep_img_for_blob(img, img_means_file_name, target_size, max_size)
 
     local img_scale = prep_img_for_blob_size(img:size(), target_size, max_size)
     img = image.scale(img, img:size()[3]*img_scale, img:size()[2]*img_scale)
+    print('(prep_img_for_blob) img_scale: ' .. img_scale)
+    print('(orep_img_for_blob) img size after scaling:')
+    print(img:size())
 
     return img, img_scale
 end

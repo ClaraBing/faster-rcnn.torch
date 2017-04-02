@@ -7,6 +7,12 @@ local BIN_SIZE = 16   -- granularity for mapping center points to nearby-anchors
 function Anchors:__init(proposal_net, scales)
   -- create localizers
   self.localizers = {}
+  self.scales = scales
+
+  -- Modified on Feb 4th: check scales
+--  if #scales ~= 4 then
+--    print('WARNING: # of scales != 4. \n Will affect Anchors:findRangesXY.')
+--  end
   for i=1,#scales do
     self.localizers[i] = Localizer.new(proposal_net.outnode.children[i])
   end
@@ -15,6 +21,7 @@ function Anchors:__init(proposal_net, scales)
   local width, height = 200, 200  -- max size of feature layers
   
   -- indicies: scale, aspect-ratio, i, min/max
+  -- e.g. size = 4 * 3 * 200 * 2
   self.w = torch.Tensor(#scales, 3, width, 2)
   self.h = torch.Tensor(#scales, 3, height, 2)
   
@@ -55,7 +62,7 @@ function Anchors:__init(proposal_net, scales)
       end
     end
   end
-end
+end -- Anchors:init
 
 function Anchors:get(layer, aspect, y, x)
   local w, h = self.w, self.h
@@ -63,6 +70,15 @@ function Anchors:get(layer, aspect, y, x)
   anchor_rect.layer = layer
   anchor_rect.aspect = aspect
   anchor_rect.index = { { aspect * 6 - 5, aspect * 6 }, y, x }
+  return anchor_rect
+end
+
+function Anchors:get_2d(layer, aspect, y, x)
+  local w, h = self.w, self.h
+  local anchor_rect = Rect.new(w[{layer, aspect, x, 1}], h[{layer, aspect, y, 1}], w[{layer, aspect, x, 2}], h[{layer, aspect, y, 2}])
+  anchor_rect.layer = layer
+  anchor_rect.aspect = aspect
+  anchor_rect.index = {y, x}
   return anchor_rect
 end
 
@@ -81,7 +97,7 @@ function Anchors:findNearby(centerX, centerY)
     end
   end
   return found
-end
+end -- Anchors:findNearby
 
 function Anchors:findRangesXY(rect, clip_rect)
   local function lower_bound(t, value)
@@ -104,8 +120,17 @@ function Anchors:findRangesXY(rect, clip_rect)
   end
   
   local ranges = {}
+
+  if false then --debug
+    print('self.w:')
+    print(type(self.w))
+    print(self.w)
+    print('self.h:')
+    print(self.h)
+  end
+
   local w,h = self.w, self.h
-  for i=1,4 do    -- scales
+  for i=1,#self.scales do    -- scales
     for j=1,3 do    -- aspect ratios
     
       local clx, cly, cux, cuy  -- lower and upper bounds of clipping rect (indices)
@@ -142,14 +167,26 @@ function Anchors:findRangesXY(rect, clip_rect)
   end
 
   return ranges
-end
+end -- Anchors:findRangesXY
 
 function Anchors:findPositive(roi_list, clip_rect, pos_threshold, neg_threshold, include_best)
   local matches = {}
   local best_set, best_iou
+
+  if false then -- debug
+    print('roi_list')
+    print(roi_list)
+    print('clip_rect')
+    print(clip_rect)
+    print('pos_thresh')
+    print(pos_threshold)
+    print('neg_thresh')
+    print(neg_threshold)
+    print('include_best')
+    print(include_best)
+  end
   
   for i,roi in ipairs(roi_list) do
-    
     if include_best then
       best_set = {}   -- best is set to nil if a positive entry was found
       best_iou = -1
@@ -166,11 +203,21 @@ function Anchors:findPositive(roi_list, clip_rect, pos_threshold, neg_threshold,
           local anchor_rect = Rect.new(r.xs[{x, 1}], minY, r.xs[{x, 2}], maxY)
           anchor_rect.layer = r.layer
           anchor_rect.aspect = r.aspect 
+          -- Note by Bingbin: e.g. [{1, 6}, 29, 183]
           anchor_rect.index = { { r.aspect * 6 - 5, r.aspect * 6 }, r.ly + y - 1, r.lx + x - 1 }
           
           local v = Rect.IoU(roi.rect, anchor_rect)
           if v > pos_threshold then
             table.insert(matches, { anchor_rect, roi })
+
+            if false then -- debug
+              print('(findPositives) anchor_rect:')
+              print(anchor_rect)
+              print('(findPositives) roi:')
+              print(roi)
+              roi_flag = false
+            end
+
             best_set = nil
           elseif v > neg_threshold and best_set and v >= best_iou then
             if v - 0.025 > best_iou then
@@ -191,8 +238,10 @@ function Anchors:findPositive(roi_list, clip_rect, pos_threshold, neg_threshold,
     
   end
 
+  -- debug
+  -- print('len of matches = ' .. #matches)
   return matches
-end
+end -- Anchors:findPositives
 
 function Anchors:sampleNegative(image_rect, roi_list, neg_threshold, count)
   -- get ranges for all anchors inside image
@@ -232,7 +281,7 @@ function Anchors:sampleNegative(image_rect, roi_list, neg_threshold, count)
   end
   
   return neg
-end
+end -- Anchors:sampleNegative
 
 function Anchors.inputToAnchor(anchor, rect)
   local x = (rect.minX - anchor.minX) / anchor:width()

@@ -1,4 +1,5 @@
 require 'matlab_util'
+require 'utilities'
 
 function fast_rcnn_bbox_transform_inv(boxes, box_deltas)
 -- boxes: conf_anchors
@@ -10,7 +11,7 @@ function fast_rcnn_bbox_transform_inv(boxes, box_deltas)
     boxes = boxes:cuda()
     print(string.format('(fast bbox transform) boxes size: %s', boxes:size()))
     -- size of boxes = 4 * 29304
-    local src_w = boxes[3] - boxes[1] + 1
+    local src_w = boxes[3] - boxes[1] + 1 -- i.e. anchor:width() in Anchors.lua
     local src_h = boxes[4] - boxes[2] + 1
     local src_ctr_x = boxes[1] + 0.5 * (src_w-1)
     local src_ctr_y = boxes[2] + 0.5 * (src_h-1)
@@ -39,13 +40,19 @@ function fast_rcnn_bbox_transform_inv(boxes, box_deltas)
     print(string.format('  first line: %s', dst_ctr_x[1]))
     print(string.format('(fast bbox transform) src_w size: %s', src_w:size()))
 
-    local pred_ctr_x = torch.cmul(dst_ctr_x, src_w) + src_ctr_x
-    local pred_ctr_y = torch.cmul(dst_ctr_y, src_h) + src_ctr_y
+    local pred_max_x = torch.cmul(dst_ctr_x, src_w) + src_ctr_x
+    local pred_max_y = torch.cmul(dst_ctr_y, src_h) + src_ctr_y
     local pred_w = torch.cmul(torch.exp(dst_scl_x), src_w)
     local pred_h = torch.cmul(torch.exp(dst_scl_y), src_h)
     
+    -- i.e. x_min / y_min / x_max / y_max
     -- return size = e.g. 4 * 9768
-    return torch.cat(pred_ctr_x - 0.5*(pred_w-1), torch.cat(pred_ctr_y - 0.5*(pred_h-1), torch.cat(pred_ctr_x + 0.5*(pred_w-1), pred_ctr_y + 0.5*(pred_h-1), 2), 2), 2)
+    -- local output = torch.cat(pred_ctr_x - 0.5*(pred_w-1), torch.cat(pred_ctr_y - 0.5*(pred_h-1), torch.cat(pred_ctr_x + 0.5*(pred_w-1), pred_ctr_y + 0.5*(pred_h-1), 2), 2), 2)
+    local output = torch.cat(pred_max_x - (pred_w-1), torch.cat(pred_max_y - (pred_h-1), torch.cat(pred_max_x, pred_max_y, 2), 2), 2)
+    print('fast bbox transform: output size:')
+    print(output:size())
+    save_obj('cache/fast_bbox_output.t7', {output=output, box_deltas=box_deltas, pred_max_x=pred_max_x, pred_max_y=pred_max_y, pred_w=pred_w, pred_h=pred_h, boxes=boxes})
+    return output
 end
 
 

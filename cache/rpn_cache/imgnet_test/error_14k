@@ -1,0 +1,35 @@
+[libprotobuf ERROR google/protobuf/text_format.cc:245] Error parsing text-format caffe.NetParameter: 1:4: Message type "caffe.NetParameter" has no field named "net".
+[libprotobuf ERROR google/protobuf/text_format.cc:245] Error parsing text-format caffe.NetParameter: 1:4: Message type "caffe.NetParameter" has no field named "net".
+THCudaCheck FAIL file=/home/bingbin/torch/extra/cutorch/lib/THC/generic/THCStorage.cu line=65 error=2 : out of memory
+/home/bingbin/torch/install/bin/luajit: /home/bingbin/torch/install/share/lua/5.1/nn/Container.lua:67: 
+In 1 module of nn.Sequential:
+/home/bingbin/torch/install/share/lua/5.1/nn/THNN.lua:110: cuda runtime error (2) : out of memory at /home/bingbin/torch/extra/cutorch/lib/THC/generic/THCStorage.cu:65
+stack traceback:
+	[C]: in function 'v'
+	/home/bingbin/torch/install/share/lua/5.1/nn/THNN.lua:110: in function 'SpatialConvolutionMM_updateOutput'
+	...in/torch/install/share/lua/5.1/nn/SpatialConvolution.lua:79: in function <...in/torch/install/share/lua/5.1/nn/SpatialConvolution.lua:76>
+	[C]: in function 'xpcall'
+	/home/bingbin/torch/install/share/lua/5.1/nn/Container.lua:63: in function 'rethrowErrors'
+	/home/bingbin/torch/install/share/lua/5.1/nn/Sequential.lua:44: in function 'func'
+	.../bingbin/torch/install/share/lua/5.1/nngraph/gmodule.lua:345: in function 'neteval'
+	.../bingbin/torch/install/share/lua/5.1/nngraph/gmodule.lua:380: in function 'forward'
+	./proposal_im_detect.lua:37: in function 'proposal_im_detect'
+	proposal_test.lua:57: in function 'proposal_test'
+	proposal_test.lua:104: in main chunk
+	[C]: in function 'dofile'
+	...gbin/torch/install/lib/luarocks/rocks/trepl/scm-1/bin/th:150: in main chunk
+	[C]: at 0x00406620
+
+WARNING: If you see a stack trace below, it doesn't point to the place where this error occurred. Please use only the one above.
+stack traceback:
+	[C]: in function 'error'
+	/home/bingbin/torch/install/share/lua/5.1/nn/Container.lua:67: in function 'rethrowErrors'
+	/home/bingbin/torch/install/share/lua/5.1/nn/Sequential.lua:44: in function 'func'
+	.../bingbin/torch/install/share/lua/5.1/nngraph/gmodule.lua:345: in function 'neteval'
+	.../bingbin/torch/install/share/lua/5.1/nngraph/gmodule.lua:380: in function 'forward'
+	./proposal_im_detect.lua:37: in function 'proposal_im_detect'
+	proposal_test.lua:57: in function 'proposal_test'
+	proposal_test.lua:104: in main chunk
+	[C]: in function 'dofile'
+	...gbin/torch/install/lib/luarocks/rocks/trepl/scm-1/bin/th:150: in main chunk
+	[C]: at 0x00406620

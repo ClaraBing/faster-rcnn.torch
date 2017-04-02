@@ -137,20 +137,90 @@ function save_model(file_name, weights, options, stats)
 end
 
 -- Modified on Mar 27th: copy weights from Caffe model
--- function combine_and_flatten_parameters(...) -- Note by Bingbin: parameters e.g. pnet and cnet
-function combine_and_flatten_parameters(pnet, cnet, w)
-  local nets = { ... }
+function combine_and_flatten_parameters(pnet, cnet, w, g)
   local parameters,gradParameters = {}, {}
-  for i=1,#nets do
-    local w, g = nets[i]:parameters()
-    print('combine_and_flatten_parameters net #' .. i)
-    print(w)
-    print(g)
-    for i=1,#w do
-      table.insert(parameters, w[i])
-      table.insert(gradParameters, g[i])
+  -- pnet
+  local pw, pg = pnet:parameters()
+  -- debug
+  print('combine_and_flatten_par: pw:')
+  print(pw)
+  for i=1,#pw do
+      if w and i<=10 and w[i]:size() == pw[i]:size() then
+          print('copying w[' .. i .. '] to pw')
+          table.insert(parameters, w[i])
+          table.insert(gradParameters, g[i])
+      else
+          table.insert(parameters, pw[i])
+          table.insert(gradParameters, pg[i])
+      end
+  end
+  -- cnet
+  local cw, cg = cnet:parameters()
+  -- debug
+  print('combine_and_flatten_par: cw:')
+  print(cw)
+  for i=1,#cw do
+    if w and i <= 2 and w[10+i]:size() == cw[i]:size() then
+      print('copying w[' .. i .. '] to cw')
+      table.insert(parameters, w[10+i])
+      table.insert(gradParameters, g[10+i])
+    else
+      table.insert(parameters, cw[i])
+      table.insert(gradParameters, cg[i])
     end
   end
+
+  return nn.Module.flatten(parameters), nn.Module.flatten(gradParameters)
+end
+
+function combine_and_flatten_parameters_3d(input_net, pnet, cnet, w, g)
+  local parameters,gradParameters = {}, {}
+  -- input_net
+  local iw, ig = input_net:parameters()
+  if w and w[1]:size() == iw[1]:size() then
+      print('copying w[1] to iw')
+      table.insert(parameters, w[1])
+      table.insert(gradParameters, g[1])
+  else
+      table.insert(parameters, iw[1])
+      table.insert(gradParameters, ig[1])
+  end
+
+  -- pnet
+  local pw, pg = pnet:parameters()
+  -- debug
+  print('combine_and_flatten_par: pw:')
+  print(pw)
+  -- Modified on April 2nd: 1*1 Spatial Conv layer
+  table.insert(parameters, pw[1])
+  table.insert(gradParameters, pg[1])
+  for i=2,#pw do -- i starts from 2: the first layer is handled
+      if w and i<=10 and w[i]:size() == pw[i]:size() then
+          print('copying w[' .. i .. '] to pw')
+          table.insert(parameters, w[i])
+          table.insert(gradParameters, g[i])
+      else
+          table.insert(parameters, pw[i])
+          table.insert(gradParameters, pg[i])
+      end
+  end
+
+  -- cnet
+  local cw, cg = cnet:parameters()
+  -- debug
+  print('combine_and_flatten_par: cw:')
+  print(cw)
+  for i=1,#cw do
+    if w and i <= 2 and w[10+i]:size() == cw[i]:size() then
+      print('copying w[' .. i .. '] to cw')
+      table.insert(parameters, w[10+i])
+      table.insert(gradParameters, g[10+i])
+    else
+      table.insert(parameters, cw[i])
+      table.insert(gradParameters, cg[i])
+    end
+  end
+
   return nn.Module.flatten(parameters), nn.Module.flatten(gradParameters)
 end
 

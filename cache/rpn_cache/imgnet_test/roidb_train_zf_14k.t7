@@ -1,0 +1,3765 @@
+3
+1
+2
+2
+6
+images
+3
+2
+150
+1
+1
+2
+109
+/disk2/bingbin/ILSVRC2015_test/Data/VID/train/ILSVRC2015_VID_train_0000/ILSVRC2015_train_00008004/000003.JPEG
+1
+2
+2
+109
+/disk2/bingbin/ILSVRC2015_test/Data/VID/train/ILSVRC2015_VID_train_0000/ILSVRC2015_train_00035000/000000.JPEG
+1
+3
+2
+109
+/disk2/bingbin/ILSVRC2015_test/Data/VID/train/ILSVRC2015_VID_train_0000/ILSVRC2015_train_00008003/000000.JPEG
+1
+4
+2
+107
+/disk2/bingbin/ILSVRC2015_test/Data/VID/val/ILSVRC2015_VID_train_0000/ILSVRC2015_train_00010014/000000.JPEG
+1
+5
+2
+107
+/disk2/bingbin/ILSVRC2015_test/Data/VID/val/ILSVRC2015_VID_train_0000/ILSVRC2015_train_00138010/000000.JPEG
+1
+6
+2
+107
+/disk2/bingbin/ILSVRC2015_test/Data/VID/val/ILSVRC2015_VID_train_0000/ILSVRC2015_train_00133002/000000.JPEG
+1
+7
+2
+109
+/disk2/bingbin/ILSVRC2015_test/Data/VID/train/ILSVRC2015_VID_train_0000/ILSVRC2015_train_00023001/000003.JPEG
+1
+8
+2
+107
+/disk2/bingbin/ILSVRC2015_test/Data/VID/val/ILSVRC2015_VID_train_0000/ILSVRC2015_train_00096003/000000.JPEG
+1
+9
+2
+109
+/disk2/bingbin/ILSVRC2015_test/Data/VID/train/ILSVRC2015_VID_train_0000/ILSVRC2015_train_00016002/000003.JPEG
+1
+10
+2
+109
+/disk2/bingbin/ILSVRC2015_test/Data/VID/train/ILSVRC2015_VID_train_0000/ILSVRC2015_train_00045000/000000.JPEG
+1
+11
+2
+107
+/disk2/bingbin/ILSVRC2015_test/Data/VID/val/ILSVRC2015_VID_train_0000/ILSVRC2015_train_00060006/000000.JPEG
+1
+12
+2
+109
+/disk2/bingbin/ILSVRC2015_test/Data/VID/train/ILSVRC2015_VID_train_0000/ILSVRC2015_train_00006000/000003.JPEG
+1
+13
+2
+109
+/disk2/bingbin/ILSVRC2015_test/Data/VID/train/ILSVRC2015_VID_train_0000/ILSVRC2015_train_00018002/000000.JPEG
+1
+14
+2
+109
+/disk2/bingbin/ILSVRC2015_test/Data/VID/train/ILSVRC2015_VID_train_0000/ILSVRC2015_train_00012002/000000.JPEG
+1
+15
+2
+109
+/disk2/bingbin/ILSVRC2015_test/Data/VID/train/ILSVRC2015_VID_train_0000/ILSVRC2015_train_00033003/000000.JPEG
+1
+16
+2
+107
+/disk2/bingbin/ILSVRC2015_test/Data/VID/val/ILSVRC2015_VID_train_0001/ILSVRC2015_train_00217000/000000.JPEG
+1
+17
+2
+107
+/disk2/bingbin/ILSVRC2015_test/Data/VID/val/ILSVRC2015_VID_train_0000/ILSVRC2015_train_00069013/000000.JPEG
+1
+18
+2
+107
+/disk2/bingbin/ILSVRC2015_test/Data/VID/val/ILSVRC2015_VID_train_0000/ILSVRC2015_train_00051008/000000.JPEG
+1
+19
+2
+109
+/disk2/bingbin/ILSVRC2015_test/Data/VID/train/ILSVRC2015_VID_train_0000/ILSVRC2015_train_00017000/000000.JPEG
+1
+20
+2
+109
+/disk2/bingbin/ILSVRC2015_test/Data/VID/train/ILSVRC2015_VID_train_0000/ILSVRC2015_train_00008002/000000.JPEG
+1
+21
+2
+107
+/disk2/bingbin/ILSVRC2015_test/Data/VID/val/ILSVRC2015_VID_train_0000/ILSVRC2015_train_00074000/000000.JPEG
+1
+22
+2
+109
+/disk2/bingbin/ILSVRC2015_test/Data/VID/train/ILSVRC2015_VID_train_0000/ILSVRC2015_train_00035001/000000.JPEG
+1
+23
+2
+109
+/disk2/bingbin/ILSVRC2015_test/Data/VID/train/ILSVRC2015_VID_train_0000/ILSVRC2015_train_00094002/000003.JPEG
+1
+24
+2
+109
+/disk2/bingbin/ILSVRC2015_test/Data/VID/train/ILSVRC2015_VID_train_0000/ILSVRC2015_train_00069002/000003.JPEG
+1
+25
+2
+109
+/disk2/bingbin/ILSVRC2015_test/Data/VID/train/ILSVRC2015_VID_train_0000/ILSVRC2015_train_00049001/000003.JPEG
+1
+26
+2
+109
+/disk2/bingbin/ILSVRC2015_test/Data/VID/train/ILSVRC2015_VID_train_0000/ILSVRC2015_train_00050004/000000.JPEG
+1
+27
+2
+109
+/disk2/bingbin/ILSVRC2015_test/Data/VID/train/ILSVRC2015_VID_train_0000/ILSVRC2015_train_00077000/000003.JPEG
+1
+28
+2
+109
+/disk2/bingbin/ILSVRC2015_test/Data/VID/train/ILSVRC2015_VID_train_0000/ILSVRC2015_train_00069000/000000.JPEG
+1
+29
+2
+109
+/disk2/bingbin/ILSVRC2015_test/Data/VID/train/ILSVRC2015_VID_train_0000/ILSVRC2015_train_00017001/000000.JPEG
+1
+30
+2
+109
+/disk2/bingbin/ILSVRC2015_test/Data/VID/train/ILSVRC2015_VID_train_0000/ILSVRC2015_train_00108001/000003.JPEG
+1
+31
+2
+109
+/disk2/bingbin/ILSVRC2015_test/Data/VID/train/ILSVRC2015_VID_train_0000/ILSVRC2015_train_00021000/000000.JPEG
+1
+32
+2
+109
+/disk2/bingbin/ILSVRC2015_test/Data/VID/train/ILSVRC2015_VID_train_0000/ILSVRC2015_train_00103000/000003.JPEG
+1
+33
+2
+109
+/disk2/bingbin/ILSVRC2015_test/Data/VID/train/ILSVRC2015_VID_train_0000/ILSVRC2015_train_00086000/000003.JPEG
+1
+34
+2
+109
+/disk2/bingbin/ILSVRC2015_test/Data/VID/train/ILSVRC2015_VID_train_0000/ILSVRC2015_train_00123000/000000.JPEG
+1
+35
+2
+109
+/disk2/bingbin/ILSVRC2015_test/Data/VID/train/ILSVRC2015_VID_train_0000/ILSVRC2015_train_00100001/000000.JPEG
+1
+36
+2
+109
+/disk2/bingbin/ILSVRC2015_test/Data/VID/train/ILSVRC2015_VID_train_0000/ILSVRC2015_train_00067001/000003.JPEG
+1
+37
+2
+109
+/disk2/bingbin/ILSVRC2015_test/Data/VID/train/ILSVRC2015_VID_train_0000/ILSVRC2015_train_00050004/000003.JPEG
+1
+38
+2
+109
+/disk2/bingbin/ILSVRC2015_test/Data/VID/train/ILSVRC2015_VID_train_0000/ILSVRC2015_train_00035000/000003.JPEG
+1
+39
+2
+107
+/disk2/bingbin/ILSVRC2015_test/Data/VID/val/ILSVRC2015_VID_train_0000/ILSVRC2015_train_00051010/000000.JPEG
+1
+40
+2
+109
+/disk2/bingbin/ILSVRC2015_test/Data/VID/train/ILSVRC2015_VID_train_0000/ILSVRC2015_train_00013000/000000.JPEG
+1
+41
+2
+109
+/disk2/bingbin/ILSVRC2015_test/Data/VID/train/ILSVRC2015_VID_train_0000/ILSVRC2015_train_00042000/000006.JPEG
+1
+42
+2
+109
+/disk2/bingbin/ILSVRC2015_test/Data/VID/train/ILSVRC2015_VID_train_0000/ILSVRC2015_train_00044001/000000.JPEG
+1
+43
+2
+107
+/disk2/bingbin/ILSVRC2015_test/Data/VID/val/ILSVRC2015_VID_train_0001/ILSVRC2015_train_00151000/000000.JPEG
+1
+44
+2
+109
+/disk2/bingbin/ILSVRC2015_test/Data/VID/train/ILSVRC2015_VID_train_0000/ILSVRC2015_train_00005001/000003.JPEG
+1
+45
+2
+109
+/disk2/bingbin/ILSVRC2015_test/Data/VID/train/ILSVRC2015_VID_train_0000/ILSVRC2015_train_00108002/000003.JPEG
+1
+46
+2
+109
+/disk2/bingbin/ILSVRC2015_test/Data/VID/train/ILSVRC2015_VID_train_0000/ILSVRC2015_train_00012003/000000.JPEG
+1
+47
+2
+109
+/disk2/bingbin/ILSVRC2015_test/Data/VID/train/ILSVRC2015_VID_train_0000/ILSVRC2015_train_00030003/000003.JPEG
+1
+48
+2
+109
+/disk2/bingbin/ILSVRC2015_test/Data/VID/train/ILSVRC2015_VID_train_0000/ILSVRC2015_train_00001000/000003.JPEG
+1
+49
+2
+107
+/disk2/bingbin/ILSVRC2015_test/Data/VID/val/ILSVRC2015_VID_train_0000/ILSVRC2015_train_00010013/000000.JPEG
+1
+50
+2
+109
+/disk2/bingbin/ILSVRC2015_test/Data/VID/train/ILSVRC2015_VID_train_0000/ILSVRC2015_train_00058003/000000.JPEG
+1
+51
+2
+107
+/disk2/bingbin/ILSVRC2015_test/Data/VID/val/ILSVRC2015_VID_train_0000/ILSVRC2015_train_00135001/000000.JPEG
+1
+52
+2
+109
+/disk2/bingbin/ILSVRC2015_test/Data/VID/train/ILSVRC2015_VID_train_0000/ILSVRC2015_train_00049001/000000.JPEG
+1
+53
+2
+109
+/disk2/bingbin/ILSVRC2015_test/Data/VID/train/ILSVRC2015_VID_train_0000/ILSVRC2015_train_00026000/000003.JPEG
+1
+54
+2
+109
+/disk2/bingbin/ILSVRC2015_test/Data/VID/train/ILSVRC2015_VID_train_0000/ILSVRC2015_train_00051001/000003.JPEG
+1
+55
+2
+107
+/disk2/bingbin/ILSVRC2015_test/Data/VID/val/ILSVRC2015_VID_train_0000/ILSVRC2015_train_00034006/000000.JPEG
+1
+56
+2
+109
+/disk2/bingbin/ILSVRC2015_test/Data/VID/train/ILSVRC2015_VID_train_0000/ILSVRC2015_train_00033000/000000.JPEG
+1
+57
+2
+109
+/disk2/bingbin/ILSVRC2015_test/Data/VID/train/ILSVRC2015_VID_train_0000/ILSVRC2015_train_00005002/000003.JPEG
+1
+58
+2
+109
+/disk2/bingbin/ILSVRC2015_test/Data/VID/train/ILSVRC2015_VID_train_0000/ILSVRC2015_train_00013001/000000.JPEG
+1
+59
+2
+109
+/disk2/bingbin/ILSVRC2015_test/Data/VID/train/ILSVRC2015_VID_train_0000/ILSVRC2015_train_00007000/000003.JPEG
+1
+60
+2
+109
+/disk2/bingbin/ILSVRC2015_test/Data/VID/train/ILSVRC2015_VID_train_0000/ILSVRC2015_train_00016000/000003.JPEG
+1
+61
+2
+109
+/disk2/bingbin/ILSVRC2015_test/Data/VID/train/ILSVRC2015_VID_train_0000/ILSVRC2015_train_00076000/000000.JPEG
+1
+62
+2
+109
+/disk2/bingbin/ILSVRC2015_test/Data/VID/train/ILSVRC2015_VID_train_0000/ILSVRC2015_train_00077000/000000.JPEG
+1
+63
+2
+109
+/disk2/bingbin/ILSVRC2015_test/Data/VID/train/ILSVRC2015_VID_train_0000/ILSVRC2015_train_00050000/000000.JPEG
+1
+64
+2
+109
+/disk2/bingbin/ILSVRC2015_test/Data/VID/train/ILSVRC2015_VID_train_0000/ILSVRC2015_train_00005003/000003.JPEG
+1
+65
+2
+109
+/disk2/bingbin/ILSVRC2015_test/Data/VID/train/ILSVRC2015_VID_train_0000/ILSVRC2015_train_00013004/000003.JPEG
+1
+66
+2
+109
+/disk2/bingbin/ILSVRC2015_test/Data/VID/train/ILSVRC2015_VID_train_0000/ILSVRC2015_train_00015000/000000.JPEG
+1
+67
+2
+107
+/disk2/bingbin/ILSVRC2015_test/Data/VID/val/ILSVRC2015_VID_train_0001/ILSVRC2015_train_00240001/000000.JPEG
+1
+68
+2
+107
+/disk2/bingbin/ILSVRC2015_test/Data/VID/val/ILSVRC2015_VID_train_0001/ILSVRC2015_train_00184006/000000.JPEG
+1
+69
+2
+107
+/disk2/bingbin/ILSVRC2015_test/Data/VID/val/ILSVRC2015_VID_train_0001/ILSVRC2015_train_00165002/000000.JPEG
+1
+70
+2
+109
+/disk2/bingbin/ILSVRC2015_test/Data/VID/train/ILSVRC2015_VID_train_0000/ILSVRC2015_train_00069003/000003.JPEG
+1
+71
+2
+109
+/disk2/bingbin/ILSVRC2015_test/Data/VID/train/ILSVRC2015_VID_train_0000/ILSVRC2015_train_00046001/000000.JPEG
+1
+72
+2
+107
+/disk2/bingbin/ILSVRC2015_test/Data/VID/val/ILSVRC2015_VID_train_0000/ILSVRC2015_train_00018002/000001.JPEG
+1
+73
+2
+107
+/disk2/bingbin/ILSVRC2015_test/Data/VID/val/ILSVRC2015_VID_train_0000/ILSVRC2015_train_00060005/000000.JPEG
+1
+74
+2
+109
+/disk2/bingbin/ILSVRC2015_test/Data/VID/train/ILSVRC2015_VID_train_0000/ILSVRC2015_train_00118002/000000.JPEG
+1
+75
+2
+109
+/disk2/bingbin/ILSVRC2015_test/Data/VID/train/ILSVRC2015_VID_train_0000/ILSVRC2015_train_00018001/000000.JPEG
+1
+76
+2
+109
+/disk2/bingbin/ILSVRC2015_test/Data/VID/train/ILSVRC2015_VID_train_0000/ILSVRC2015_train_00001001/000003.JPEG
+1
+77
+2
+109
+/disk2/bingbin/ILSVRC2015_test/Data/VID/train/ILSVRC2015_VID_train_0000/ILSVRC2015_train_00108003/000000.JPEG
+1
+78
+2
+107
+/disk2/bingbin/ILSVRC2015_test/Data/VID/val/ILSVRC2015_VID_train_0000/ILSVRC2015_train_00034008/000000.JPEG
+1
+79
+2
+109
+/disk2/bingbin/ILSVRC2015_test/Data/VID/train/ILSVRC2015_VID_train_0000/ILSVRC2015_train_00001002/000000.JPEG
+1
+80
+2
+109
+/disk2/bingbin/ILSVRC2015_test/Data/VID/train/ILSVRC2015_VID_train_0000/ILSVRC2015_train_00017000/000003.JPEG
+1
+81
+2
+109
+/disk2/bingbin/ILSVRC2015_test/Data/VID/train/ILSVRC2015_VID_train_0000/ILSVRC2015_train_00054000/000000.JPEG
+1
+82
+2
+109
+/disk2/bingbin/ILSVRC2015_test/Data/VID/train/ILSVRC2015_VID_train_0000/ILSVRC2015_train_00045000/000003.JPEG
+1
+83
+2
+109
+/disk2/bingbin/ILSVRC2015_test/Data/VID/train/ILSVRC2015_VID_train_0000/ILSVRC2015_train_00010003/000003.JPEG
+1
+84
+2
+107
+/disk2/bingbin/ILSVRC2015_test/Data/VID/val/ILSVRC2015_VID_train_0000/ILSVRC2015_train_00074003/000000.JPEG
+1
+85
+2
+109
+/disk2/bingbin/ILSVRC2015_test/Data/VID/train/ILSVRC2015_VID_train_0000/ILSVRC2015_train_00027002/000000.JPEG
+1
+86
+2
+109
+/disk2/bingbin/ILSVRC2015_test/Data/VID/train/ILSVRC2015_VID_train_0000/ILSVRC2015_train_00027000/000000.JPEG
+1
+87
+2
+109
+/disk2/bingbin/ILSVRC2015_test/Data/VID/train/ILSVRC2015_VID_train_0000/ILSVRC2015_train_00100001/000003.JPEG
+1
+88
+2
+107
+/disk2/bingbin/ILSVRC2015_test/Data/VID/val/ILSVRC2015_VID_train_0000/ILSVRC2015_train_00046006/000000.JPEG
+1
+89
+2
+109
+/disk2/bingbin/ILSVRC2015_test/Data/VID/train/ILSVRC2015_VID_train_0000/ILSVRC2015_train_00006002/000003.JPEG
+1
+90
+2
+109
+/disk2/bingbin/ILSVRC2015_test/Data/VID/train/ILSVRC2015_VID_train_0000/ILSVRC2015_train_00016000/000000.JPEG
+1
+91
+2
+109
+/disk2/bingbin/ILSVRC2015_test/Data/VID/train/ILSVRC2015_VID_train_0000/ILSVRC2015_train_00138000/000003.JPEG
+1
+92
+2
+109
+/disk2/bingbin/ILSVRC2015_test/Data/VID/train/ILSVRC2015_VID_train_0000/ILSVRC2015_train_00003000/000000.JPEG
+1
+93
+2
+109
+/disk2/bingbin/ILSVRC2015_test/Data/VID/train/ILSVRC2015_VID_train_0000/ILSVRC2015_train_00108000/000000.JPEG
+1
+94
+2
+109
+/disk2/bingbin/ILSVRC2015_test/Data/VID/train/ILSVRC2015_VID_train_0000/ILSVRC2015_train_00013002/000003.JPEG
+1
+95
+2
+109
+/disk2/bingbin/ILSVRC2015_test/Data/VID/train/ILSVRC2015_VID_train_0000/ILSVRC2015_train_00010004/000000.JPEG
+1
+96
+2
+109
+/disk2/bingbin/ILSVRC2015_test/Data/VID/train/ILSVRC2015_VID_train_0000/ILSVRC2015_train_00013004/000000.JPEG
+1
+97
+2
+107
+/disk2/bingbin/ILSVRC2015_test/Data/VID/val/ILSVRC2015_VID_train_0000/ILSVRC2015_train_00127000/000000.JPEG
+1
+98
+2
+109
+/disk2/bingbin/ILSVRC2015_test/Data/VID/train/ILSVRC2015_VID_train_0000/ILSVRC2015_train_00012001/000000.JPEG
+1
+99
+2
+107
+/disk2/bingbin/ILSVRC2015_test/Data/VID/val/ILSVRC2015_VID_train_0000/ILSVRC2015_train_00096004/000000.JPEG
+1
+100
+2
+109
+/disk2/bingbin/ILSVRC2015_test/Data/VID/train/ILSVRC2015_VID_train_0000/ILSVRC2015_train_00040000/000000.JPEG
+1
+101
+2
+109
+/disk2/bingbin/ILSVRC2015_test/Data/VID/train/ILSVRC2015_VID_train_0000/ILSVRC2015_train_00030002/000003.JPEG
+1
+102
+2
+107
+/disk2/bingbin/ILSVRC2015_test/Data/VID/val/ILSVRC2015_VID_train_0000/ILSVRC2015_train_00102008/000000.JPEG
+1
+103
+2
+109
+/disk2/bingbin/ILSVRC2015_test/Data/VID/train/ILSVRC2015_VID_train_0000/ILSVRC2015_train_00004000/000003.JPEG
+1
+104
+2
+107
+/disk2/bingbin/ILSVRC2015_test/Data/VID/val/ILSVRC2015_VID_train_0000/ILSVRC2015_train_00018001/000001.JPEG
+1
+105
+2
+109
+/disk2/bingbin/ILSVRC2015_test/Data/VID/train/ILSVRC2015_VID_train_0000/ILSVRC2015_train_00006003/000000.JPEG
+1
+106
+2
+109
+/disk2/bingbin/ILSVRC2015_test/Data/VID/train/ILSVRC2015_VID_train_0000/ILSVRC2015_train_00016004/000003.JPEG
+1
+107
+2
+107
+/disk2/bingbin/ILSVRC2015_test/Data/VID/val/ILSVRC2015_VID_train_0000/ILSVRC2015_train_00060004/000000.JPEG
+1
+108
+2
+109
+/disk2/bingbin/ILSVRC2015_test/Data/VID/train/ILSVRC2015_VID_train_0000/ILSVRC2015_train_00118001/000003.JPEG
+1
+109
+2
+109
+/disk2/bingbin/ILSVRC2015_test/Data/VID/train/ILSVRC2015_VID_train_0000/ILSVRC2015_train_00028000/000000.JPEG
+1
+110
+2
+109
+/disk2/bingbin/ILSVRC2015_test/Data/VID/train/ILSVRC2015_VID_train_0000/ILSVRC2015_train_00062000/000003.JPEG
+1
+111
+2
+109
+/disk2/bingbin/ILSVRC2015_test/Data/VID/train/ILSVRC2015_VID_train_0000/ILSVRC2015_train_00100000/000003.JPEG
+1
+112
+2
+109
+/disk2/bingbin/ILSVRC2015_test/Data/VID/train/ILSVRC2015_VID_train_0000/ILSVRC2015_train_00018001/000003.JPEG
+1
+113
+2
+109
+/disk2/bingbin/ILSVRC2015_test/Data/VID/train/ILSVRC2015_VID_train_0000/ILSVRC2015_train_00067002/000003.JPEG
+1
+114
+2
+109
+/disk2/bingbin/ILSVRC2015_test/Data/VID/train/ILSVRC2015_VID_train_0000/ILSVRC2015_train_00037000/000000.JPEG
+1
+115
+2
+109
+/disk2/bingbin/ILSVRC2015_test/Data/VID/train/ILSVRC2015_VID_train_0000/ILSVRC2015_train_00016002/000000.JPEG
+1
+116
+2
+109
+/disk2/bingbin/ILSVRC2015_test/Data/VID/train/ILSVRC2015_VID_train_0000/ILSVRC2015_train_00006001/000000.JPEG
+1
+117
+2
+109
+/disk2/bingbin/ILSVRC2015_test/Data/VID/train/ILSVRC2015_VID_train_0000/ILSVRC2015_train_00010000/000003.JPEG
+1
+118
+2
+107
+/disk2/bingbin/ILSVRC2015_test/Data/VID/val/ILSVRC2015_VID_train_0001/ILSVRC2015_train_00196000/000000.JPEG
+1
+119
+2
+109
+/disk2/bingbin/ILSVRC2015_test/Data/VID/train/ILSVRC2015_VID_train_0000/ILSVRC2015_train_00005000/000000.JPEG
+1
+120
+2
+109
+/disk2/bingbin/ILSVRC2015_test/Data/VID/train/ILSVRC2015_VID_train_0000/ILSVRC2015_train_00100000/000000.JPEG
+1
+121
+2
+107
+/disk2/bingbin/ILSVRC2015_test/Data/VID/val/ILSVRC2015_VID_train_0000/ILSVRC2015_train_00034005/000000.JPEG
+1
+122
+2
+109
+/disk2/bingbin/ILSVRC2015_test/Data/VID/train/ILSVRC2015_VID_train_0000/ILSVRC2015_train_00010002/000003.JPEG
+1
+123
+2
+107
+/disk2/bingbin/ILSVRC2015_test/Data/VID/val/ILSVRC2015_VID_train_0000/ILSVRC2015_train_00014000/000000.JPEG
+1
+124
+2
+109
+/disk2/bingbin/ILSVRC2015_test/Data/VID/train/ILSVRC2015_VID_train_0000/ILSVRC2015_train_00017004/000003.JPEG
+1
+125
+2
+109
+/disk2/bingbin/ILSVRC2015_test/Data/VID/train/ILSVRC2015_VID_train_0000/ILSVRC2015_train_00025030/000003.JPEG
+1
+126
+2
+109
+/disk2/bingbin/ILSVRC2015_test/Data/VID/train/ILSVRC2015_VID_train_0000/ILSVRC2015_train_00019000/000003.JPEG
+1
+127
+2
+109
+/disk2/bingbin/ILSVRC2015_test/Data/VID/train/ILSVRC2015_VID_train_0000/ILSVRC2015_train_00044002/000000.JPEG
+1
+128
+2
+107
+/disk2/bingbin/ILSVRC2015_test/Data/VID/val/ILSVRC2015_VID_train_0001/ILSVRC2015_train_00296000/000000.JPEG
+1
+129
+2
+107
+/disk2/bingbin/ILSVRC2015_test/Data/VID/val/ILSVRC2015_VID_train_0000/ILSVRC2015_train_00102005/000000.JPEG
+1
+130
+2
+109
+/disk2/bingbin/ILSVRC2015_test/Data/VID/train/ILSVRC2015_VID_train_0000/ILSVRC2015_train_00005003/000000.JPEG
+1
+131
+2
+107
+/disk2/bingbin/ILSVRC2015_test/Data/VID/val/ILSVRC2015_VID_train_0000/ILSVRC2015_train_00118009/000000.JPEG
+1
+132
+2
+109
+/disk2/bingbin/ILSVRC2015_test/Data/VID/train/ILSVRC2015_VID_train_0000/ILSVRC2015_train_00044002/000003.JPEG
+1
+133
+2
+109
+/disk2/bingbin/ILSVRC2015_test/Data/VID/train/ILSVRC2015_VID_train_0000/ILSVRC2015_train_00038000/000000.JPEG
+1
+134
+2
+109
+/disk2/bingbin/ILSVRC2015_test/Data/VID/train/ILSVRC2015_VID_train_0000/ILSVRC2015_train_00033002/000000.JPEG
+1
+135
+2
+109
+/disk2/bingbin/ILSVRC2015_test/Data/VID/train/ILSVRC2015_VID_train_0000/ILSVRC2015_train_00030002/000000.JPEG
+1
+136
+2
+109
+/disk2/bingbin/ILSVRC2015_test/Data/VID/train/ILSVRC2015_VID_train_0000/ILSVRC2015_train_00018003/000003.JPEG
+1
+137
+2
+109
+/disk2/bingbin/ILSVRC2015_test/Data/VID/train/ILSVRC2015_VID_train_0000/ILSVRC2015_train_00033003/000003.JPEG
+1
+138
+2
+109
+/disk2/bingbin/ILSVRC2015_test/Data/VID/train/ILSVRC2015_VID_train_0000/ILSVRC2015_train_00054000/000003.JPEG
+1
+139
+2
+107
+/disk2/bingbin/ILSVRC2015_test/Data/VID/val/ILSVRC2015_VID_train_0000/ILSVRC2015_train_00046003/000000.JPEG
+1
+140
+2
+107
+/disk2/bingbin/ILSVRC2015_test/Data/VID/val/ILSVRC2015_VID_train_0000/ILSVRC2015_train_00109004/000000.JPEG
+1
+141
+2
+109
+/disk2/bingbin/ILSVRC2015_test/Data/VID/train/ILSVRC2015_VID_train_0000/ILSVRC2015_train_00005000/000003.JPEG
+1
+142
+2
+107
+/disk2/bingbin/ILSVRC2015_test/Data/VID/val/ILSVRC2015_VID_train_0001/ILSVRC2015_train_00200000/000000.JPEG
+1
+143
+2
+109
+/disk2/bingbin/ILSVRC2015_test/Data/VID/train/ILSVRC2015_VID_train_0000/ILSVRC2015_train_00031000/000003.JPEG
+1
+144
+2
+109
+/disk2/bingbin/ILSVRC2015_test/Data/VID/train/ILSVRC2015_VID_train_0000/ILSVRC2015_train_00033000/000003.JPEG
+1
+145
+2
+109
+/disk2/bingbin/ILSVRC2015_test/Data/VID/train/ILSVRC2015_VID_train_0000/ILSVRC2015_train_00062000/000000.JPEG
+1
+146
+2
+109
+/disk2/bingbin/ILSVRC2015_test/Data/VID/train/ILSVRC2015_VID_train_0000/ILSVRC2015_train_00013001/000003.JPEG
+1
+147
+2
+109
+/disk2/bingbin/ILSVRC2015_test/Data/VID/train/ILSVRC2015_VID_train_0000/ILSVRC2015_train_00018003/000000.JPEG
+1
+148
+2
+109
+/disk2/bingbin/ILSVRC2015_test/Data/VID/train/ILSVRC2015_VID_train_0000/ILSVRC2015_train_00108003/000003.JPEG
+1
+149
+2
+107
+/disk2/bingbin/ILSVRC2015_test/Data/VID/val/ILSVRC2015_VID_train_0000/ILSVRC2015_train_00016011/000000.JPEG
+1
+150
+2
+107
+/disk2/bingbin/ILSVRC2015_test/Data/VID/val/ILSVRC2015_VID_train_0000/ILSVRC2015_train_00074001/000000.JPEG
+2
+5
+boxes
+3
+3
+150
+1
+1
+4
+4
+3
+V 1
+16
+torch.CudaTensor
+2
+2 4
+4 1
+1
+4
+5
+3
+V 1
+17
+torch.CudaStorage
+8
+1 1 1280 1280 -inf -inf 71555.3359 42262.5703
+1
+2
+4
+6
+3
+V 1
+16
+torch.CudaTensor
+2
+2 4
+4 1
+1
+4
+7
+3
+V 1
+17
+torch.CudaStorage
+8
+1 1 1280 1280 -inf -inf 71570.3125 42282.0195
+1
+3
+4
+8
+3
+V 1
+16
+torch.CudaTensor
+2
+2 4
+4 1
+1
+4
+9
+3
+V 1
+17
+torch.CudaStorage
+8
+1 1 1280 1280 -inf -inf 72085.2031 42621.543
+1
+4
+4
+10
+3
+V 1
+16
+torch.CudaTensor
+2
+2 4
+4 1
+1
+4
+11
+3
+V 1
+17
+torch.CudaStorage
+8
+1 1 1920 1920 -inf -inf 108032.836 63884.2969
+1
+5
+4
+12
+3
+V 1
+16
+torch.CudaTensor
+2
+3 4
+4 1
+1
+4
+13
+3
+V 1
+17
+torch.CudaStorage
+12
+1 1 1920 1920 1 1 816 816 -inf -inf 80782.0938 47351.9844
+1
+6
+4
+14
+3
+V 1
+16
+torch.CudaTensor
+2
+2 4
+4 1
+1
+4
+15
+3
+V 1
+17
+torch.CudaStorage
+8
+1 1 1280 1280 -inf -inf 71883.6719 42518.9375
+1
+7
+4
+16
+3
+V 1
+16
+torch.CudaTensor
+2
+2 4
+4 1
+1
+4
+17
+3
+V 1
+17
+torch.CudaStorage
+8
+1 1 1280 1280 -inf -inf 71782.5547 42447.2812
+1
+8
+4
+18
+3
+V 1
+16
+torch.CudaTensor
+2
+2 4
+4 1
+1
+4
+19
+3
+V 1
+17
+torch.CudaStorage
+8
+1 1 1280 1280 -inf -inf 71820.9062 42486.3711
+1
+9
+4
+20
+3
+V 1
+16
+torch.CudaTensor
+2
+2 4
+4 1
+1
+4
+21
+3
+V 1
+17
+torch.CudaStorage
+8
+1 1 640 640 -inf -inf 36077.1406 21314.5684
+1
+10
+4
+22
+3
+V 1
+16
+torch.CudaTensor
+2
+2 4
+4 1
+1
+4
+23
+3
+V 1
+17
+torch.CudaStorage
+8
+1 1 1280 1280 -inf -inf 72064.5469 42630.8359
+1
+11
+4
+24
+3
+V 1
+16
+torch.CudaTensor
+2
+2 4
+4 1
+1
+4
+25
+3
+V 1
+17
+torch.CudaStorage
+8
+1 1 1280 1280 -inf -inf 72025.4844 42590.4766
+1
+12
+4
+26
+3
+V 1
+16
+torch.CudaTensor
+2
+2 4
+4 1
+1
+4
+27
+3
+V 1
+17
+torch.CudaStorage
+8
+1 1 1280 1280 -inf -inf 72442.1328 42903.8984
+1
+13
+4
+28
+3
+V 1
+16
+torch.CudaTensor
+2
+2 4
+4 1
+1
+4
+29
+3
+V 1
+17
+torch.CudaStorage
+8
+1 1 1280 1280 -inf -inf 72027.4141 42579.2852
+1
+14
+4
+30
+3
+V 1
+16
+torch.CudaTensor
+2
+2 4
+4 1
+1
+4
+31
+3
+V 1
+17
+torch.CudaStorage
+8
+1 1 480 480 -inf -inf 36578.8555 21552.2715
+1
+15
+4
+32
+3
+V 1
+16
+torch.CudaTensor
+2
+2 4
+4 1
+1
+4
+33
+3
+V 1
+17
+torch.CudaStorage
+8
+1 1 640 640 -inf -inf 35721.5508 21044.4219
+1
+16
+4
+34
+3
+V 1
+16
+torch.CudaTensor
+2
+2 4
+4 1
+1
+4
+35
+3
+V 1
+17
+torch.CudaStorage
+8
+1 1 480 480 -inf -inf 36577.8633 21578.418
+1
+17
+4
+36
+3
+V 1
+16
+torch.CudaTensor
+2
+2 4
+4 1
+1
+4
+37
+3
+V 1
+17
+torch.CudaStorage
+8
+1 1 1280 1280 -inf -inf 72088.8594 42635.8359
+1
+18
+4
+38
+3
+V 1
+16
+torch.CudaTensor
+2
+2 4
+4 1
+1
+4
+39
+3
+V 1
+17
+torch.CudaStorage
+8
+1 1 1280 1280 -inf -inf 71999.1406 42574.4258
+1
+19
+4
+40
+3
+V 1
+16
+torch.CudaTensor
+2
+2 4
+4 1
+1
+4
+41
+3
+V 1
+17
+torch.CudaStorage
+8
+1 1 1280 1280 -inf -inf 71858.7578 42481.9922
+1
+20
+4
+42
+3
+V 1
+16
+torch.CudaTensor
+2
+2 4
+4 1
+1
+4
+43
+3
+V 1
+17
+torch.CudaStorage
+8
+1 1 1280 1280 -inf -inf 72242.6016 42718.1367
+1
+21
+4
+44
+3
+V 1
+16
+torch.CudaTensor
+2
+2 4
+4 1
+1
+4
+45
+3
+V 1
+17
+torch.CudaStorage
+8
+1 1 1280 1280 -inf -inf 72321.0469 42788.3867
+1
+22
+4
+46
+3
+V 1
+16
+torch.CudaTensor
+2
+2 4
+4 1
+1
+4
+47
+3
+V 1
+17
+torch.CudaStorage
+8
+1 1 1280 1280 -inf -inf 72015.6719 42568.8086
+1
+23
+4
+48
+3
+V 1
+16
+torch.CudaTensor
+2
+2 4
+4 1
+1
+4
+49
+3
+V 1
+17
+torch.CudaStorage
+8
+1 1 1280 1280 -inf -inf 71724.8281 42366.9219
+1
+24
+4
+50
+3
+V 1
+16
+torch.CudaTensor
+2
+2 4
+4 1
+1
+4
+51
+3
+V 1
+17
+torch.CudaStorage
+8
+1 1 1280 1280 -inf -inf 71979.2344 42555.543
+1
+25
+4
+52
+3
+V 1
+16
+torch.CudaTensor
+2
+2 4
+4 1
+1
+4
+53
+3
+V 1
+17
+torch.CudaStorage
+8
+1 1 640 640 -inf -inf 35872.8594 21137.2051
+1
+26
+4
+54
+3
+V 1
+16
+torch.CudaTensor
+2
+2 4
+4 1
+1
+4
+55
+3
+V 1
+17
+torch.CudaStorage
+8
+1 1 1280 1280 -inf -inf 71657.6328 42353.4883
+1
+27
+4
+56
+3
+V 1
+16
+torch.CudaTensor
+2
+2 4
+4 1
+1
+4
+57
+3
+V 1
+17
+torch.CudaStorage
+8
+1 1 1280 1280 -inf -inf 72137.5625 42677.3047
+1
+28
+4
+58
+3
+V 1
+16
+torch.CudaTensor
+2
+2 4
+4 1
+1
+4
+59
+3
+V 1
+17
+torch.CudaStorage
+8
+1 1 1280 1280 -inf -inf 71769.5859 42444.2734
+1
+29
+4
+60
+3
+V 1
+16
+torch.CudaTensor
+2
+2 4
+4 1
+1
+4
+61
+3
+V 1
+17
+torch.CudaStorage
+8
+1 1 1280 1280 -inf -inf 72278.8359 42749.2734
+1
+30
+4
+62
+3
+V 1
+16
+torch.CudaTensor
+2
+2 4
+4 1
+1
+4
+63
+3
+V 1
+17
+torch.CudaStorage
+8
+1 1 320 320 -inf -inf 24150.1172 14239.0977
+1
+31
+4
+64
+3
+V 1
+16
+torch.CudaTensor
+2
+2 4
+4 1
+1
+4
+65
+3
+V 1
+17
+torch.CudaStorage
+8
+1 1 1280 1280 -inf -inf 71632.7891 42329.7461
+1
+32
+4
+66
+3
+V 1
+16
+torch.CudaTensor
+2
+2 4
+4 1
+1
+4
+67
+3
+V 1
+17
+torch.CudaStorage
+8
+1 1 490 490 -inf -inf 36503.1016 21626.6367
+1
+33
+4
+68
+3
+V 1
+16
+torch.CudaTensor
+2
+2 4
+4 1
+1
+4
+69
+3
+V 1
+17
+torch.CudaStorage
+8
+1 1 1280 1280 -inf -inf 71838.9844 42447.2656
+1
+34
+4
+70
+3
+V 1
+16
+torch.CudaTensor
+2
+2 4
+4 1
+1
+4
+71
+3
+V 1
+17
+torch.CudaStorage
+8
+1 1 480 480 -inf -inf 36486.2383 21534.3711
+1
+35
+4
+72
+3
+V 1
+16
+torch.CudaTensor
+2
+2 4
+4 1
+1
+4
+73
+3
+V 1
+17
+torch.CudaStorage
+8
+1 1 480 480 -inf -inf 36310.9062 21413.0547
+1
+36
+4
+74
+3
+V 1
+16
+torch.CudaTensor
+2
+2 4
+4 1
+1
+4
+75
+3
+V 1
+17
+torch.CudaStorage
+8
+1 1 1280 1280 -inf -inf 72169.5703 42696.2539
+1
+37
+4
+76
+3
+V 1
+16
+torch.CudaTensor
+2
+2 4
+4 1
+1
+4
+77
+3
+V 1
+17
+torch.CudaStorage
+8
+1 1 1280 1280 -inf -inf 71670.7656 42372.1172
+1
+38
+4
+78
+3
+V 1
+16
+torch.CudaTensor
+2
+2 4
+4 1
+1
+4
+79
+3
+V 1
+17
+torch.CudaStorage
+8
+1 1 1280 1280 -inf -inf 71577.1797 42279.4688
+1
+39
+4
+80
+3
+V 1
+16
+torch.CudaTensor
+2
+2 4
+4 1
+1
+4
+81
+3
+V 1
+17
+torch.CudaStorage
+8
+1 1 1280 1280 -inf -inf 71775.9531 42409.7656
+1
+40
+4
+82
+3
+V 1
+16
+torch.CudaTensor
+2
+2 4
+4 1
+1
+4
+83
+3
+V 1
+17
+torch.CudaStorage
+8
+1 1 1920 1920 -inf -inf 108141.453 63960.4609
+1
+41
+4
+84
+3
+V 1
+16
+torch.CudaTensor
+2
+2 4
+4 1
+1
+4
+85
+3
+V 1
+17
+torch.CudaStorage
+8
+1 1 1280 1280 -inf -inf 71725.625 42401.9023
+1
+42
+4
+86
+3
+V 1
+16
+torch.CudaTensor
+2
+2 4
+4 1
+1
+4
+87
+3
+V 1
+17
+torch.CudaStorage
+8
+1 1 1280 1280 -inf -inf 72132.7812 42641.875
+1
+43
+4
+88
+3
+V 1
+16
+torch.CudaTensor
+2
+2 4
+4 1
+1
+4
+89
+3
+V 1
+17
+torch.CudaStorage
+8
+1 1 1280 1280 -inf -inf 71918.7188 42507.2734
+1
+44
+4
+90
+3
+V 1
+16
+torch.CudaTensor
+2
+3 4
+4 1
+1
+4
+91
+3
+V 1
+17
+torch.CudaStorage
+12
+1 1 1280 1280 1 1 576 576 -inf -inf 57222.6133 33663.7031
+1
+45
+4
+92
+3
+V 1
+16
+torch.CudaTensor
+2
+2 4
+4 1
+1
+4
+93
+3
+V 1
+17
+torch.CudaStorage
+8
+1 1 320 320 -inf -inf 24207.9961 14264.168
+1
+46
+4
+94
+3
+V 1
+16
+torch.CudaTensor
+2
+2 4
+4 1
+1
+4
+95
+3
+V 1
+17
+torch.CudaStorage
+8
+1 1 480 480 -inf -inf 36553.2695 21539.7773
+1
+47
+4
+96
+3
+V 1
+16
+torch.CudaTensor
+2
+2 4
+4 1
+1
+4
+97
+3
+V 1
+17
+torch.CudaStorage
+8
+1 1 1280 1280 -inf -inf 72246.9766 42720.6758
+1
+48
+4
+98
+3
+V 1
+16
+torch.CudaTensor
+2
+2 4
+4 1
+1
+4
+99
+3
+V 1
+17
+torch.CudaStorage
+8
+1 1 1280 1280 -inf -inf 72291.7969 42748.3438
+1
+49
+4
+100
+3
+V 1
+16
+torch.CudaTensor
+2
+2 4
+4 1
+1
+4
+101
+3
+V 1
+17
+torch.CudaStorage
+8
+1 1 1920 1920 -inf -inf 107775.648 63701.832
+1
+50
+4
+102
+3
+V 1
+16
+torch.CudaTensor
+2
+2 4
+4 1
+1
+4
+103
+3
+V 1
+17
+torch.CudaStorage
+8
+1 1 480 480 -inf -inf 26311.0059 15516.1592
+1
+51
+4
+104
+3
+V 1
+16
+torch.CudaTensor
+2
+2 4
+4 1
+1
+4
+105
+3
+V 1
+17
+torch.CudaStorage
+8
+1 1 480 480 -inf -inf 36399.6875 21460.6953
+1
+52
+4
+106
+3
+V 1
+16
+torch.CudaTensor
+2
+2 4
+4 1
+1
+4
+107
+3
+V 1
+17
+torch.CudaStorage
+8
+1 1 640 640 -inf -inf 35873.9609 21138.127
+1
+53
+4
+108
+3
+V 1
+16
+torch.CudaTensor
+2
+2 4
+4 1
+1
+4
+109
+3
+V 1
+17
+torch.CudaStorage
+8
+1 1 1280 1280 -inf -inf 71703.2734 42393.2383
+1
+54
+4
+110
+3
+V 1
+16
+torch.CudaTensor
+2
+2 4
+4 1
+1
+4
+111
+3
+V 1
+17
+torch.CudaStorage
+8
+1 1 1280 1280 -inf -inf 71977.8438 42552.9414
+1
+55
+4
+112
+3
+V 1
+16
+torch.CudaTensor
+2
+2 4
+4 1
+1
+4
+113
+3
+V 1
+17
+torch.CudaStorage
+8
+1 1 1280 1280 -inf -inf 71656.4844 42332.3125
+1
+56
+4
+114
+3
+V 1
+16
+torch.CudaTensor
+2
+2 4
+4 1
+1
+4
+115
+3
+V 1
+17
+torch.CudaStorage
+8
+1 1 640 640 -inf -inf 35617.6719 20973.1328
+1
+57
+4
+116
+3
+V 1
+16
+torch.CudaTensor
+2
+3 4
+4 1
+1
+4
+117
+3
+V 1
+17
+torch.CudaStorage
+12
+1 1 1280 1280 1 1 576 576 -inf -inf 57439.7891 33803.4492
+1
+58
+4
+118
+3
+V 1
+16
+torch.CudaTensor
+2
+2 4
+4 1
+1
+4
+119
+3
+V 1
+17
+torch.CudaStorage
+8
+1 1 1920 1920 -inf -inf 108269.953 64026.6289
+1
+59
+4
+120
+3
+V 1
+16
+torch.CudaTensor
+2
+2 4
+4 1
+1
+4
+121
+3
+V 1
+17
+torch.CudaStorage
+8
+1 1 1280 1280 -inf -inf 71951.4844 42546.4023
+1
+60
+4
+122
+3
+V 1
+16
+torch.CudaTensor
+2
+2 4
+4 1
+1
+4
+123
+3
+V 1
+17
+torch.CudaStorage
+8
+1 1 640 640 -inf -inf 36113.7188 21349.4824
+1
+61
+4
+124
+3
+V 1
+16
+torch.CudaTensor
+2
+2 4
+4 1
+1
+4
+125
+3
+V 1
+17
+torch.CudaStorage
+8
+1 1 480 480 -inf -inf 36437.5781 21481.3633
+1
+62
+4
+126
+3
+V 1
+16
+torch.CudaTensor
+2
+2 4
+4 1
+1
+4
+127
+3
+V 1
+17
+torch.CudaStorage
+8
+1 1 1280 1280 -inf -inf 72030.5234 42579.5273
+1
+63
+4
+128
+3
+V 1
+16
+torch.CudaTensor
+2
+2 4
+4 1
+1
+4
+129
+3
+V 1
+17
+torch.CudaStorage
+8
+1 1 1280 1280 -inf -inf 71917.1016 42536.5156
+1
+64
+4
+130
+3
+V 1
+16
+torch.CudaTensor
+2
+3 4
+4 1
+1
+4
+131
+3
+V 1
+17
+torch.CudaStorage
+12
+1 1 1280 1280 1 1 576 576 -inf -inf 57493.4453 33872.8828
+1
+65
+4
+132
+3
+V 1
+16
+torch.CudaTensor
+2
+2 4
+4 1
+1
+4
+133
+3
+V 1
+17
+torch.CudaStorage
+8
+1 1 1920 1920 -inf -inf 108207.758 63996.4453
+1
+66
+4
+134
+3
+V 1
+16
+torch.CudaTensor
+2
+2 4
+4 1
+1
+4
+135
+3
+V 1
+17
+torch.CudaStorage
+8
+1 1 960 960 -inf -inf 72987.9297 43044.168
+1
+67
+4
+136
+3
+V 1
+16
+torch.CudaTensor
+2
+2 4
+4 1
+1
+4
+137
+3
+V 1
+17
+torch.CudaStorage
+8
+1 1 1280 1280 -inf -inf 71947.1172 42540.0508
+1
+68
+4
+138
+3
+V 1
+16
+torch.CudaTensor
+2
+2 4
+4 1
+1
+4
+139
+3
+V 1
+17
+torch.CudaStorage
+8
+1 1 640 640 -inf -inf 48617.9844 28627.5566
+1
+69
+4
+140
+3
+V 1
+16
+torch.CudaTensor
+2
+2 4
+4 1
+1
+4
+141
+3
+V 1
+17
+torch.CudaStorage
+8
+1 1 1280 1280 -inf -inf 71964.6484 42546.1953
+1
+70
+4
+142
+3
+V 1
+16
+torch.CudaTensor
+2
+2 4
+4 1
+1
+4
+143
+3
+V 1
+17
+torch.CudaStorage
+8
+1 1 1280 1280 -inf -inf 72029.3516 42589.375
+1
+71
+4
+144
+3
+V 1
+16
+torch.CudaTensor
+2
+2 4
+4 1
+1
+4
+145
+3
+V 1
+17
+torch.CudaStorage
+8
+1 1 1280 1280 -inf -inf 71798.0391 42455.5742
+1
+72
+4
+146
+3
+V 1
+16
+torch.CudaTensor
+2
+2 4
+4 1
+1
+4
+147
+3
+V 1
+17
+torch.CudaStorage
+8
+1 1 1280 1280 -inf -inf 72016.1094 42571.5
+1
+73
+4
+148
+3
+V 1
+16
+torch.CudaTensor
+2
+2 4
+4 1
+1
+4
+149
+3
+V 1
+17
+torch.CudaStorage
+8
+1 1 1280 1280 -inf -inf 72098.2266 42630.0078
+1
+74
+4
+150
+3
+V 1
+16
+torch.CudaTensor
+2
+2 4
+4 1
+1
+4
+151
+3
+V 1
+17
+torch.CudaStorage
+8
+1 1 1280 1280 -inf -inf 71932.1641 42511.3555
+1
+75
+4
+152
+3
+V 1
+16
+torch.CudaTensor
+2
+2 4
+4 1
+1
+4
+153
+3
+V 1
+17
+torch.CudaStorage
+8
+1 1 1280 1280 -inf -inf 72073.9453 42602.8203
+1
+76
+4
+154
+3
+V 1
+16
+torch.CudaTensor
+2
+2 4
+4 1
+1
+4
+155
+3
+V 1
+17
+torch.CudaStorage
+8
+1 1 1280 1280 -inf -inf 72079.6484 42597.9766
+1
+77
+4
+156
+3
+V 1
+16
+torch.CudaTensor
+2
+2 4
+4 1
+1
+4
+157
+3
+V 1
+17
+torch.CudaStorage
+8
+1 1 320 320 -inf -inf 24194.0859 14256.9072
+1
+78
+4
+158
+3
+V 1
+16
+torch.CudaTensor
+2
+2 4
+4 1
+1
+4
+159
+3
+V 1
+17
+torch.CudaStorage
+8
+1 1 1280 1280 -inf -inf 71641.0078 42328.6211
+1
+79
+4
+160
+3
+V 1
+16
+torch.CudaTensor
+2
+2 4
+4 1
+1
+4
+161
+3
+V 1
+17
+torch.CudaStorage
+8
+1 1 1280 1280 -inf -inf 72272.7188 42741.3047
+1
+80
+4
+162
+3
+V 1
+16
+torch.CudaTensor
+2
+2 4
+4 1
+1
+4
+163
+3
+V 1
+17
+torch.CudaStorage
+8
+1 1 1280 1280 -inf -inf 71849.1172 42473.4531
+1
+81
+4
+164
+3
+V 1
+16
+torch.CudaTensor
+2
+2 4
+4 1
+1
+4
+165
+3
+V 1
+17
+torch.CudaStorage
+8
+1 1 320 320 -inf -inf 24272.2246 14302.6211
+1
+82
+4
+166
+3
+V 1
+16
+torch.CudaTensor
+2
+2 4
+4 1
+1
+4
+167
+3
+V 1
+17
+torch.CudaStorage
+8
+1 1 1280 1280 -inf -inf 72061.7266 42629.1133
+1
+83
+4
+168
+3
+V 1
+16
+torch.CudaTensor
+2
+2 4
+4 1
+1
+4
+169
+3
+V 1
+17
+torch.CudaStorage
+8
+1 1 1920 1920 -inf -inf 108295.172 64139.6367
+1
+84
+4
+170
+3
+V 1
+16
+torch.CudaTensor
+2
+2 4
+4 1
+1
+4
+171
+3
+V 1
+17
+torch.CudaStorage
+8
+1 1 1280 1280 -inf -inf 72230.1016 42713.2422
+1
+85
+4
+172
+3
+V 1
+16
+torch.CudaTensor
+2
+2 4
+4 1
+1
+4
+173
+3
+V 1
+17
+torch.CudaStorage
+8
+1 1 480 480 -inf -inf 36303.5547 21386.6621
+1
+86
+4
+174
+3
+V 1
+16
+torch.CudaTensor
+2
+2 4
+4 1
+1
+4
+175
+3
+V 1
+17
+torch.CudaStorage
+8
+1 1 480 480 -inf -inf 36589.4141 21573.0527
+1
+87
+4
+176
+3
+V 1
+16
+torch.CudaTensor
+2
+2 4
+4 1
+1
+4
+177
+3
+V 1
+17
+torch.CudaStorage
+8
+1 1 480 480 -inf -inf 36309.1523 21404.4941
+1
+88
+4
+178
+3
+V 1
+16
+torch.CudaTensor
+2
+2 4
+4 1
+1
+4
+179
+3
+V 1
+17
+torch.CudaStorage
+8
+1 1 1280 1280 -inf -inf 71715.1484 42418.1914
+1
+89
+4
+180
+3
+V 1
+16
+torch.CudaTensor
+2
+2 4
+4 1
+1
+4
+181
+3
+V 1
+17
+torch.CudaStorage
+8
+1 1 1280 1280 -inf -inf 72325.7812 42821.9805
+1
+90
+4
+182
+3
+V 1
+16
+torch.CudaTensor
+2
+2 4
+4 1
+1
+4
+183
+3
+V 1
+17
+torch.CudaStorage
+8
+1 1 640 640 -inf -inf 36119.875 21352.0488
+1
+91
+4
+184
+3
+V 1
+16
+torch.CudaTensor
+2
+3 4
+4 1
+1
+4
+185
+3
+V 1
+17
+torch.CudaStorage
+12
+1 1 1920 1920 1 1 816 816 -inf -inf 81158.6406 47620.0898
+1
+92
+4
+186
+3
+V 1
+16
+torch.CudaTensor
+2
+2 4
+4 1
+1
+4
+187
+3
+V 1
+17
+torch.CudaStorage
+8
+1 1 640 640 -inf -inf 48707.6562 28730.7695
+1
+93
+4
+188
+3
+V 1
+16
+torch.CudaTensor
+2
+2 4
+4 1
+1
+4
+189
+3
+V 1
+17
+torch.CudaStorage
+8
+1 1 320 320 -inf -inf 24181.6426 14251.8418
+1
+94
+4
+190
+3
+V 1
+16
+torch.CudaTensor
+2
+2 4
+4 1
+1
+4
+191
+3
+V 1
+17
+torch.CudaStorage
+8
+1 1 1920 1920 -inf -inf 108333.953 64069.9102
+1
+95
+4
+192
+3
+V 1
+16
+torch.CudaTensor
+2
+2 4
+4 1
+1
+4
+193
+3
+V 1
+17
+torch.CudaStorage
+8
+1 1 1920 1920 -inf -inf 107721.969 63673.9609
+1
+96
+4
+194
+3
+V 1
+16
+torch.CudaTensor
+2
+2 4
+4 1
+1
+4
+195
+3
+V 1
+17
+torch.CudaStorage
+8
+1 1 1920 1920 -inf -inf 108184.992 63984.6211
+1
+97
+4
+196
+3
+V 1
+16
+torch.CudaTensor
+2
+2 4
+4 1
+1
+4
+197
+3
+V 1
+17
+torch.CudaStorage
+8
+1 1 1280 1280 -inf -inf 71931.5234 42532.7891
+1
+98
+4
+198
+3
+V 1
+16
+torch.CudaTensor
+2
+2 4
+4 1
+1
+4
+199
+3
+V 1
+17
+torch.CudaStorage
+8
+1 1 480 480 -inf -inf 36544.7695 21535.7148
+1
+99
+4
+200
+3
+V 1
+16
+torch.CudaTensor
+2
+2 4
+4 1
+1
+4
+201
+3
+V 1
+17
+torch.CudaStorage
+8
+1 1 1280 1280 -inf -inf 72420.7891 42869.582
+1
+100
+4
+202
+3
+V 1
+16
+torch.CudaTensor
+2
+2 4
+4 1
+1
+4
+203
+3
+V 1
+17
+torch.CudaStorage
+8
+1 1 1920 1920 -inf -inf 107261.961 63419.6875
+1
+101
+4
+204
+3
+V 1
+16
+torch.CudaTensor
+2
+2 4
+4 1
+1
+4
+205
+3
+V 1
+17
+torch.CudaStorage
+8
+1 1 1280 1280 -inf -inf 72246.9766 42720.6758
+1
+102
+4
+206
+3
+V 1
+16
+torch.CudaTensor
+2
+2 4
+4 1
+1
+4
+207
+3
+V 1
+17
+torch.CudaStorage
+8
+1 1 640 640 -inf -inf 35729.3398 21110.3789
+1
+103
+4
+208
+3
+V 1
+16
+torch.CudaTensor
+2
+2 4
+4 1
+1
+4
+209
+3
+V 1
+17
+torch.CudaStorage
+8
+1 1 480 480 -inf -inf 36383.0039 21439.8086
+1
+104
+4
+210
+3
+V 1
+16
+torch.CudaTensor
+2
+2 4
+4 1
+1
+4
+211
+3
+V 1
+17
+torch.CudaStorage
+8
+1 1 1280 1280 -inf -inf 72070.9453 42601.3945
+1
+105
+4
+212
+3
+V 1
+16
+torch.CudaTensor
+2
+2 4
+4 1
+1
+4
+213
+3
+V 1
+17
+torch.CudaStorage
+8
+1 1 1280 1280 -inf -inf 72310.1406 42802.625
+1
+106
+4
+214
+3
+V 1
+16
+torch.CudaTensor
+2
+2 4
+4 1
+1
+4
+215
+3
+V 1
+17
+torch.CudaStorage
+8
+1 1 640 640 -inf -inf 36083.9062 21310.2578
+1
+107
+4
+216
+3
+V 1
+16
+torch.CudaTensor
+2
+2 4
+4 1
+1
+4
+217
+3
+V 1
+17
+torch.CudaStorage
+8
+1 1 1280 1280 -inf -inf 72017.0156 42583.6758
+1
+108
+4
+218
+3
+V 1
+16
+torch.CudaTensor
+2
+2 4
+4 1
+1
+4
+219
+3
+V 1
+17
+torch.CudaStorage
+8
+1 1 1280 1280 -inf -inf 71790.3984 42445.3906
+1
+109
+4
+220
+3
+V 1
+16
+torch.CudaTensor
+2
+2 4
+4 1
+1
+4
+221
+3
+V 1
+17
+torch.CudaStorage
+8
+1 1 384 384 -inf -inf 29166.6621 17196.9297
+1
+110
+4
+222
+3
+V 1
+16
+torch.CudaTensor
+2
+2 4
+4 1
+1
+4
+223
+3
+V 1
+17
+torch.CudaStorage
+8
+1 1 640 640 -inf -inf 48565.7891 28646.8418
+1
+111
+4
+224
+3
+V 1
+16
+torch.CudaTensor
+2
+2 4
+4 1
+1
+4
+225
+3
+V 1
+17
+torch.CudaStorage
+8
+1 1 480 480 -inf -inf 36420.8164 21480.627
+1
+112
+4
+226
+3
+V 1
+16
+torch.CudaTensor
+2
+2 4
+4 1
+1
+4
+227
+3
+V 1
+17
+torch.CudaStorage
+8
+1 1 1280 1280 -inf -inf 72069.2344 42600.332
+1
+113
+4
+228
+3
+V 1
+16
+torch.CudaTensor
+2
+2 4
+4 1
+1
+4
+229
+3
+V 1
+17
+torch.CudaStorage
+8
+1 1 1280 1280 -inf -inf 72170.9453 42673.5469
+1
+114
+4
+230
+3
+V 1
+16
+torch.CudaTensor
+2
+2 4
+4 1
+1
+4
+231
+3
+V 1
+17
+torch.CudaStorage
+8
+1 1 636 636 -inf -inf 35625.0664 21434.4102
+1
+115
+4
+232
+3
+V 1
+16
+torch.CudaTensor
+2
+2 4
+4 1
+1
+4
+233
+3
+V 1
+17
+torch.CudaStorage
+8
+1 1 640 640 -inf -inf 36077.7344 21316.6523
+1
+116
+4
+234
+3
+V 1
+16
+torch.CudaTensor
+2
+2 4
+4 1
+1
+4
+235
+3
+V 1
+17
+torch.CudaStorage
+8
+1 1 1280 1280 -inf -inf 72317.3125 42821.293
+1
+117
+4
+236
+3
+V 1
+16
+torch.CudaTensor
+2
+2 4
+4 1
+1
+4
+237
+3
+V 1
+17
+torch.CudaStorage
+8
+1 1 1920 1920 -inf -inf 108028.766 63910.0859
+1
+118
+4
+238
+3
+V 1
+16
+torch.CudaTensor
+2
+2 4
+4 1
+1
+4
+239
+3
+V 1
+17
+torch.CudaStorage
+8
+1 1 1280 1280 -inf -inf 72119.8125 42667.6875
+1
+119
+4
+240
+3
+V 1
+16
+torch.CudaTensor
+2
+3 4
+4 1
+1
+4
+241
+3
+V 1
+17
+torch.CudaStorage
+12
+1 1 1280 1280 1 1 576 576 -inf -inf 57433.3242 33824.9297
+1
+120
+4
+242
+3
+V 1
+16
+torch.CudaTensor
+2
+2 4
+4 1
+1
+4
+243
+3
+V 1
+17
+torch.CudaStorage
+8
+1 1 480 480 -inf -inf 36425.2695 21484.0781
+1
+121
+4
+244
+3
+V 1
+16
+torch.CudaTensor
+2
+2 4
+4 1
+1
+4
+245
+3
+V 1
+17
+torch.CudaStorage
+8
+1 1 1280 1280 -inf -inf 71946.9766 42521.3438
+1
+122
+4
+246
+3
+V 1
+16
+torch.CudaTensor
+2
+2 4
+4 1
+1
+4
+247
+3
+V 1
+17
+torch.CudaStorage
+8
+1 1 1920 1920 -inf -inf 107841.578 63746.0078
+1
+123
+4
+248
+3
+V 1
+16
+torch.CudaTensor
+2
+2 4
+4 1
+1
+4
+249
+3
+V 1
+17
+torch.CudaStorage
+8
+1 1 1920 1920 -inf -inf 108221.469 63983.6289
+1
+124
+4
+250
+3
+V 1
+16
+torch.CudaTensor
+2
+2 4
+4 1
+1
+4
+251
+3
+V 1
+17
+torch.CudaStorage
+8
+1 1 1280 1280 -inf -inf 72250.0781 42731.4414
+1
+125
+4
+252
+3
+V 1
+16
+torch.CudaTensor
+2
+2 4
+4 1
+1
+4
+253
+3
+V 1
+17
+torch.CudaStorage
+8
+1 1 1280 1280 -inf -inf 72004.6641 42567.9453
+1
+126
+4
+254
+3
+V 1
+16
+torch.CudaTensor
+2
+2 4
+4 1
+1
+4
+255
+3
+V 1
+17
+torch.CudaStorage
+8
+1 1 480 480 -inf -inf 36553.3633 21561.8203
+1
+127
+4
+256
+3
+V 1
+16
+torch.CudaTensor
+2
+2 4
+4 1
+1
+4
+257
+3
+V 1
+17
+torch.CudaStorage
+8
+1 1 1280 1280 -inf -inf 71737 42428.6289
+1
+128
+4
+258
+3
+V 1
+16
+torch.CudaTensor
+2
+2 4
+4 1
+1
+4
+259
+3
+V 1
+17
+torch.CudaStorage
+8
+1 1 1280 1280 -inf -inf 71934.2109 42495.5664
+1
+129
+4
+260
+3
+V 1
+16
+torch.CudaTensor
+2
+2 4
+4 1
+1
+4
+261
+3
+V 1
+17
+torch.CudaStorage
+8
+1 1 640 640 -inf -inf 35907.9688 21233.7266
+1
+130
+4
+262
+3
+V 1
+16
+torch.CudaTensor
+2
+3 4
+4 1
+1
+4
+263
+3
+V 1
+17
+torch.CudaStorage
+12
+1 1 1280 1280 1 1 576 576 -inf -inf 57495.2617 33874.8477
+1
+131
+4
+264
+3
+V 1
+16
+torch.CudaTensor
+2
+2 4
+4 1
+1
+4
+265
+3
+V 1
+17
+torch.CudaStorage
+8
+1 1 1280 1280 -inf -inf 71723.5859 42417.0938
+1
+132
+4
+266
+3
+V 1
+16
+torch.CudaTensor
+2
+2 4
+4 1
+1
+4
+267
+3
+V 1
+17
+torch.CudaStorage
+8
+1 1 1280 1280 -inf -inf 71731.9844 42427.75
+1
+133
+4
+268
+3
+V 1
+16
+torch.CudaTensor
+2
+2 4
+4 1
+1
+4
+269
+3
+V 1
+17
+torch.CudaStorage
+8
+1 1 1280 1280 -inf -inf 71832.1719 42470.4375
+1
+134
+4
+270
+3
+V 1
+16
+torch.CudaTensor
+2
+2 4
+4 1
+1
+4
+271
+3
+V 1
+17
+torch.CudaStorage
+8
+1 1 640 640 -inf -inf 35562.0195 20941.0391
+1
+135
+4
+272
+3
+V 1
+16
+torch.CudaTensor
+2
+2 4
+4 1
+1
+4
+273
+3
+V 1
+17
+torch.CudaStorage
+8
+1 1 1280 1280 -inf -inf 72246.9766 42720.6758
+1
+136
+4
+274
+3
+V 1
+16
+torch.CudaTensor
+2
+2 4
+4 1
+1
+4
+275
+3
+V 1
+17
+torch.CudaStorage
+8
+1 1 1280 1280 -inf -inf 72034.6406 42577.9648
+1
+137
+4
+276
+3
+V 1
+16
+torch.CudaTensor
+2
+2 4
+4 1
+1
+4
+277
+3
+V 1
+17
+torch.CudaStorage
+8
+1 1 640 640 -inf -inf 35717.3008 21041.791
+1
+138
+4
+278
+3
+V 1
+16
+torch.CudaTensor
+2
+2 4
+4 1
+1
+4
+279
+3
+V 1
+17
+torch.CudaStorage
+8
+1 1 320 320 -inf -inf 24271.9727 14302.4795
+1
+139
+4
+280
+3
+V 1
+16
+torch.CudaTensor
+2
+2 4
+4 1
+1
+4
+281
+3
+V 1
+17
+torch.CudaStorage
+8
+1 1 1280 1280 -inf -inf 71692.5078 42404.4883
+1
+140
+4
+282
+3
+V 1
+16
+torch.CudaTensor
+2
+2 4
+4 1
+1
+4
+283
+3
+V 1
+17
+torch.CudaStorage
+8
+1 1 1280 1280 -inf -inf 72039.9844 42595.8828
+1
+141
+4
+284
+3
+V 1
+16
+torch.CudaTensor
+2
+3 4
+4 1
+1
+4
+285
+3
+V 1
+17
+torch.CudaStorage
+12
+1 1 1280 1280 1 1 576 576 -inf -inf 57511.4102 33872.0898
+1
+142
+4
+286
+3
+V 1
+16
+torch.CudaTensor
+2
+2 4
+4 1
+1
+4
+287
+3
+V 1
+17
+torch.CudaStorage
+8
+1 1 1280 1280 -inf -inf 71951.4453 42536.1016
+1
+143
+4
+288
+3
+V 1
+16
+torch.CudaTensor
+2
+2 4
+4 1
+1
+4
+289
+3
+V 1
+17
+torch.CudaStorage
+8
+1 1 1280 1280 -inf -inf 72264.2812 42764.1875
+1
+144
+4
+290
+3
+V 1
+16
+torch.CudaTensor
+2
+2 4
+4 1
+1
+4
+291
+3
+V 1
+17
+torch.CudaStorage
+8
+1 1 640 640 -inf -inf 35606.1133 20966.6074
+1
+145
+4
+292
+3
+V 1
+16
+torch.CudaTensor
+2
+2 4
+4 1
+1
+4
+293
+3
+V 1
+17
+torch.CudaStorage
+8
+1 1 640 640 -inf -inf 48602.9609 28650.209
+1
+146
+4
+294
+3
+V 1
+16
+torch.CudaTensor
+2
+2 4
+4 1
+1
+4
+295
+3
+V 1
+17
+torch.CudaStorage
+8
+1 1 1920 1920 -inf -inf 108269.609 64028.707
+1
+147
+4
+296
+3
+V 1
+16
+torch.CudaTensor
+2
+2 4
+4 1
+1
+4
+297
+3
+V 1
+17
+torch.CudaStorage
+8
+1 1 1280 1280 -inf -inf 72107.5078 42625.8477
+1
+148
+4
+298
+3
+V 1
+16
+torch.CudaTensor
+2
+2 4
+4 1
+1
+4
+299
+3
+V 1
+17
+torch.CudaStorage
+8
+1 1 320 320 -inf -inf 24194.1953 14256.8984
+1
+149
+4
+300
+3
+V 1
+16
+torch.CudaTensor
+2
+2 4
+4 1
+1
+4
+301
+3
+V 1
+17
+torch.CudaStorage
+8
+1 1 640 640 -inf -inf 36120.6406 21350.1562
+1
+150
+4
+302
+3
+V 1
+16
+torch.CudaTensor
+2
+2 4
+4 1
+1
+4
+303
+3
+V 1
+17
+torch.CudaStorage
+8
+1 1 1280 1280 -inf -inf 72279.2812 42739.1719

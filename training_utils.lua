@@ -12,7 +12,7 @@ require 'Anchors'
 require 'BatchIterator'
 require 'objective_pnet'
 
-print('require set.')
+print('training_utils: require set.')
 
 function plot_training_progress(prefix, varname, stats)
   local fn = prefix .. '_' .. varname .. '_progress.png'
@@ -83,18 +83,92 @@ function load_model(cfg, model_path, network_filename, cuda)
     model.pnet:cuda()
   end
   
-
   local training_stats
-  if network_filename and #network_filename > 0 then
-    local stored = load_obj(network_filename)
-    training_stats = stored.stats
-    weights:copy(stored.weights)
+  local weights, gradient
+  if network_filename and #network_filename ~= 0 then
+      print('load_model: restored')
+      -- restore from t7 model
+      local stored = load_obj(network_filename)
+      training_stats = stored.stats
+      weights, gradient = combine_and_flatten_parameters(model.pnet, model.cnet)
+      print('Weight size:')
+      print(weights:size())
+      print('Stoed weight size:')
+      print(stored.weights:size())
+      weights:copy(stored.weights)
+  elseif cfg.pretrain_prototxt and cfg.pretrain_model and #cfg.pretrain_model ~= '' then
+      print('load_model: use Caffe model')
+      -- new training - get weights from pretrained models
+      require 'loadcaffe'
+      local pretrained_model = loadcaffe.load(cfg.pretrain_prototxt, cfg.pretrain_model)
+      local w, g = pretrained_model:parameters()
+      training_stats = nil
+
+      -- combine parameters from pnet and cnet into flat tensors
+      weights, gradient = combine_and_flatten_parameters(model.pnet, model.cnet, w, g)
+      -- debug
+      print('load_model: weights:size():')
+      print(weights:size())
+  else
+    weights, gradient = combine_and_flatten_parameters(model.pnet, model.cnet)
+    end
+  return model, weights, gradient, training_stats
+end
+
+function load_model_3d(cfg, model_path, network_filename, cuda)
+
+  -- get configuration & model
+  local model_factory = dofile(model_path)
+  local model = model_factory(cfg)
+
+  print('model (printed by load_model)')
+  for i,block in ipairs(model.pnet.modules) do
+    print('pnet module #' .. i)
+    print(block)
   end
-  -- combine parameters from pnet and cnet into flat tensors
-  local weights, gradient = combine_and_flatten_parameters(model.pnet, model.cnet)
-  -- debug
-  print('load_model: weights:size():')
-  print(weights:size())
+  print('\n')
+  for i,block in ipairs(model.cnet.modules) do
+    print('cnet module #' .. i)
+    print(block)
+  end
+  print('\n')
+  
+  if cuda then
+    model.input_net:cuda()
+    model.cnet:cuda()
+    model.pnet:cuda()
+  end
+  
+  local training_stats
+  local weights, gradient
+  if network_filename and #network_filename ~= 0 then
+      print('load_model: restored')
+      -- restore from t7 model
+      local stored = load_obj(network_filename)
+      training_stats = stored.stats
+      weights, gradient = combine_and_flatten_parameters_3d(model.input_net, model.pnet, model.cnet)
+      print('Weight size:')
+      print(weights:size())
+      print('Stoed weight size:')
+      print(stored.weights:size())
+      weights:copy(stored.weights)
+  elseif cfg.pretrain_prototxt and cfg.pretrain_model and #cfg.pretrain_model ~= '' then
+      print('load_model: use Caffe model')
+      -- new training - get weights from pretrained models
+      require 'loadcaffe'
+      local pretrained_model = loadcaffe.load(cfg.pretrain_prototxt, cfg.pretrain_model)
+      local w, g = pretrained_model:parameters()
+      training_stats = nil
+
+      -- combine parameters from pnet and cnet into flat tensors
+      weights, gradient = combine_and_flatten_parameters_3d(model.input_net, model.pnet, model.cnet, w, g)
+      -- debug
+      print('load_model: weights:size():')
+      print(weights:size())
+  else
+      print('load_model: no restore/pretrain; train from scratch.')
+      weights, gradient = combine_and_flatten_parameters_3d(model.input_net, model.pnet, model.cnet)
+  end
 
   return model, weights, gradient, training_stats
 end

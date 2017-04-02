@@ -28,6 +28,8 @@ function create_proposal_net(layers, anchor_nets)
   -- and then further to the anchor outputs for 3 aspect ratios 
   local function AnchorNetwork(nInputPlane, n, kernelWidth)
     local net = nn.Sequential()
+    -- Note by Bingbin: parameters to nn.SpatialConvolution:
+    -- nInputPlane, nOutputPlane, kW, kH, dW=1, dH=1, padW=0, padH=0
     net:add(nn.SpatialConvolution(nInputPlane, n, kernelWidth,kernelWidth, 1,1))
     net:add(nn.PReLU())
     net:add(nn.SpatialConvolution(n, 3 * (2 + 4), 1, 1))  -- aspect ratios { 1:1, 2:1, 1:2 } x { class, left, top, width, height }

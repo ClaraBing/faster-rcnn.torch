@@ -4,6 +4,7 @@
 
 require 'matlab_util' -- for meshgrid
 require 'prep_img'
+require 'utilities'
 
 local locate_anchors_single_scale
 
@@ -22,6 +23,7 @@ function proposal_locate_anchors(conf, conf_anchors, img_size, target_scale, fm_
         -- anchors = torch.Tensor()
         -- anchors, img_scales = locate_anchors_single_scale(img)
     end
+    save_obj('cache/locate_anchors.t7', {anchors=anchors, scales=img_scales})
     return anchors, img_scales
 end
 
@@ -42,8 +44,9 @@ locate_anchors_single_scale = function (img_size, conf, conf_anchors, target_sca
         print(output_size)
     end
 
-    local shift_x = torch.range(0, output_size[2]-1) * conf.feat_stride
-    local shift_y =  torch.range(0, output_size[1]-1) * conf.feat_stride
+    -- Modified on Mar 21th: changed indecies for output_size: i.e. 1 for x, 2 for y
+    local shift_x = torch.range(0, output_size[1]-1) * conf.feat_stride
+    local shift_y =  torch.range(0, output_size[2]-1) * conf.feat_stride
     shift_x, shift_y = meshgrid(shift_x, shift_y)
     -- debug
     print('shift_x size:')

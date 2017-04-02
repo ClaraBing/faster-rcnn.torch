@@ -21,7 +21,7 @@
 -- Based on matlab code by Pedro Felzenszwalb https://github.com/rbgirshick/voc-dpm/blob/master/test/nms.m
 -- Minor changes by Andreas Köpf, 2015-09-17 
 function nms(boxes, overlap, scores)
-   local pick = torch.LongTensor()
+  local pick = torch.LongTensor()
 
   if boxes:numel() == 0 then
     return pick
@@ -75,7 +75,7 @@ function nms(boxes, overlap, scores)
     yy2:index(y2, 1, I)
     
     -- compute intersection area
-    xx1:cmax(x1[i])
+    xx1:cmax(x1[i]) -- Note by Bingbin: cmax: elem-wise max
     yy1:cmax(y1[i])
     xx2:cmin(x2[i])
     yy2:cmin(y2[i])

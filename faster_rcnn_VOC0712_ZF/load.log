@@ -1,0 +1,18 @@
+th> ptxt = 'faster_rcnn_VOC0712_ZF/proposal_test.prototxt'
+th> bin = 'faster_rcnn_VOC0712_ZF/proposal_final'
+th> model = loadcaffe.load(ptxt, bin)
+    Successfully loaded faster_rcnn_VOC0712_ZF/proposal_final
+    warning: module 'conv_proposal1_relu_proposal1_0_split [type Split]' not found
+    warning: module 'proposal_cls_score_reshape [type Reshape]' not found
+    warning: module 'proposal_cls_score_reshape_proposal_cls_score_reshape_0_split [type Split]' not found
+    warning: module 'labels_reshape [type Reshape]' not found
+    warning: module 'labels_reshape_labels_reshape_0_split [type Split]' not found
+    warning: module 'labels_weights_reshape [type Reshape]' not found
+    conv1: 96 3 7 7
+    conv2: 256 96 5 5
+    conv3: 384 256 3 3
+    conv4: 384 384 3 3
+    conv5: 256 384 3 3
+    conv_proposal1: 256 256 3 3
+    proposal_cls_score: 18 256 1 1
+    proposal_bbox_pred: 36 256 1 1

@@ -1,0 +1,1082 @@
+require set.	
+type(conf):	
+table	
+conf:	
+{
+  roi_pooling : 
+    {
+      kw : 6
+      kh : 6
+    }
+  batch_size : 300
+  test_min_box_size : 16
+  target_smaller_side : 480
+  pretrain_prototxt : "models/prototxt/solver_60k80k.prototxt"
+  class_count : 30
+  max_pixel_size : 1000
+  negative_threshold : 0.25
+  color_space : "rgb"
+  best_match : true
+  positive_threshold : 0.6
+  pretrain_model : "models/pretrain_models/ZF.caffemodel"
+  normalization : 
+    {
+      method : "contrastive"
+      centering : true
+      scaling : true
+      width : 7
+    }
+  feat_stride : 16
+  test_max_size : 1000
+  scales : 
+    {
+      1 : 48
+      2 : 96
+      3 : 192
+      4 : 384
+      5 : 480
+    }
+  image_means : "/home/bingbin/faster-rcnn.torch/image_means.txt"
+  test_scales : 600
+  examples_base_path : ""
+  augmentation : 
+    {
+      aspect_jitter : 0
+      hflip : 0.25
+      vflip : 0
+      random_scaling : 0
+    }
+  background_base_path : ""
+  nearby_aversion : true
+}
+=== conf end ===	
+pnet: layer 1 ready.	
+pnet: layer 2 ready.	
+pnet: layer 3 ready.	
+pnet: layer 4 ready.	
+pnet: layer 5 ready.	
+
+
+=========
+pnet ready
+=========
+
+	
+cnet inputs = 9216	
+
+
+=========
+cnet ready
+=========
+
+	
+model (printed by load_model)	
+pnet module #1	
+nn.Identity
+pnet module #2	
+nn.Sequential {
+  [input -> (1) -> (2) -> (3) -> (4) -> output]
+  (1): nn.SpatialConvolution(3 -> 96, 7x7, 2,2, 1,1)
+  (2): nn.ReLU
+  (3): nn.SpatialCrossMapLRN
+  (4): nn.SpatialMaxPooling(3x3, 2,2)
+}
+pnet module #3	
+nn.Sequential {
+  [input -> (1) -> (2) -> (3) -> (4) -> output]
+  (1): nn.SpatialConvolution(96 -> 256, 5x5, 1,1, 2,2)
+  (2): nn.ReLU
+  (3): nn.SpatialCrossMapLRN
+  (4): nn.SpatialMaxPooling(3x3, 2,2)
+}
+pnet module #4	
+nn.Sequential {
+  [input -> (1) -> (2) -> output]
+  (1): nn.SpatialConvolution(256 -> 384, 3x3, 1,1, 1,1)
+  (2): nn.ReLU
+}
+pnet module #5	
+nn.Sequential {
+  [input -> (1) -> (2) -> output]
+  (1): nn.SpatialConvolution(384 -> 384, 3x3, 1,1, 1,1)
+  (2): nn.ReLU
+}
+pnet module #6	
+nn.Sequential {
+  [input -> (1) -> (2) -> (3) -> output]
+  (1): nn.SpatialConvolution(384 -> 256, 3x3)
+  (2): nn.ReLU
+  (3): nn.SpatialConvolution(256 -> 18, 1x1)
+}
+pnet module #7	
+nn.Sequential {
+  [input -> (1) -> (2) -> output]
+  (1): nn.SpatialConvolution(384 -> 256, 3x3, 1,1, 1,1)
+  (2): nn.ReLU
+}
+pnet module #8	
+nn.Sequential {
+  [input -> (1) -> (2) -> (3) -> output]
+  (1): nn.SpatialConvolution(256 -> 256, 3x3)
+  (2): nn.ReLU
+  (3): nn.SpatialConvolution(256 -> 18, 1x1)
+}
+pnet module #9	
+nn.Sequential {
+  [input -> (1) -> (2) -> (3) -> output]
+  (1): nn.SpatialConvolution(256 -> 256, 5x5)
+  (2): nn.ReLU
+  (3): nn.SpatialConvolution(256 -> 18, 1x1)
+}
+pnet module #10	
+nn.Sequential {
+  [input -> (1) -> (2) -> (3) -> output]
+  (1): nn.SpatialConvolution(256 -> 256, 7x7)
+  (2): nn.ReLU
+  (3): nn.SpatialConvolution(256 -> 18, 1x1)
+}
+
+	
+cnet module #1	
+nn.Identity
+cnet module #2	
+nn.Sequential {
+  [input -> (1) -> (2) -> (3) -> (4) -> (5) -> (6) -> (7) -> output]
+  (1): nn.Linear(9216 -> 4096)
+  (2): nn.BatchNormalization (2D) (4096)
+  (3): nn.ReLU
+  (4): nn.Dropout(0.500000)
+  (5): nn.Linear(4096 -> 4096)
+  (6): nn.ReLU
+  (7): nn.Dropout(0.500000)
+}
+cnet module #3	
+nn.Linear(4096 -> 4)
+cnet module #4	
+nn.Sequential {
+  [input -> (1) -> (2) -> output]
+  (1): nn.Linear(4096 -> 31)
+  (2): nn.LogSoftMax
+}
+
+	
+Successfully loaded models/pretrain_models/ZF.caffemodel
+warning: module 'pool5_spm6_flatten [type Flatten]' not found
+conv1: 96 3 7 7
+conv2: 256 96 5 5
+conv3: 384 256 3 3
+conv4: 384 384 3 3
+conv5: 256 384 3 3
+fc6: 1 1 9216 4096
+fc7: 1 1 4096 4096
+fc8: 1 1 4096 1000
+load_model: weights:size():	
+ 64755947
+[torch.LongStorage of size 1]
+
+pnet: layer 1 ready.	
+pnet: layer 2 ready.	
+pnet: layer 3 ready.	
+pnet: layer 4 ready.	
+pnet: layer 5 ready.	
+
+
+=========
+pnet ready
+=========
+
+	
+cnet inputs = 9216	
+
+
+=========
+cnet ready
+=========
+
+	
+model (printed by load_model)	
+pnet module #1	
+nn.Identity
+pnet module #2	
+nn.Sequential {
+  [input -> (1) -> (2) -> (3) -> (4) -> output]
+  (1): nn.SpatialConvolution(3 -> 96, 7x7, 2,2, 1,1)
+  (2): nn.ReLU
+  (3): nn.SpatialCrossMapLRN
+  (4): nn.SpatialMaxPooling(3x3, 2,2)
+}
+pnet module #3	
+nn.Sequential {
+  [input -> (1) -> (2) -> (3) -> (4) -> output]
+  (1): nn.SpatialConvolution(96 -> 256, 5x5, 1,1, 2,2)
+  (2): nn.ReLU
+  (3): nn.SpatialCrossMapLRN
+  (4): nn.SpatialMaxPooling(3x3, 2,2)
+}
+pnet module #4	
+nn.Sequential {
+  [input -> (1) -> (2) -> output]
+  (1): nn.SpatialConvolution(256 -> 384, 3x3, 1,1, 1,1)
+  (2): nn.ReLU
+}
+pnet module #5	
+nn.Sequential {
+  [input -> (1) -> (2) -> output]
+  (1): nn.SpatialConvolution(384 -> 384, 3x3, 1,1, 1,1)
+  (2): nn.ReLU
+}
+pnet module #6	
+nn.Sequential {
+  [input -> (1) -> (2) -> (3) -> output]
+  (1): nn.SpatialConvolution(384 -> 256, 3x3)
+  (2): nn.ReLU
+  (3): nn.SpatialConvolution(256 -> 18, 1x1)
+}
+pnet module #7	
+nn.Sequential {
+  [input -> (1) -> (2) -> output]
+  (1): nn.SpatialConvolution(384 -> 256, 3x3, 1,1, 1,1)
+  (2): nn.ReLU
+}
+pnet module #8	
+nn.Sequential {
+  [input -> (1) -> (2) -> (3) -> output]
+  (1): nn.SpatialConvolution(256 -> 256, 3x3)
+  (2): nn.ReLU
+  (3): nn.SpatialConvolution(256 -> 18, 1x1)
+}
+pnet module #9	
+nn.Sequential {
+  [input -> (1) -> (2) -> (3) -> output]
+  (1): nn.SpatialConvolution(256 -> 256, 5x5)
+  (2): nn.ReLU
+  (3): nn.SpatialConvolution(256 -> 18, 1x1)
+}
+pnet module #10	
+nn.Sequential {
+  [input -> (1) -> (2) -> (3) -> output]
+  (1): nn.SpatialConvolution(256 -> 256, 7x7)
+  (2): nn.ReLU
+  (3): nn.SpatialConvolution(256 -> 18, 1x1)
+}
+
+	
+cnet module #1	
+nn.Identity
+cnet module #2	
+nn.Sequential {
+  [input -> (1) -> (2) -> (3) -> (4) -> (5) -> (6) -> (7) -> output]
+  (1): nn.Linear(9216 -> 4096)
+  (2): nn.BatchNormalization (2D) (4096)
+  (3): nn.ReLU
+  (4): nn.Dropout(0.500000)
+  (5): nn.Linear(4096 -> 4096)
+  (6): nn.ReLU
+  (7): nn.Dropout(0.500000)
+}
+cnet module #3	
+nn.Linear(4096 -> 4)
+cnet module #4	
+nn.Sequential {
+  [input -> (1) -> (2) -> output]
+  (1): nn.Linear(4096 -> 31)
+  (2): nn.LogSoftMax
+}
+
+	
+Successfully loaded models/pretrain_models/ZF.caffemodel
+warning: module 'pool5_spm6_flatten [type Flatten]' not found
+conv1: 96 3 7 7
+conv2: 256 96 5 5
+conv3: 384 256 3 3
+conv4: 384 384 3 3
+conv5: 256 384 3 3
+fc6: 1 1 9216 4096
+fc7: 1 1 4096 4096
+fc8: 1 1 4096 1000
+load_model: weights:size():	
+ 64755947
+[torch.LongStorage of size 1]
+
+=== check point: model loaded (time = 7.047561) ===	
+=== check point: anchors prepared (time = 0.003517) ===	
+=== check point: imdb loaded (time = 0.022441) ===	
+=== check point: about to detect on imgs ===	
+img #1	
+/disk2/bingbin/ILSVRC2015_test/Data/VID/train/ILSVRC2015_VID_train_0000/ILSVRC2015_train_00008004/000003.JPEG	
+img loaded	
+in proposal_im_detect	
+get_image_blob: scale is number	
+in prep_img_for_blob	
+in prep_img_fore_blob: img_means prepared; img_means size & img_size:	
+   3
+ 224
+ 224
+[torch.LongStorage of size 3]
+
+    3
+  720
+ 1280
+[torch.LongStorage of size 3]
+
+img_means before resize:	
+   3
+ 224
+ 224
+[torch.LongStorage of size 3]
+
+img_means after resize:	
+    3
+ 1280
+ 1280
+[torch.LongStorage of size 3]
+
+x_start = 1 / y_start = 281	
+img_means:size() vs img:size():	
+    3
+  720
+ 1280
+[torch.LongStorage of size 3]
+
+    3
+  720
+ 1280
+[torch.LongStorage of size 3]
+
+(prep_img_for_blob) img_scale: 0.83333333333333	
+(orep_img_for_blob) img size after scaling:	
+    3
+  600
+ 1066
+[torch.LongStorage of size 3]
+
+proposal_im_deteect: img_blob size:     3
+  600
+ 1066
+[torch.LongStorage of size 3]
+	
+proposal_im_detect: img_size:     3
+  720
+ 1280
+[torch.LongStorage of size 3]
+	
+proposal_im_detect: img_scales: 0.83333333333333	
+proposal_im_detect: scaled_img_size:	
+    3
+  600
+ 1067
+[torch.DoubleTensor of size 3]
+
+proposal_im_detect: prep ready	
+proposal_im_detect: pnet forward done	
+outputs:	
+{
+  1 : CudaTensor - size: 18x72x130
+  2 : CudaTensor - size: 18x72x130
+  3 : CudaTensor - size: 18x70x128
+  4 : CudaTensor - size: 18x68x126
+  5 : CudaTensor - size: 256x74x132
+}
+proposal_im_detect: outputs size:	
+  18
+  72
+ 130
+[torch.LongStorage of size 3]
+
+proposal_im_detect: outputs size after reshaping:	
+     6
+ 28080
+[torch.LongStorage of size 2]
+
+locate_anchors_single_scale: output_size:	
+ 130
+  72
+[torch.DoubleTensor of size 2]
+
+shift_x size:	
+  72
+ 130
+[torch.LongStorage of size 2]
+
+shift_y size:	
+  72
+ 130
+[torch.LongStorage of size 2]
+
+conf_anchors size:	
+ 3
+ 4
+[torch.LongStorage of size 2]
+
+out_anchors size:	
+    3
+ 9360
+    4
+[torch.LongStorage of size 3]
+
+out_anchors size (after reshape):	
+     4
+ 28080
+[torch.LongStorage of size 2]
+
+proposal_im_detect: proposal_locate_anchors done	
+(fast bbox transform) boxes size:      4
+ 28080
+[torch.LongStorage of size 2]
+	
+(fast bbox transform) box_deltas size:      4
+ 28080
+[torch.LongStorage of size 2]
+	
+(fast bbox transform) dst_ctr_x size:  28080
+[torch.LongStorage of size 1]
+	
+  first line: 64.055534362793	
+(fast bbox transform) src_w size:  28080
+[torch.LongStorage of size 1]
+	
+fast bbox transform: output size:	
+ 28080
+     4
+[torch.LongStorage of size 2]
+
+proposal_im_detect: fast_rcnn_bbox_transform_inv done	
+proposal_im_detect: size of tmp_mult:	
+ 4
+[torch.LongStorage of size 1]
+
+proposal_im_detect: size of pred_boxes:	
+ 28080
+     4
+[torch.LongStorage of size 2]
+
+proposal_im_detect: size of pred_boxes (before clip):	
+ 28080
+     4
+[torch.LongStorage of size 2]
+
+proposal_im_detect: about to lsm forward	
+proposal_im_detect: lsm forward done	
+scores size:	
+ 28080
+[torch.LongStorage of size 1]
+
+filter_boxes: boxes size:	
+ 28080
+     4
+[torch.LongStorage of size 2]
+
+filter_boxes: scores size:	
+ 28080
+[torch.LongStorage of size 1]
+
+filter_boxes: valid_idx size:	
+ 28080
+[torch.LongStorage of size 1]
+
+filter_boxes: boxes size after filtering:	
+ 1024
+[torch.LongStorage of size 1]
+
+proposal_im_detect: filter_boxes done	
+test img #1: time = 0.630131	
+img #2	
+/disk2/bingbin/ILSVRC2015_test/Data/VID/train/ILSVRC2015_VID_train_0000/ILSVRC2015_train_00035000/000000.JPEG	
+img loaded	
+in proposal_im_detect	
+get_image_blob: scale is number	
+in prep_img_for_blob	
+in prep_img_fore_blob: img_means prepared; img_means size & img_size:	
+   3
+ 224
+ 224
+[torch.LongStorage of size 3]
+
+    3
+  720
+ 1280
+[torch.LongStorage of size 3]
+
+img_means before resize:	
+   3
+ 224
+ 224
+[torch.LongStorage of size 3]
+
+img_means after resize:	
+    3
+ 1280
+ 1280
+[torch.LongStorage of size 3]
+
+x_start = 1 / y_start = 281	
+img_means:size() vs img:size():	
+    3
+  720
+ 1280
+[torch.LongStorage of size 3]
+
+    3
+  720
+ 1280
+[torch.LongStorage of size 3]
+
+(prep_img_for_blob) img_scale: 0.83333333333333	
+(orep_img_for_blob) img size after scaling:	
+    3
+  600
+ 1066
+[torch.LongStorage of size 3]
+
+proposal_im_deteect: img_blob size:     3
+  600
+ 1066
+[torch.LongStorage of size 3]
+	
+proposal_im_detect: img_size:     3
+  720
+ 1280
+[torch.LongStorage of size 3]
+	
+proposal_im_detect: img_scales: 0.83333333333333	
+proposal_im_detect: scaled_img_size:	
+    3
+  600
+ 1067
+[torch.DoubleTensor of size 3]
+
+proposal_im_detect: prep ready	
+proposal_im_detect: pnet forward done	
+outputs:	
+{
+  1 : CudaTensor - size: 18x72x130
+  2 : CudaTensor - size: 18x72x130
+  3 : CudaTensor - size: 18x70x128
+  4 : CudaTensor - size: 18x68x126
+  5 : CudaTensor - size: 256x74x132
+}
+proposal_im_detect: outputs size:	
+  18
+  72
+ 130
+[torch.LongStorage of size 3]
+
+proposal_im_detect: outputs size after reshaping:	
+     6
+ 28080
+[torch.LongStorage of size 2]
+
+locate_anchors_single_scale: output_size:	
+ 130
+  72
+[torch.DoubleTensor of size 2]
+
+shift_x size:	
+  72
+ 130
+[torch.LongStorage of size 2]
+
+shift_y size:	
+  72
+ 130
+[torch.LongStorage of size 2]
+
+conf_anchors size:	
+ 3
+ 4
+[torch.LongStorage of size 2]
+
+out_anchors size:	
+    3
+ 9360
+    4
+[torch.LongStorage of size 3]
+
+out_anchors size (after reshape):	
+     4
+ 28080
+[torch.LongStorage of size 2]
+
+proposal_im_detect: proposal_locate_anchors done	
+(fast bbox transform) boxes size:      4
+ 28080
+[torch.LongStorage of size 2]
+	
+(fast bbox transform) box_deltas size:      4
+ 28080
+[torch.LongStorage of size 2]
+	
+(fast bbox transform) dst_ctr_x size:  28080
+[torch.LongStorage of size 1]
+	
+  first line: 63.627067565918	
+(fast bbox transform) src_w size:  28080
+[torch.LongStorage of size 1]
+	
+fast bbox transform: output size:	
+ 28080
+     4
+[torch.LongStorage of size 2]
+
+proposal_im_detect: fast_rcnn_bbox_transform_inv done	
+proposal_im_detect: size of tmp_mult:	
+ 4
+[torch.LongStorage of size 1]
+
+proposal_im_detect: size of pred_boxes:	
+ 28080
+     4
+[torch.LongStorage of size 2]
+
+proposal_im_detect: size of pred_boxes (before clip):	
+ 28080
+     4
+[torch.LongStorage of size 2]
+
+proposal_im_detect: about to lsm forward	
+proposal_im_detect: lsm forward done	
+scores size:	
+ 28080
+[torch.LongStorage of size 1]
+
+filter_boxes: boxes size:	
+ 28080
+     4
+[torch.LongStorage of size 2]
+
+filter_boxes: scores size:	
+ 28080
+[torch.LongStorage of size 1]
+
+filter_boxes: valid_idx size:	
+ 28080
+[torch.LongStorage of size 1]
+
+filter_boxes: boxes size after filtering:	
+ 1024
+[torch.LongStorage of size 1]
+
+proposal_im_detect: filter_boxes done	
+test img #2: time = 0.603572	
+img #3	
+/disk2/bingbin/ILSVRC2015_test/Data/VID/train/ILSVRC2015_VID_train_0000/ILSVRC2015_train_00008003/000000.JPEG	
+img loaded	
+in proposal_im_detect	
+get_image_blob: scale is number	
+in prep_img_for_blob	
+in prep_img_fore_blob: img_means prepared; img_means size & img_size:	
+   3
+ 224
+ 224
+[torch.LongStorage of size 3]
+
+    3
+  720
+ 1280
+[torch.LongStorage of size 3]
+
+img_means before resize:	
+   3
+ 224
+ 224
+[torch.LongStorage of size 3]
+
+img_means after resize:	
+    3
+ 1280
+ 1280
+[torch.LongStorage of size 3]
+
+x_start = 1 / y_start = 281	
+img_means:size() vs img:size():	
+    3
+  720
+ 1280
+[torch.LongStorage of size 3]
+
+    3
+  720
+ 1280
+[torch.LongStorage of size 3]
+
+(prep_img_for_blob) img_scale: 0.83333333333333	
+(orep_img_for_blob) img size after scaling:	
+    3
+  600
+ 1066
+[torch.LongStorage of size 3]
+
+proposal_im_deteect: img_blob size:     3
+  600
+ 1066
+[torch.LongStorage of size 3]
+	
+proposal_im_detect: img_size:     3
+  720
+ 1280
+[torch.LongStorage of size 3]
+	
+proposal_im_detect: img_scales: 0.83333333333333	
+proposal_im_detect: scaled_img_size:	
+    3
+  600
+ 1067
+[torch.DoubleTensor of size 3]
+
+proposal_im_detect: prep ready	
+proposal_im_detect: pnet forward done	
+outputs:	
+{
+  1 : CudaTensor - size: 18x72x130
+  2 : CudaTensor - size: 18x72x130
+  3 : CudaTensor - size: 18x70x128
+  4 : CudaTensor - size: 18x68x126
+  5 : CudaTensor - size: 256x74x132
+}
+proposal_im_detect: outputs size:	
+  18
+  72
+ 130
+[torch.LongStorage of size 3]
+
+proposal_im_detect: outputs size after reshaping:	
+     6
+ 28080
+[torch.LongStorage of size 2]
+
+locate_anchors_single_scale: output_size:	
+ 130
+  72
+[torch.DoubleTensor of size 2]
+
+shift_x size:	
+  72
+ 130
+[torch.LongStorage of size 2]
+
+shift_y size:	
+  72
+ 130
+[torch.LongStorage of size 2]
+
+conf_anchors size:	
+ 3
+ 4
+[torch.LongStorage of size 2]
+
+out_anchors size:	
+    3
+ 9360
+    4
+[torch.LongStorage of size 3]
+
+out_anchors size (after reshape):	
+     4
+ 28080
+[torch.LongStorage of size 2]
+
+proposal_im_detect: proposal_locate_anchors done	
+(fast bbox transform) boxes size:      4
+ 28080
+[torch.LongStorage of size 2]
+	
+(fast bbox transform) box_deltas size:      4
+ 28080
+[torch.LongStorage of size 2]
+	
+(fast bbox transform) dst_ctr_x size:  28080
+[torch.LongStorage of size 1]
+	
+  first line: 63.927932739258	
+(fast bbox transform) src_w size:  28080
+[torch.LongStorage of size 1]
+	
+fast bbox transform: output size:	
+ 28080
+     4
+[torch.LongStorage of size 2]
+
+proposal_im_detect: fast_rcnn_bbox_transform_inv done	
+proposal_im_detect: size of tmp_mult:	
+ 4
+[torch.LongStorage of size 1]
+
+proposal_im_detect: size of pred_boxes:	
+ 28080
+     4
+[torch.LongStorage of size 2]
+
+proposal_im_detect: size of pred_boxes (before clip):	
+ 28080
+     4
+[torch.LongStorage of size 2]
+
+proposal_im_detect: about to lsm forward	
+proposal_im_detect: lsm forward done	
+scores size:	
+ 28080
+[torch.LongStorage of size 1]
+
+filter_boxes: boxes size:	
+ 28080
+     4
+[torch.LongStorage of size 2]
+
+filter_boxes: scores size:	
+ 28080
+[torch.LongStorage of size 1]
+
+filter_boxes: valid_idx size:	
+ 28080
+[torch.LongStorage of size 1]
+
+filter_boxes: boxes size after filtering:	
+ 1024
+[torch.LongStorage of size 1]
+
+proposal_im_detect: filter_boxes done	
+test img #3: time = 0.55251999999999	
+img #4	
+/disk2/bingbin/ILSVRC2015_test/Data/VID/val/ILSVRC2015_VID_train_0000/ILSVRC2015_train_00010014/000000.JPEG	
+img loaded	
+in proposal_im_detect	
+get_image_blob: scale is number	
+in prep_img_for_blob	
+in prep_img_fore_blob: img_means prepared; img_means size & img_size:	
+   3
+ 224
+ 224
+[torch.LongStorage of size 3]
+
+    3
+ 1080
+ 1920
+[torch.LongStorage of size 3]
+
+img_means before resize:	
+   3
+ 224
+ 224
+[torch.LongStorage of size 3]
+
+img_means after resize:	
+    3
+ 1920
+ 1920
+[torch.LongStorage of size 3]
+
+x_start = 1 / y_start = 421	
+img_means:size() vs img:size():	
+    3
+ 1080
+ 1920
+[torch.LongStorage of size 3]
+
+    3
+ 1080
+ 1920
+[torch.LongStorage of size 3]
+
+(prep_img_for_blob) img_scale: 0.55555555555556	
+(orep_img_for_blob) img size after scaling:	
+    3
+  600
+ 1066
+[torch.LongStorage of size 3]
+
+proposal_im_deteect: img_blob size:     3
+  600
+ 1066
+[torch.LongStorage of size 3]
+	
+proposal_im_detect: img_size:     3
+ 1080
+ 1920
+[torch.LongStorage of size 3]
+	
+proposal_im_detect: img_scales: 0.55555555555556	
+proposal_im_detect: scaled_img_size:	
+    2
+  600
+ 1067
+[torch.DoubleTensor of size 3]
+
+proposal_im_detect: prep ready	
+proposal_im_detect: pnet forward done	
+outputs:	
+{
+  1 : CudaTensor - size: 18x72x130
+  2 : CudaTensor - size: 18x72x130
+  3 : CudaTensor - size: 18x70x128
+  4 : CudaTensor - size: 18x68x126
+  5 : CudaTensor - size: 256x74x132
+}
+proposal_im_detect: outputs size:	
+  18
+  72
+ 130
+[torch.LongStorage of size 3]
+
+proposal_im_detect: outputs size after reshaping:	
+     6
+ 28080
+[torch.LongStorage of size 2]
+
+locate_anchors_single_scale: output_size:	
+ 130
+  72
+[torch.DoubleTensor of size 2]
+
+shift_x size:	
+  72
+ 130
+[torch.LongStorage of size 2]
+
+shift_y size:	
+  72
+ 130
+[torch.LongStorage of size 2]
+
+conf_anchors size:	
+ 3
+ 4
+[torch.LongStorage of size 2]
+
+out_anchors size:	
+    3
+ 9360
+    4
+[torch.LongStorage of size 3]
+
+out_anchors size (after reshape):	
+     4
+ 28080
+[torch.LongStorage of size 2]
+
+proposal_im_detect: proposal_locate_anchors done	
+(fast bbox transform) boxes size:      4
+ 28080
+[torch.LongStorage of size 2]
+	
+(fast bbox transform) box_deltas size:      4
+ 28080
+[torch.LongStorage of size 2]
+	
+(fast bbox transform) dst_ctr_x size:  28080
+[torch.LongStorage of size 1]
+	
+  first line: 63.801239013672	
+(fast bbox transform) src_w size:  28080
+[torch.LongStorage of size 1]
+	
+fast bbox transform: output size:	
+ 28080
+     4
+[torch.LongStorage of size 2]
+
+proposal_im_detect: fast_rcnn_bbox_transform_inv done	
+proposal_im_detect: size of tmp_mult:	
+ 4
+[torch.LongStorage of size 1]
+
+proposal_im_detect: size of pred_boxes:	
+ 28080
+     4
+[torch.LongStorage of size 2]
+
+proposal_im_detect: size of pred_boxes (before clip):	
+ 28080
+     4
+[torch.LongStorage of size 2]
+
+proposal_im_detect: about to lsm forward	
+proposal_im_detect: lsm forward done	
+scores size:	
+ 28080
+[torch.LongStorage of size 1]
+
+filter_boxes: boxes size:	
+ 28080
+     4
+[torch.LongStorage of size 2]
+
+filter_boxes: scores size:	
+ 28080
+[torch.LongStorage of size 1]
+
+filter_boxes: valid_idx size:	
+ 28080
+[torch.LongStorage of size 1]
+
+filter_boxes: boxes size after filtering:	
+ 1032
+[torch.LongStorage of size 1]
+
+proposal_im_detect: filter_boxes done	
+test img #4: time = 0.706653	
+img #5	
+/disk2/bingbin/ILSVRC2015_test/Data/VID/val/ILSVRC2015_VID_train_0000/ILSVRC2015_train_00138010/000000.JPEG	
+img loaded	
+in proposal_im_detect	
+get_image_blob: scale is number	
+in prep_img_for_blob	
+in prep_img_fore_blob: img_means prepared; img_means size & img_size:	
+   3
+ 224
+ 224
+[torch.LongStorage of size 3]
+
+    3
+  816
+ 1920
+[torch.LongStorage of size 3]
+
+img_means before resize:	
+   3
+ 224
+ 224
+[torch.LongStorage of size 3]
+
+img_means after resize:	
+    3
+ 1920
+ 1920
+[torch.LongStorage of size 3]
+
+x_start = 1 / y_start = 553	
+img_means:size() vs img:size():	
+    3
+  816
+ 1920
+[torch.LongStorage of size 3]
+
+    3
+  816
+ 1920
+[torch.LongStorage of size 3]
+
+(prep_img_for_blob) img_scale: 0.73529411764706	
+(orep_img_for_blob) img size after scaling:	
+    3
+  600
+ 1411
+[torch.LongStorage of size 3]
+
+proposal_im_deteect: img_blob size:     3
+  600
+ 1411
+[torch.LongStorage of size 3]
+	
+proposal_im_detect: img_size:     3
+  816
+ 1920
+[torch.LongStorage of size 3]
+	
+proposal_im_detect: img_scales: 0.73529411764706	
+proposal_im_detect: scaled_img_size:	
+    2
+  600
+ 1412
+[torch.DoubleTensor of size 3]
+
+proposal_im_detect: prep ready	

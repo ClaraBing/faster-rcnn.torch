@@ -1,0 +1,37 @@
+Conv1: num_output=96 / kernel=7 / pad=3 / stride=2
+    lr_mult = 1.0 / 2.0
+ReLU (relu1)
+LRN (norm 1)
+Pooling (pool1)
+
+Conv2: num_output=256 / kernel=5 / pad=2 / stride=2
+    lr_mult = 1.0 / 2.0
+ReLU (relu2)
+LRN (norm2)
+Pooling (pool2)
+
+Conv3: num_output=384 / kernel=3 / pad=1 / stride=1
+ReLU (relu3)
+
+Conv4: num_output=384 / kernel=3 / pad=1 / stride=1
+ReLU (relu4)
+
+Conv5: num_output=256 / kernel=3 / pad=1 / stride=1
+ReLU (relu5)
+
+// Conv proposal
+Conv_prop1: num_output=256 / kernel=3 / pad=1 / stride=1
+ReLU (relu_prop1)
+
+Conv_prop_cls_score: num_output=18 / kernel=1 / pad=0 / stride=1
+
+Conv_prop_bbox_pred: num_output=36 / kernel=1 / pad=0 / stride=1
+
+// Output
+Reshape_prop_cls_score: shape = 0 / 2 / -1 / 0
+Reshape_label: shape = 0 / 1 / -1 / 0
+Reshape_label_weights: shape = 0 / 1 / -1 / 0
+
+SoftmaxWithLoss (loss): loss_weight=1
+Accuracy
+SmoothL1Loss (loss_bbox): loss_weight=10

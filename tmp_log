@@ -1,0 +1,267 @@
+require set.	
+require set.	
+Command line args:	
+{
+  snapshot : 1000
+  seed : 0
+  name : "output_mine/pnet/zf_imgnet"
+  gpuid : 0
+  opti : "rmsprop"
+  lr : 0.0001
+  restore : ""
+  train : "data_mine/ILSVRC2015_VID_test.t7"
+  threads : 2
+  plot : 200
+  rms_decay : 0.9
+  cfg : "config/imagenet_test.lua"
+  dataset : "output_mine/tmp/dataset.obj"
+  model : "models/new-zf.lua"
+}
+Options:	
+{
+  roi_pooling : 
+    {
+      kw : 6
+      kh : 6
+    }
+  batch_size : 300
+  test_min_box_size : 16
+  target_smaller_side : 480
+  class_count : 30
+  max_pixel_size : 1000
+  negative_threshold : 0.25
+  color_space : "rgb"
+  best_match : true
+  positive_threshold : 0.6
+  normalization : 
+    {
+      method : "contrastive"
+      centering : true
+      scaling : true
+      width : 7
+    }
+  feat_stride : 16
+  test_max_size : 1000
+  scales : 
+    {
+      1 : 48
+      2 : 96
+      3 : 192
+      4 : 384
+      5 : 480
+    }
+  image_means : "/home/bingbin/faster-rcnn.torch/image_means.txt"
+  test_scales : 600
+  examples_base_path : ""
+  augmentation : 
+    {
+      aspect_jitter : 0
+      hflip : 0.25
+      vflip : 0
+      random_scaling : 0
+    }
+  background_base_path : ""
+  nearby_aversion : true
+}
+Reading training data file 'data_mine/ILSVRC2015_VID_test.t7'.	
+Training data loaded. Dataset: 'ILSVRC2015_VID'; Total files: 440; classes: 30; Background: 0)	
+pnet: layer 1 ready.	
+pnet: layer 2 ready.	
+pnet: layer 3 ready.	
+pnet: layer 4 ready.	
+pnet: layer 5 ready.	
+
+
+=========
+pnet ready
+=========
+
+	
+cnet inputs = 9216	
+
+
+=========
+cnet ready
+=========
+
+	
+model (printed by orig.lua)	
+pnet module #1	
+nn.Identity
+pnet module #2	
+nn.Sequential {
+  [input -> (1) -> (2) -> (3) -> (4) -> output]
+  (1): nn.SpatialConvolution(3 -> 96, 7x7, 2,2, 1,1)
+  (2): nn.ReLU
+  (3): nn.SpatialCrossMapLRN
+  (4): nn.SpatialMaxPooling(3x3, 2,2)
+}
+pnet module #3	
+nn.Sequential {
+  [input -> (1) -> (2) -> (3) -> (4) -> output]
+  (1): nn.SpatialConvolution(96 -> 256, 5x5, 1,1, 2,2)
+  (2): nn.ReLU
+  (3): nn.SpatialCrossMapLRN
+  (4): nn.SpatialMaxPooling(3x3, 2,2)
+}
+pnet module #4	
+nn.Sequential {
+  [input -> (1) -> (2) -> output]
+  (1): nn.SpatialConvolution(256 -> 384, 3x3, 1,1, 1,1)
+  (2): nn.ReLU
+}
+pnet module #5	
+nn.Sequential {
+  [input -> (1) -> (2) -> output]
+  (1): nn.SpatialConvolution(384 -> 384, 3x3, 1,1, 1,1)
+  (2): nn.ReLU
+}
+pnet module #6	
+nn.Sequential {
+  [input -> (1) -> (2) -> (3) -> output]
+  (1): nn.SpatialConvolution(384 -> 256, 3x3)
+  (2): nn.ReLU
+  (3): nn.SpatialConvolution(256 -> 18, 1x1)
+}
+pnet module #7	
+nn.Sequential {
+  [input -> (1) -> (2) -> output]
+  (1): nn.SpatialConvolution(384 -> 256, 3x3, 1,1, 1,1)
+  (2): nn.ReLU
+}
+pnet module #8	
+nn.Sequential {
+  [input -> (1) -> (2) -> (3) -> output]
+  (1): nn.SpatialConvolution(256 -> 256, 3x3)
+  (2): nn.ReLU
+  (3): nn.SpatialConvolution(256 -> 18, 1x1)
+}
+pnet module #9	
+nn.Sequential {
+  [input -> (1) -> (2) -> (3) -> output]
+  (1): nn.SpatialConvolution(256 -> 256, 5x5)
+  (2): nn.ReLU
+  (3): nn.SpatialConvolution(256 -> 18, 1x1)
+}
+pnet module #10	
+nn.Sequential {
+  [input -> (1) -> (2) -> (3) -> output]
+  (1): nn.SpatialConvolution(256 -> 256, 7x7)
+  (2): nn.ReLU
+  (3): nn.SpatialConvolution(256 -> 18, 1x1)
+}
+
+	
+cnet module #1	
+nn.Identity
+cnet module #2	
+nn.Sequential {
+  [input -> (1) -> (2) -> (3) -> (4) -> (5) -> (6) -> (7) -> output]
+  (1): nn.Linear(9216 -> 4096)
+  (2): nn.BatchNormalization (2D) (4096)
+  (3): nn.ReLU
+  (4): nn.Dropout(0.500000)
+  (5): nn.Linear(4096 -> 4096)
+  (6): nn.ReLU
+  (7): nn.Dropout(0.500000)
+}
+cnet module #3	
+nn.Linear(4096 -> 4)
+cnet module #4	
+nn.Sequential {
+  [input -> (1) -> (2) -> output]
+  (1): nn.Linear(4096 -> 31)
+  (2): nn.LogSoftMax
+}
+
+	
+combine_and_flatten_parameters net #1	
+{
+  1 : CudaTensor - size: 96x3x7x7
+  2 : CudaTensor - size: 96
+  3 : CudaTensor - size: 256x96x5x5
+  4 : CudaTensor - size: 256
+  5 : CudaTensor - size: 384x256x3x3
+  6 : CudaTensor - size: 384
+  7 : CudaTensor - size: 384x384x3x3
+  8 : CudaTensor - size: 384
+  9 : CudaTensor - size: 256x384x3x3
+  10 : CudaTensor - size: 256 -- End of common par
+
+  11 : CudaTensor - size: 18x256x1x1  -- start 1
+  12 : CudaTensor - size: 18          -- anchor 1?
+
+  13 : CudaTensor - size: 256x384x3x3 -- start 2
+  14 : CudaTensor - size: 256
+  15 : CudaTensor - size: 256x256x3x3
+  16 : CudaTensor - size: 256
+  17 : CudaTensor - size: 18x256x1x1
+  18 : CudaTensor - size: 18          -- anchor 2?
+
+  19 : CudaTensor - size: 256x256x5x5 -- start 3
+  20 : CudaTensor - size: 256
+  21 : CudaTensor - size: 18x256x1x1
+  22 : CudaTensor - size: 18          -- anchor 3?
+
+  23 : CudaTensor - size: 256x256x7x7 -- start4
+  24 : CudaTensor - size: 256
+  25 : CudaTensor - size: 18x256x1x1
+  26 : CudaTensor - size: 18          -- anchor 4?
+}
+{
+  1 : CudaTensor - size: 96x3x7x7
+  2 : CudaTensor - size: 96
+  3 : CudaTensor - size: 256x96x5x5
+  4 : CudaTensor - size: 256
+  5 : CudaTensor - size: 384x256x3x3
+  6 : CudaTensor - size: 384
+  7 : CudaTensor - size: 384x384x3x3
+  8 : CudaTensor - size: 384
+  9 : CudaTensor - size: 256x384x3x3
+  10 : CudaTensor - size: 256
+  11 : CudaTensor - size: 18x256x1x1
+  12 : CudaTensor - size: 18
+  13 : CudaTensor - size: 256x384x3x3
+  14 : CudaTensor - size: 256
+  15 : CudaTensor - size: 256x256x3x3
+  16 : CudaTensor - size: 256
+  17 : CudaTensor - size: 18x256x1x1
+  18 : CudaTensor - size: 18
+  19 : CudaTensor - size: 256x256x5x5
+  20 : CudaTensor - size: 256
+  21 : CudaTensor - size: 18x256x1x1
+  22 : CudaTensor - size: 18
+  23 : CudaTensor - size: 256x256x7x7
+  24 : CudaTensor - size: 256
+  25 : CudaTensor - size: 18x256x1x1
+  26 : CudaTensor - size: 18
+}
+combine_and_flatten_parameters net #2	
+{
+  1 : CudaTensor - size: 4096x9216
+  2 : CudaTensor - size: 4096
+  3 : CudaTensor - size: 4096
+  4 : CudaTensor - size: 4096
+  5 : CudaTensor - size: 4096x4096
+  6 : CudaTensor - size: 4096
+  7 : CudaTensor - size: 4x4096
+  8 : CudaTensor - size: 4
+  9 : CudaTensor - size: 31x4096
+  10 : CudaTensor - size: 31
+}
+{
+  1 : CudaTensor - size: 4096x9216
+  2 : CudaTensor - size: 4096
+  3 : CudaTensor - size: 4096
+  4 : CudaTensor - size: 4096
+  5 : CudaTensor - size: 4096x4096
+  6 : CudaTensor - size: 4096
+  7 : CudaTensor - size: 4x4096
+  8 : CudaTensor - size: 4
+  9 : CudaTensor - size: 31x4096
+  10 : CudaTensor - size: 31
+}
+load_model: weights:size():	
+ 64755947
+[torch.LongStorage of size 1]
+

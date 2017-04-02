@@ -1,0 +1,14 @@
+/home/bingbin/torch/install/bin/luajit: /home/bingbin/torch/install/share/lua/5.1/torch/File.lua:210: interrupted!
+stack traceback:
+	/home/bingbin/torch/install/share/lua/5.1/torch/File.lua:210: in function </home/bingbin/torch/install/share/lua/5.1/torch/File.lua:107>
+	[C]: in function 'write'
+	/home/bingbin/torch/install/share/lua/5.1/torch/File.lua:210: in function 'writeObject'
+	/home/bingbin/torch/install/share/lua/5.1/torch/File.lua:235: in function 'writeObject'
+	./utilities.lua:118: in function 'save_obj'
+	./fast_rcnn_bbox_transform_inv.lua:54: in function 'fast_rcnn_bbox_transform_inv'
+	./proposal_im_detect.lua:63: in function 'proposal_im_detect'
+	proposal_test.lua:60: in function 'proposal_test'
+	proposal_test.lua:140: in main chunk
+	[C]: in function 'dofile'
+	...gbin/torch/install/lib/luarocks/rocks/trepl/scm-1/bin/th:150: in main chunk
+	[C]: at 0x00406620

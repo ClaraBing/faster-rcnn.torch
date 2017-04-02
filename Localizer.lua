@@ -6,11 +6,13 @@ local Localizer = torch.class('Localizer')
 function Localizer:__init(outnode)
 
   local function trace_modules(node)
+    print('tracing modules') --debug
     local modules = {}
     local function add_modules(c)
       if c.modules then
         for i=#c.modules,1,-1 do
           add_modules(c.modules[i])
+          print(c.modules[i]) -- debug
         end
       else
         table.insert(modules, c)
@@ -32,14 +34,21 @@ function Localizer:__init(outnode)
         table.insert(info, { kW=m.kW, kH=m.kH, dW=m.dW or 1, dH=m.dH or 1, padW=m.padW or 0, padH=m.padH or 0 })
       end
     end
+    print('self.layers:')
+    for i, layer in ipairs(info) do
+      local info_str = string.format('dH=%d / dW=%d / kH=%d / kW=%d / padH=%d / padW=%d', info[i].dH, info[i].dW, info[i].kH, info[i].kW, info[i].padH, info[i].padW)
+      print('#' .. i .. ': ' .. info_str)
+    end
+    -- print(info)
     return info
   end
   
   self.layers = create_layer_info(trace_modules(outnode))
-end
+end -- Localizer:init
 
 function Localizer:inputToFeatureRect(rect, layer_index)
   layer_index = layer_index or #self.layers
+  -- print('inputToFeatureRect: layer_index = ' .. layer_index) -- debug
   for i=1,layer_index do
     local l = self.layers[i]
     if l.dW < l.kW then
@@ -64,10 +73,11 @@ function Localizer:inputToFeatureRect(rect, layer_index)
 
   end
   return rect:snapToInt()
-end
+end -- Localizer:inputToFeatureRect
 
 function Localizer:featureToInputRect(minX, minY, maxX, maxY, layer_index)
   layer_index = layer_index or #self.layers
+  -- print('featureToInputRect: layer_index = ' .. layer_index) -- debug
   for i=layer_index,1,-1 do
     local l = self.layers[i]
     minX = minX * l.dW - l.padW

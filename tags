@@ -1,0 +1,248 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+AnchorNetwork	models/ZF_model_utilities.lua	/^  local function AnchorNetwork(nInputPlane, n, kernelWidth)$/;"	f
+AnchorNetwork	models/ZF_model_utilities_3d.lua	/^  local function AnchorNetwork(nInputPlane, n, kernelWidth)$/;"	f
+AnchorNetwork	models/model_utilities.lua	/^  local function AnchorNetwork(nInputPlane, n, kernelWidth)$/;"	f
+Anchors.anchorToInput	Anchors.lua	/^function Anchors.anchorToInput(anchor, t)$/;"	f
+Anchors.inputToAnchor	Anchors.lua	/^function Anchors.inputToAnchor(anchor, rect)$/;"	f
+Anchors:__init	Anchors.lua	/^function Anchors:__init(proposal_net, scales)$/;"	f
+Anchors:findNearby	Anchors.lua	/^function Anchors:findNearby(centerX, centerY)$/;"	f
+Anchors:findPositive	Anchors.lua	/^function Anchors:findPositive(roi_list, clip_rect, pos_threshold, neg_threshold, include_best)$/;"	f
+Anchors:findRangesXY	Anchors.lua	/^function Anchors:findRangesXY(rect, clip_rect)$/;"	f
+Anchors:get	Anchors.lua	/^function Anchors:get(layer, aspect, y, x)$/;"	f
+Anchors:sampleNegative	Anchors.lua	/^function Anchors:sampleNegative(image_rect, roi_list, neg_threshold, count)$/;"	f
+Anchors_3d.anchorToInput	Anchors_3d.lua	/^function Anchors_3d.anchorToInput(anchor, t)$/;"	f
+Anchors_3d.inputToAnchor	Anchors_3d.lua	/^function Anchors_3d.inputToAnchor(anchor, rect)$/;"	f
+Anchors_3d:__init	Anchors_3d.lua	/^function Anchors_3d:__init(input_net, proposal_net, scales)$/;"	f
+Anchors_3d:findNearby	Anchors_3d.lua	/^function Anchors_3d:findNearby(centerX, centerY)$/;"	f
+Anchors_3d:findPositive	Anchors_3d.lua	/^function Anchors_3d:findPositive(roi_list, clip_rect, pos_threshold, neg_threshold, include_best)$/;"	f
+Anchors_3d:findRangesXY	Anchors_3d.lua	/^function Anchors_3d:findRangesXY(rect, clip_rect)$/;"	f
+Anchors_3d:get	Anchors_3d.lua	/^function Anchors_3d:get(layer, aspect, y, x)$/;"	f
+Anchors_3d:sampleNegative	Anchors_3d.lua	/^function Anchors_3d:sampleNegative(image_rect, roi_list, neg_threshold, count)$/;"	f
+BatchIterator:__init	BatchIterator.lua	/^function BatchIterator:__init(model, training_data)$/;"	f
+BatchIterator:nextTraining	BatchIterator.lua	/^function BatchIterator:nextTraining(count)$/;"	f
+BatchIterator:nextValidation	BatchIterator.lua	/^function BatchIterator:nextValidation(count)$/;"	f
+BatchIterator:processImage	BatchIterator.lua	/^function BatchIterator:processImage(img, rois)$/;"	f
+BatchIterator_3d:__init	BatchIterator_3d.lua	/^function BatchIterator_3d:__init(model, training_data)$/;"	f
+BatchIterator_3d:nextTraining	BatchIterator_3d.lua	/^function BatchIterator_3d:nextTraining(count)$/;"	f
+BatchIterator_3d:nextValidation	BatchIterator_3d.lua	/^function BatchIterator_3d:nextValidation(count)$/;"	f
+BatchIterator_3d:processImage	BatchIterator_3d.lua	/^function BatchIterator_3d:processImage(img, rois)$/;"	f
+ConvPReLU	models/ZF_model_utilities.lua	/^  local function ConvPReLU(container, nInputPlane, nOutputPlane, kW, kH, padW, padH, dropout, stride)$/;"	f
+ConvPReLU	models/ZF_model_utilities_3d.lua	/^  local function ConvPReLU(container, nInputPlane, nOutputPlane, kW, kH, padW, padH, dropout, stride)$/;"	f
+ConvPReLU	models/model_utilities.lua	/^  local function ConvPReLU(container, nInputPlane, nOutputPlane, kW, kH, padW, padH, dropout)$/;"	f
+ConvPoolBlock	models/ZF_model_utilities.lua	/^  local function ConvPoolBlock(container, nInputPlane, nOutputPlane, kW, kH, padW, padH, dropout, conv_steps, stride, maxPool)$/;"	f
+ConvPoolBlock	models/ZF_model_utilities_3d.lua	/^  local function ConvPoolBlock(container, nInputPlane, nOutputPlane, kW, kH, padW, padH, dropout, conv_steps, stride, maxPool)$/;"	f
+ConvPoolBlock	models/model_utilities.lua	/^  local function ConvPoolBlock(container, nInputPlane, nOutputPlane, kW, kH, padW, padH, dropout, conv_steps)$/;"	f
+Detector:__init	Detector.lua	/^function Detector:__init(model)$/;"	f
+Detector:detect	Detector.lua	/^function Detector:detect(input)$/;"	f
+Localizer:__init	Localizer.lua	/^function Localizer:__init(outnode)$/;"	f
+Localizer:featureToInputRect	Localizer.lua	/^function Localizer:featureToInputRect(minX, minY, maxX, maxY, layer_index)$/;"	f
+Localizer:inputToFeatureRect	Localizer.lua	/^function Localizer:inputToFeatureRect(rect, layer_index)$/;"	f
+Localizer_3d:__init	Localizer_3d.lua	/^function Localizer_3d:__init(inet_outnode, pnet_outnode)$/;"	f
+Localizer_3d:featureToInputRect	Localizer_3d.lua	/^function Localizer_3d:featureToInputRect(minX, minY, maxX, maxY, layer_index)$/;"	f
+Localizer_3d:inputToFeatureRect	Localizer_3d.lua	/^function Localizer_3d:inputToFeatureRect(rect, layer_index)$/;"	f
+Rect.IoU	Rect.lua	/^function Rect.IoU(a, b)$/;"	f
+Rect.empty	Rect.lua	/^function Rect.empty()$/;"	f
+Rect.fromCenterWidthHeight	Rect.lua	/^function Rect.fromCenterWidthHeight(centerX, centerY, width, height)$/;"	f
+Rect.fromXYWidthHeight	Rect.lua	/^function Rect.fromXYWidthHeight(x, y, width, height)$/;"	f
+Rect.intersect	Rect.lua	/^function Rect.intersect(a, b)$/;"	f
+Rect.union	Rect.lua	/^function Rect.union(a, b)$/;"	f
+Rect:__init	Rect.lua	/^function Rect:__init(minX, minY, maxX, maxY)$/;"	f
+Rect:__tostring	Rect.lua	/^function Rect:__tostring()$/;"	f
+Rect:area	Rect.lua	/^function Rect:area()$/;"	f
+Rect:center	Rect.lua	/^function Rect:center()$/;"	f
+Rect:clip	Rect.lua	/^function Rect:clip(clipRect)$/;"	f
+Rect:clone	Rect.lua	/^function Rect:clone()$/;"	f
+Rect:contains	Rect.lua	/^function Rect:contains(otherRect)$/;"	f
+Rect:containsPt	Rect.lua	/^function Rect:containsPt(x, y)$/;"	f
+Rect:height	Rect.lua	/^function Rect:height()$/;"	f
+Rect:inflate	Rect.lua	/^function Rect:inflate(x, y)$/;"	f
+Rect:isEmpty	Rect.lua	/^function Rect:isEmpty()$/;"	f
+Rect:normalize	Rect.lua	/^function Rect:normalize()$/;"	f
+Rect:offset	Rect.lua	/^function Rect:offset(x, y)$/;"	f
+Rect:overlaps	Rect.lua	/^function Rect:overlaps(other)$/;"	f
+Rect:scale	Rect.lua	/^function Rect:scale(factorX, factorY)$/;"	f
+Rect:size	Rect.lua	/^function Rect:size()$/;"	f
+Rect:snapToInt	Rect.lua	/^function Rect:snapToInt()$/;"	f
+Rect:totensor	Rect.lua	/^function Rect:totensor()$/;"	f
+Rect:unpack	Rect.lua	/^function Rect:unpack()$/;"	f
+Rect:vertices	Rect.lua	/^function Rect:vertices()$/;"	f
+Rect:width	Rect.lua	/^function Rect:width()$/;"	f
+add	Anchors.lua	/^  local function add(map, i, j, v, x)$/;"	f
+add	Anchors_3d.lua	/^  local function add(map, i, j, v, x)$/;"	f
+add_modules	Localizer.lua	/^    local function add_modules(c)$/;"	f
+add_modules	Localizer_3d.lua	/^    local function add_modules(c)$/;"	f
+clamp	utilities.lua	/^function clamp(x, lo, hi)$/;"	f
+cleanAnchors	objective.lua	/^  local function cleanAnchors(examples, outputs)$/;"	f
+cleanAnchors	objective_3d.lua	/^  local function cleanAnchors(examples, outputs)$/;"	f
+cleanAnchors	objective_cls.lua	/^  local function cleanAnchors(examples, outputs)$/;"	f
+cleanAnchors	objective_iter.lua	/^  local function cleanAnchors(examples, outputs)$/;"	f
+combine_and_flatten_parameters	utilities.lua	/^function combine_and_flatten_parameters(...)$/;"	f
+create_classification_net	models/ZF_model_utilities.lua	/^function create_classification_net(inputs, class_count, class_layers)$/;"	f
+create_classification_net	models/ZF_model_utilities_3d.lua	/^function create_classification_net(inputs, class_count, class_layers)$/;"	f
+create_classification_net	models/model_utilities.lua	/^function create_classification_net(inputs, class_count, class_layers)$/;"	f
+create_ground_truth_file	bak_create-imagenet-traindata.lua	/^function create_ground_truth_file(dataset_name, base_dir, train_annotation_dir, val_annotation_dir, train_data_dir, val_data_dir, background_dirs, output_fn)$/;"	f
+create_ground_truth_file	create-imagenet-traindata.lua	/^function create_ground_truth_file(dataset_name, base_dir, train_annotation_dir, val_annotation_dir, train_data_dir, val_data_dir, background_dirs, output_fn)$/;"	f
+create_ground_truth_file	create-imagenet-traindata_3d.lua	/^function create_ground_truth_file(dataset_name, base_dir, train_annotation_dir, val_annotation_dir, train_data_dir, val_data_dir, background_dirs, output_fn)$/;"	f
+create_ground_truth_file	create-imagenet-traindata_3d_sorted.lua	/^function create_ground_truth_file(dataset_name, base_dir, train_annotation_dir, val_annotation_dir, train_data_dir, val_data_dir, background_dirs, output_fn)$/;"	f
+create_input_net	models/ZF_model_utilities_3d.lua	/^function create_input_net(l)$/;"	f
+create_layer_info	Localizer.lua	/^  local function create_layer_info(modules)$/;"	f
+create_layer_info	Localizer_3d.lua	/^  local function create_layer_info(modules, do_print)$/;"	f
+create_model	models/ZF_model_utilities.lua	/^function create_model(cfg, layers, anchor_nets, class_layers)$/;"	f
+create_model	models/ZF_model_utilities_3d.lua	/^function create_model(cfg, input, layers, anchor_nets, class_layers)$/;"	f
+create_model	models/model_utilities.lua	/^function create_model(cfg, layers, anchor_nets, class_layers)$/;"	f
+create_objective	objective.lua	/^function create_objective(model, weights, gradient, batch_iterator, stats)$/;"	f
+create_objective	objective_3d.lua	/^function create_objective(model, weights, gradient, batch_iterator, stats)$/;"	f
+create_objective	objective_cls.lua	/^function create_objective(model, weights, gradient, batch_iterator, stats)$/;"	f
+create_objective_cnet	objective_iter.lua	/^function create_objective_cnet(model, weights, gradient, batch_iterator, stats)$/;"	f
+create_objective_pnet	objective_iter.lua	/^function create_objective_pnet(model, weights, gradient, batch_iterator, stats)$/;"	f
+create_proposal_net	models/ZF_model_utilities.lua	/^function create_proposal_net(layers, anchor_nets)$/;"	f
+create_proposal_net	models/ZF_model_utilities_3d.lua	/^function create_proposal_net(layers, anchor_nets)$/;"	f
+create_proposal_net	models/model_utilities.lua	/^function create_proposal_net(layers, anchor_nets)$/;"	f
+create_training_data	create-duplo-traindata.lua	/^function create_training_data(dataset_name, csv_file_name, background_dir, output_fn, validation_size)$/;"	f
+crop	BatchIterator.lua	/^local function crop(img, rois, rect)$/;"	f
+crop	BatchIterator_3d.lua	/^local function crop(img, rois, rect)$/;"	f
+deep_copy	utilities.lua	/^function deep_copy(obj, seen)$/;"	f
+draw_rectangle	utilities.lua	/^function draw_rectangle(img, rect, color)$/;"	f
+draw_rectangle_gray	utilities.lua	/^function draw_rectangle_gray(img, rect, color)  $/;"	f
+evaluation_demo	bak_main.lua	/^function evaluation_demo(cfg, model_path, training_data_filename, network_filename)$/;"	f
+evaluation_demo	main.lua	/^function evaluation_demo(cfg, model_path, training_data_filename, network_filename)$/;"	f
+evaluation_demo	main_2.lua	/^function evaluation_demo(cfg, model_path, training_data_filename, network_filename)$/;"	f
+evaluation_demo	main_3d.lua	/^function evaluation_demo(cfg, model_path, training_data_filename, network_filename)$/;"	f
+evaluation_demo	orig.lua	/^function evaluation_demo(cfg, model_path, training_data_filename, network_filename)$/;"	f
+evaluation_demo	orig_no_save.lua	/^function evaluation_demo(cfg, model_path, training_data_filename, network_filename)$/;"	f
+evaluation_demo	test.lua	/^function evaluation_demo(cfg, model_path, training_data_filename, network_filename)$/;"	f
+evaluation_demo	test_check.lua	/^function evaluation_demo(cfg, model_path, training_data_filename, network_filename)$/;"	f
+evaluation_demo	vgg_main.lua	/^function evaluation_demo(cfg, model_path, training_data_filename, network_filename)$/;"	f
+expand	bak_create-imagenet-traindata.lua	/^  function expand(p)$/;"	f
+expand	create-imagenet-traindata.lua	/^  function expand(p)$/;"	f
+expand	create-imagenet-traindata_3d.lua	/^  function expand(p)$/;"	f
+expand	create-imagenet-traindata_3d_sorted.lua	/^  function expand(p)$/;"	f
+extract_roi_pooling_input	objective.lua	/^function extract_roi_pooling_input(input_rect, localizer, feature_layer_output)$/;"	f
+extract_roi_pooling_input	objective_3d.lua	/^function extract_roi_pooling_input(input_rect, localizer, feature_layer_output)$/;"	f
+extract_roi_pooling_input	objective_cls.lua	/^function extract_roi_pooling_input(input_rect, localizer, feature_layer_output)$/;"	f
+extract_roi_pooling_input	objective_iter.lua	/^function extract_roi_pooling_input(input_rect, localizer, feature_layer_output)$/;"	f
+find_target_size	utilities.lua	/^function find_target_size(orig_w, orig_h, target_smaller_side, max_pixel_size)$/;"	f
+graph_training	bak_main.lua	/^function graph_training(cfg, model_path, snapshot_prefix, training_data_filename, network_filename)$/;"	f
+graph_training	main.lua	/^function graph_training(cfg, model_path, snapshot_prefix, training_data_filename, network_filename)$/;"	f
+graph_training	main_2.lua	/^function graph_training(cfg, model_path, snapshot_prefix, training_data_filename, network_filename)$/;"	f
+graph_training	main_3d.lua	/^function graph_training(cfg, model_path, snapshot_prefix, training_data_filename, network_filename)$/;"	f
+graph_training	orig.lua	/^function graph_training(cfg, model_path, snapshot_prefix, training_data_filename, network_filename)$/;"	f
+graph_training	orig_no_save.lua	/^function graph_training(cfg, model_path, snapshot_prefix, training_data_filename, network_filename)$/;"	f
+graph_training	test.lua	/^function graph_training(cfg, model_path, snapshot_prefix, training_data_filename, network_filename)$/;"	f
+graph_training	test_check.lua	/^function graph_training(cfg, model_path, snapshot_prefix, training_data_filename, network_filename)$/;"	f
+graph_training	vgg_main.lua	/^function graph_training(cfg, model_path, snapshot_prefix, training_data_filename, network_filename)$/;"	f
+hflip	BatchIterator.lua	/^local function hflip(img, rois)$/;"	f
+hflip	BatchIterator_3d.lua	/^local function hflip(img, rois)$/;"	f
+img, w, h) return image.crop	BatchIterator.lua	/^    function(img, w, h) return image.crop(img, rect.minX, rect.minY, rect.maxX, rect.maxY) end,$/;"	f
+img, w, h) return image.crop	BatchIterator_3d.lua	/^    function(img, w, h) return image.crop(img, rect.minX, rect.minY, rect.maxX, rect.maxY) end,$/;"	f
+img, w, h) return image.hflip	BatchIterator.lua	/^    function(img, w, h) return image.hflip(img) end,$/;"	f
+img, w, h) return image.hflip	BatchIterator_3d.lua	/^    function(img, w, h) return image.hflip(img) end,$/;"	f
+img, w, h) return image.scale	BatchIterator.lua	/^    function(img, w, h) return image.scale(img, math.max(1, w * scaleX), math.max(1, h * scaleY)) end,$/;"	f
+img, w, h) return image.scale	BatchIterator_3d.lua	/^    function(img, w, h) return image.scale(img, math.max(1, w * scaleX), math.max(1, h * scaleY)) end,$/;"	f
+img, w, h) return image.vflip	BatchIterator.lua	/^    function(img, w, h) return image.vflip(img) end,$/;"	f
+img, w, h) return image.vflip	BatchIterator_3d.lua	/^    function(img, w, h) return image.vflip(img) end,$/;"	f
+import_directory	bak_create-imagenet-traindata.lua	/^function import_directory(anno_base, data_base, directory_path, recursive, name_table)$/;"	f
+import_directory	create-imagenet-traindata.lua	/^function import_directory(anno_base, data_base, directory_path, recursive, name_table)$/;"	f
+import_directory	create-imagenet-traindata_3d.lua	/^function import_directory(anno_base, data_base, directory_path, recursive, name_table)$/;"	f
+import_directory	create-imagenet-traindata_3d_sorted.lua	/^function import_directory(anno_base, data_base, directory_path, recursive, name_table)$/;"	f
+import_file	bak_create-imagenet-traindata.lua	/^function import_file(anno_base, data_base, fn, name_table)$/;"	f
+import_file	create-imagenet-traindata.lua	/^function import_file(anno_base, data_base, fn, name_table)$/;"	f
+import_file	create-imagenet-traindata_3d.lua	/^function import_file(anno_base, data_base, fn, name_table)$/;"	f
+import_file	create-imagenet-traindata_3d_sorted.lua	/^function import_file(anno_base, data_base, fn, name_table)$/;"	f
+init	models/ZF_model_utilities.lua	/^  local function init(module, name)$/;"	f
+init	models/ZF_model_utilities_3d.lua	/^  local function init(module, name)$/;"	f
+init	models/model_utilities.lua	/^  local function init(module, name)$/;"	f
+init_module	models/ZF_model_utilities.lua	/^    local function init_module(m)$/;"	f
+init_module	models/ZF_model_utilities_3d.lua	/^    local function init_module(m)$/;"	f
+init_module	models/model_utilities.lua	/^    local function init_module(m)$/;"	f
+keys	utilities.lua	/^function keys(t)$/;"	f
+lerp	utilities.lua	/^function lerp(a, b, t)$/;"	f
+list_files	utilities.lua	/^function list_files(directory_path, max_count, abspath)$/;"	f
+load_image	utilities.lua	/^function load_image(fn, color_space, base_path)$/;"	f
+load_image_auto_size	bak_main.lua	/^function load_image_auto_size(fn, target_smaller_side, max_pixel_size, color_space)$/;"	f
+load_image_auto_size	main.lua	/^function load_image_auto_size(fn, target_smaller_side, max_pixel_size, color_space)$/;"	f
+load_image_auto_size	main_2.lua	/^function load_image_auto_size(fn, target_smaller_side, max_pixel_size, color_space)$/;"	f
+load_image_auto_size	main_3d.lua	/^function load_image_auto_size(fn, target_smaller_side, max_pixel_size, color_space)$/;"	f
+load_image_auto_size	orig.lua	/^function load_image_auto_size(fn, target_smaller_side, max_pixel_size, color_space)$/;"	f
+load_image_auto_size	orig_no_save.lua	/^function load_image_auto_size(fn, target_smaller_side, max_pixel_size, color_space)$/;"	f
+load_image_auto_size	test.lua	/^function load_image_auto_size(fn, target_smaller_side, max_pixel_size, color_space)$/;"	f
+load_image_auto_size	test_check.lua	/^function load_image_auto_size(fn, target_smaller_side, max_pixel_size, color_space)$/;"	f
+load_image_auto_size	vgg_main.lua	/^function load_image_auto_size(fn, target_smaller_side, max_pixel_size, color_space)$/;"	f
+load_model	bak_main.lua	/^function load_model(cfg, model_path, network_filename, cuda)$/;"	f
+load_model	main.lua	/^function load_model(cfg, model_path, network_filename, cuda)$/;"	f
+load_model	main_2.lua	/^function load_model(cfg, model_path, network_filename, cuda)$/;"	f
+load_model	main_3d.lua	/^function load_model(cfg, model_path, network_filename, cuda)$/;"	f
+load_model	orig.lua	/^function load_model(cfg, model_path, network_filename, cuda)$/;"	f
+load_model	orig_no_save.lua	/^function load_model(cfg, model_path, network_filename, cuda)$/;"	f
+load_model	test.lua	/^function load_model(cfg, model_path, network_filename, cuda)$/;"	f
+load_model	test_check.lua	/^function load_model(cfg, model_path, network_filename, cuda)$/;"	f
+load_model	vgg_main.lua	/^function load_model(cfg, model_path, network_filename, cuda)$/;"	f
+load_obj	utilities.lua	/^function load_obj(file_name)$/;"	f
+local status, img 	BatchIterator.lua	/^    local status, img = pcall(function () return load_image(fn, cfg.color_space, cfg.background_base_path) end)$/;"	f
+local status, img 	BatchIterator.lua	/^    local status, img = pcall(function () return load_image(fn, cfg.color_space, cfg.examples_base_path) end)$/;"	f
+local status, img 	BatchIterator_3d.lua	/^      local status, img = pcall(function () return load_image(fn[i], cfg.color_space, cfg.examples_base_path) end)$/;"	f
+local status, img 	BatchIterator_3d.lua	/^    local status, img = pcall(function () return load_image(fn, cfg.color_space, cfg.background_base_path) end)$/;"	f
+local status, img 	BatchIterator_3d.lua	/^    local status, img = pcall(function () return load_image(fn, cfg.color_space, cfg.examples_base_path) end)$/;"	f
+lossAndGradient	objective.lua	/^  local function lossAndGradient(w)$/;"	f
+lossAndGradient	objective_3d.lua	/^  local function lossAndGradient(w)$/;"	f
+lossAndGradient	objective_cls.lua	/^  local function lossAndGradient(w)$/;"	f
+lossAndGradient	objective_iter.lua	/^  local function lossAndGradient(w)$/;"	f
+lower_bound	Anchors.lua	/^  local function lower_bound(t, value)$/;"	f
+lower_bound	Anchors_3d.lua	/^  local function lower_bound(t, value)$/;"	f
+mean	utilities.lua	/^function mean(t)$/;"	f
+next_entry	BatchIterator.lua	/^local function next_entry(set)$/;"	f
+next_entry	BatchIterator_3d.lua	/^local function next_entry(set)$/;"	f
+nms	nms.lua	/^function nms(boxes, overlap, scores)$/;"	f
+normalize_debug	utilities.lua	/^function normalize_debug(t)$/;"	f
+plot_training_progress	bak_main.lua	/^function plot_training_progress(prefix, stats)$/;"	f
+plot_training_progress	main.lua	/^function plot_training_progress(prefix, stats)$/;"	f
+plot_training_progress	main_2.lua	/^function plot_training_progress(prefix, stats)$/;"	f
+plot_training_progress	main_3d.lua	/^function plot_training_progress(prefix, stats)$/;"	f
+plot_training_progress	orig.lua	/^function plot_training_progress(prefix, varname, stats)$/;"	f
+plot_training_progress	orig_no_save.lua	/^function plot_training_progress(prefix, varname, stats)$/;"	f
+plot_training_progress	test.lua	/^function plot_training_progress(prefix, varname, stats)$/;"	f
+plot_training_progress	test_check.lua	/^function plot_training_progress(prefix, varname, stats)$/;"	f
+plot_training_progress	vgg_main.lua	/^function plot_training_progress(prefix, varname, stats)$/;"	f
+r, w, h) return Rect.new	BatchIterator.lua	/^    function(r, w, h) return Rect.new(r.minX, h - r.maxY, r.maxX, h - r.minY) end$/;"	f
+r, w, h) return Rect.new	BatchIterator.lua	/^    function(r, w, h) return Rect.new(w - r.maxX, r.minY, w - r.minX, r.maxY) end  $/;"	f
+r, w, h) return Rect.new	BatchIterator_3d.lua	/^    function(r, w, h) return Rect.new(r.minX, h - r.maxY, r.maxX, h - r.minY) end$/;"	f
+r, w, h) return Rect.new	BatchIterator_3d.lua	/^    function(r, w, h) return Rect.new(w - r.maxX, r.minY, w - r.minX, r.maxY) end  $/;"	f
+r, w, h) return r:clip	BatchIterator.lua	/^    function(r, w, h) return r:clip(rect):offset(-rect.minX, -rect.minY) end $/;"	f
+r, w, h) return r:clip	BatchIterator_3d.lua	/^    function(r, w, h) return r:clip(rect):offset(-rect.minX, -rect.minY) end $/;"	f
+r, w, h) return r:scale	BatchIterator.lua	/^    function(r, w, h) return r:scale(scaleX, scaleY) end$/;"	f
+r, w, h) return r:scale	BatchIterator_3d.lua	/^    function(r, w, h) return r:scale(scaleX, scaleY) end$/;"	f
+randomize_order	BatchIterator.lua	/^local function randomize_order(...)$/;"	f
+randomize_order	BatchIterator_3d.lua	/^local function randomize_order(...)$/;"	f
+range	utilities.lua	/^function range(t, low, high)$/;"	f
+read_csv_file	create-duplo-traindata.lua	/^function read_csv_file(fn)$/;"	f
+remove_quotes	utilities.lua	/^function remove_quotes(s)$/;"	f
+remove_tail	utilities.lua	/^function remove_tail(array, num)$/;"	f
+reverse	utilities.lua	/^function reverse(array)$/;"	f
+saturate	utilities.lua	/^function saturate(x)$/;"	f
+save_model	utilities.lua	/^function save_model(file_name, weights, options, stats)$/;"	f
+save_obj	utilities.lua	/^function save_obj(file_name, obj)$/;"	f
+scale	BatchIterator.lua	/^local function scale(img, rois, scaleX, scaleY)$/;"	f
+scale	BatchIterator_3d.lua	/^local function scale(img, rois, scaleX, scaleY)$/;"	f
+shallow_copy	utilities.lua	/^function shallow_copy(t)$/;"	f
+shuffle	utilities.lua	/^function shuffle(array)$/;"	f
+shuffle_n	utilities.lua	/^function shuffle_n(array, count)$/;"	f
+trace_modules	Localizer.lua	/^  local function trace_modules(node)$/;"	f
+trace_modules	Localizer_3d.lua	/^  local function trace_modules(node)$/;"	f
+transform_example	BatchIterator.lua	/^local function transform_example(img, rois, fimg, froi)$/;"	f
+transform_example	BatchIterator_3d.lua	/^local function transform_example(img, rois, fimg, froi)$/;"	f
+try_add_next	BatchIterator.lua	/^  local function try_add_next()$/;"	f
+try_add_next	BatchIterator_3d.lua	/^  local function try_add_next()$/;"	f
+upper_bound	Anchors.lua	/^  local function upper_bound(t, value)$/;"	f
+upper_bound	Anchors_3d.lua	/^  local function upper_bound(t, value)$/;"	f
+values	utilities.lua	/^function values(t)$/;"	f
+vflip	BatchIterator.lua	/^local function vflip(img, rois)$/;"	f
+vflip	BatchIterator_3d.lua	/^local function vflip(img, rois)$/;"	f
+vgg_large	models/vgg_large.lua	/^function vgg_large(cfg)$/;"	f
+vgg_small	models/vgg_small.lua	/^function vgg_small(cfg)$/;"	f
+zf	models/zf.lua	/^function zf(cfg)$/;"	f
+zf	models/zf_3d.lua	/^function zf(cfg)$/;"	f
