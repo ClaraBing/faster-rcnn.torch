@@ -1,0 +1,101 @@
+digraph G {
+	graph [bb="0,0,1700,1986"];
+	node [label="\N",
+		shape=oval
+	];
+	n1	 [height=3.1034,
+		label="Node1\ninput = {torch.CudaTensor[384x59x106]}\lmodule = nn.Sequential {\l  [input -> (1) -> (2) -> (3) -> output]\l  (1): nn.SpatialConvolution(\
+384 -> 256, 3x3)\l  (2): nn.ReLU\l  (3): nn.SpatialConvolution(256 -> 18, 1x1)\l}\lreverseMap = {}\lgradOutput = {torch.CudaTensor[\
+18x57x104]}",
+		pos="310,526",
+		tooltip="[./models/ZF_model_utilities.lua]:62_",
+		width=5.3952];
+	n2	 [height=1.6303,
+		label="Node2\ninput = {torch.CudaTensor[18x57x104],torch.CudaTensor[18x57x104],torch.CudaTensor[18x55x102],torch.CudaTensor[18x53x100],\
+torch.CudaTensor[256x59x106]}\lmapindex = {Node1,Node3,Node4,Node5,Node6}\lreverseMap = {}\lgradOutput = {{torch.CudaTensor[18x57x104],\
+torch.CudaTensor[18x57x104],torch.CudaTensor[18x55x102],torch.CudaTensor[18x53x100],torch.CudaTensor[256x59x106]}}",
+		pos="692,59",
+		tooltip="[[C]]:-1_",
+		width=19.226];
+	n1 -> n2	 [pos="e,507.36,115.62 329,414.65 348.26,333.18 385.67,224.63 456,154 468.6,141.34 483.13,130.34 498.65,120.78"];
+	n3	 [height=3.1034,
+		label="Node3\ninput = {torch.CudaTensor[256x59x106]}\lmodule = nn.Sequential {\l  [input -> (1) -> (2) -> (3) -> output]\l  (1): nn.SpatialConvolution(\
+256 -> 256, 3x3)\l  (2): nn.ReLU\l  (3): nn.SpatialConvolution(256 -> 18, 1x1)\l}\lreverseMap = {}\lgradOutput = {torch.CudaTensor[\
+18x57x104]}",
+		pos="692,266",
+		tooltip="[./models/ZF_model_utilities.lua]:62_",
+		width=5.3952];
+	n3 -> n2	 [pos="e,692,117.72 692,154.1 692,145.18 692,136.34 692,127.87"];
+	n4	 [height=3.1034,
+		label="Node4\ninput = {torch.CudaTensor[256x59x106]}\lmodule = nn.Sequential {\l  [input -> (1) -> (2) -> (3) -> output]\l  (1): nn.SpatialConvolution(\
+256 -> 256, 5x5)\l  (2): nn.ReLU\l  (3): nn.SpatialConvolution(256 -> 18, 1x1)\l}\lreverseMap = {}\lgradOutput = {torch.CudaTensor[\
+18x55x102]}",
+		pos="1099,266",
+		tooltip="[./models/ZF_model_utilities.lua]:62_",
+		width=5.3952];
+	n4 -> n2	 [pos="e,817.95,116.78 959.99,187.81 938.36,176.25 916.16,164.64 895,154 873.27,143.07 850.03,131.87 827.31,121.17"];
+	n5	 [height=3.1034,
+		label="Node5\ninput = {torch.CudaTensor[256x59x106]}\lmodule = nn.Sequential {\l  [input -> (1) -> (2) -> (3) -> output]\l  (1): nn.SpatialConvolution(\
+256 -> 256, 7x7)\l  (2): nn.ReLU\l  (3): nn.SpatialConvolution(256 -> 18, 1x1)\l}\lreverseMap = {}\lgradOutput = {torch.CudaTensor[\
+18x53x100]}",
+		pos="1506,266",
+		tooltip="[./models/ZF_model_utilities.lua]:62_",
+		width=5.3952];
+	n5 -> n2	 [pos="e,1114.1,105.55 1373.2,184.29 1350.1,172.72 1325.8,162.03 1302,154 1245.5,134.92 1184.7,119.7 1124.2,107.55"];
+	n6	 [height=3.1034,
+		label="Node6\ngradOutputBuffer = torch.CudaTensor[256x59x106]\linput = {torch.CudaTensor[384x59x106]}\lmodule = nn.Sequential {\l  [input \
+-> (1) -> (2) -> output]\l  (1): nn.SpatialConvolution(384 -> 256, 3x3, 1,1, 1,1)\l  (2): nn.ReLU\l}\lreverseMap = {}\lgradOutput = {\
+torch.CudaTensor[256x59x106],torch.CudaTensor[256x59x106],torch.CudaTensor[256x59x106],torch.CudaTensor[256x59x106]}",
+		pos="1099,526",
+		tooltip="[./models/ZF_model_utilities.lua]:54_",
+		width=16.004];
+	n6 -> n2	 [pos="e,524.79,116.29 650.26,455.76 575.43,435.3 513.94,409.66 489,378 427.4,299.79 435.4,237.89 489,154 496.57,142.15 506.06,131.77 516.78,\
+122.68"];
+	n6 -> n3	 [pos="e,821.95,349.38 931.7,418.94 898.08,397.64 863.11,375.47 830.61,354.86"];
+	n6 -> n4	 [pos="e,1099,377.82 1099,414.09 1099,405.45 1099,396.7 1099,388"];
+	n6 -> n5	 [pos="e,1376,349.38 1266.3,418.94 1299.9,397.64 1334.9,375.47 1367.4,354.86"];
+	n7	 [height=3.1034,
+		label="Node7\ngradOutputBuffer = torch.CudaTensor[384x59x106]\linput = {torch.CudaTensor[384x59x106]}\lmodule = nn.Sequential {\l  [input \
+-> (1) -> (2) -> output]\l  (1): nn.SpatialConvolution(384 -> 384, 3x3, 1,1, 1,1)\l  (2): nn.ReLU\l}\lreverseMap = {}\lgradOutput = {\
+torch.CudaTensor[384x59x106],torch.CudaTensor[384x59x106]}",
+		pos="704,786",
+		tooltip="[./models/ZF_model_utilities.lua]:54_",
+		width=9.0078];
+	n7 -> n1	 [pos="e,437.37,610.4 554.2,686.91 518.7,663.66 481.02,638.99 446.16,616.16"];
+	n7 -> n6	 [pos="e,936.24,633.31 854.18,686.91 878.18,671.23 903.17,654.91 927.62,638.94"];
+	n8	 [height=2.8088,
+		label="Node8\ninput = {torch.CudaTensor[256x59x106]}\lmodule = nn.Sequential {\l  [input -> (1) -> (2) -> output]\l  (1): nn.SpatialConvolution(\
+256 -> 384, 3x3, 1,1, 1,1)\l  (2): nn.ReLU\l}\lreverseMap = {}\lgradOutput = {torch.CudaTensor[384x59x106]}",
+		pos="704,1035",
+		tooltip="[./models/ZF_model_utilities.lua]:54_",
+		width=6.2243];
+	n8 -> n7	 [pos="e,704,897.86 704,933.54 704,925.09 704,916.49 704,907.91"];
+	n9	 [height=3.398,
+		label="Node9\ninput = {torch.CudaTensor[96x119x212]}\lmodule = nn.Sequential {\l  [input -> (1) -> (2) -> (3) -> (4) -> output]\l  (1): \
+nn.SpatialConvolution(96 -> 256, 5x5, 1,1, 2,2)\l  (2): nn.ReLU\l  (3): nn.SpatialCrossMapLRN\l  (4): nn.SpatialMaxPooling(3x3, \
+2,2)\l}\lreverseMap = {}\lgradOutput = {torch.CudaTensor[256x59x106]}",
+		pos="704,1295",
+		tooltip="[./models/ZF_model_utilities.lua]:54_",
+		width=6.0862];
+	n9 -> n8	 [pos="e,704,1136.3 704,1172.6 704,1163.8 704,1155 704,1146.4"];
+	n10	 [height=3.398,
+		label="Node10\ninput = {torch.CudaTensor[3x480x853]}\lmodule = nn.Sequential {\l  [input -> (1) -> (2) -> (3) -> (4) -> output]\l  (1): \
+nn.SpatialConvolution(3 -> 96, 7x7, 2,2, 1,1)\l  (2): nn.ReLU\l  (3): nn.SpatialCrossMapLRN\l  (4): nn.SpatialMaxPooling(3x3, 2,\
+2)\l}\lreverseMap = {}\lgradOutput = {torch.CudaTensor[96x119x213]}",
+		pos="704,1577",
+		tooltip="[./models/ZF_model_utilities.lua]:54_",
+		width=5.8098];
+	n10 -> n9	 [pos="e,704,1417.5 704,1454.4 704,1445.5 704,1436.5 704,1427.6"];
+	n11	 [height=1.6303,
+		label="Node11\ninput = {torch.CudaTensor[3x480x853]}\lmodule = nn.Identity\lreverseMap = {}\lgradOutput = {torch.CudaTensor[3x479x858]}",
+		pos="704,1795",
+		tooltip="[./models/ZF_model_utilities.lua]:44_",
+		width=5.3952];
+	n11 -> n10	 [pos="e,704,1699.4 704,1736.1 704,1727.7 704,1718.7 704,1709.5"];
+	n12	 [height=1.3356,
+		label="Node12\ninput = {torch.CudaTensor[3x480x853]}\lreverseMap = {}\lgradOutput = {torch.CudaTensor[3x479x858]}",
+		pos="704,1938",
+		tooltip="[[C]]:-1_",
+		width=5.3952];
+	n12 -> n11	 [pos="e,704,1853.7 704,1889.7 704,1881.4 704,1872.6 704,1863.9"];
+}
