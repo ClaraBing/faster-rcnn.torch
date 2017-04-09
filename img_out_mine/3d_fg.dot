@@ -1,0 +1,94 @@
+digraph G {
+	graph [bb="0,0,1639,1814"];
+	node [label="\N",
+		shape=oval
+	];
+	n1	 [height=2.8088,
+		label="Node1\ninput = {torch.CudaTensor[384x60x106]}\lmodule = nn.Sequential {\l  [input -> (1) -> (2) -> (3) -> output]\l  (1): nn.SpatialConvolution(\
+384 -> 256, 3x3)\l  (2): nn.ReLU\l  (3): nn.SpatialConvolution(256 -> 18, 1x1)\l}\lreverseMap = {}",
+		pos="404,471",
+		tooltip="[./models/ZF_model_utilities_3d_reshape.lua]:99_",
+		width=5.2333];
+	n2	 [height=1.3356,
+		label="Node2\ninput = {torch.CudaTensor[18x58x104],torch.CudaTensor[18x58x104],torch.CudaTensor[18x56x102],torch.CudaTensor[18x54x100],\
+torch.CudaTensor[256x60x106]}\lmapindex = {Node1,Node3,Node4,Node5,Node6}\lreverseMap = {}",
+		pos="659,48",
+		tooltip="[[C]]:-1_",
+		width=18.306];
+	n1 -> n2	 [pos="e,460,93.892 380.51,370.32 369.34,297.26 367.74,199.47 418,132 427.38,119.41 438.79,108.71 451.48,99.632"];
+	n3	 [height=2.8088,
+		label="Node3\ninput = {torch.CudaTensor[256x60x106]}\lmodule = nn.Sequential {\l  [input -> (1) -> (2) -> (3) -> output]\l  (1): nn.SpatialConvolution(\
+256 -> 256, 3x3)\l  (2): nn.ReLU\l  (3): nn.SpatialConvolution(256 -> 18, 1x1)\l}\lreverseMap = {}",
+		pos="659,233",
+		tooltip="[./models/ZF_model_utilities_3d_reshape.lua]:99_",
+		width=5.2333];
+	n3 -> n2	 [pos="e,659,96.255 659,131.67 659,123 659,114.45 659,106.31"];
+	n4	 [height=2.8088,
+		label="Node4\ninput = {torch.CudaTensor[256x60x106]}\lmodule = nn.Sequential {\l  [input -> (1) -> (2) -> (3) -> output]\l  (1): nn.SpatialConvolution(\
+256 -> 256, 5x5)\l  (2): nn.ReLU\l  (3): nn.SpatialConvolution(256 -> 18, 1x1)\l}\lreverseMap = {}",
+		pos="1055,233",
+		tooltip="[./models/ZF_model_utilities_3d_reshape.lua]:99_",
+		width=5.2333];
+	n4 -> n2	 [pos="e,772.86,95.444 919.64,162.46 898.45,152.02 876.71,141.56 856,132 832.32,121.08 806.79,109.89 782.22,99.421"];
+	n5	 [height=2.8088,
+		label="Node5\ninput = {torch.CudaTensor[256x60x106]}\lmodule = nn.Sequential {\l  [input -> (1) -> (2) -> (3) -> output]\l  (1): nn.SpatialConvolution(\
+256 -> 256, 7x7)\l  (2): nn.ReLU\l  (3): nn.SpatialConvolution(256 -> 18, 1x1)\l}\lreverseMap = {}",
+		pos="1451,233",
+		tooltip="[./models/ZF_model_utilities_3d_reshape.lua]:99_",
+		width=5.2333];
+	n5 -> n2	 [pos="e,1056.9,86.414 1321.6,159.43 1298.9,148.92 1275.2,139.22 1252,132 1193.1,113.64 1129.7,99.325 1067,88.176"];
+	n6	 [height=2.5142,
+		label="Node6\ninput = {torch.CudaTensor[384x60x106]}\lmodule = nn.Sequential {\l  [input -> (1) -> (2) -> output]\l  (1): nn.SpatialConvolution(\
+384 -> 256, 3x3, 1,1, 1,1)\l  (2): nn.ReLU\l}\lreverseMap = {}",
+		pos="835,471",
+		tooltip="[./models/ZF_model_utilities_3d_reshape.lua]:87_",
+		width=6.2243];
+	n6 -> n2	 [pos="e,498.9,94.837 687.15,402.81 658.85,391.09 629.23,379.6 601,370 540.17,349.32 500.37,384.77 461,334 405.99,263.05 411.28,206.75 \
+461,132 469.05,119.9 479.24,109.55 490.74,100.72"];
+	n6 -> n3	 [pos="e,728.63,327.37 770.96,384.13 759.24,368.42 746.91,351.88 734.89,335.76"];
+	n6 -> n4	 [pos="e,971.1,324 913.18,386.13 929.61,368.51 947.07,349.78 963.92,331.7"];
+	n6 -> n5	 [pos="e,1317.4,304.57 1016,417.5 1090,394.33 1176,365.27 1252,334 1270.4,326.41 1289.5,317.82 1308.2,308.95"];
+	n7	 [height=2.5142,
+		label="Node7\ninput = {torch.CudaTensor[384x60x106]}\lmodule = nn.Sequential {\l  [input -> (1) -> (2) -> output]\l  (1): nn.SpatialConvolution(\
+384 -> 384, 3x3, 1,1, 1,1)\l  (2): nn.ReLU\l}\lreverseMap = {}",
+		pos="619,699",
+		tooltip="[./models/ZF_model_utilities_3d_reshape.lua]:87_",
+		width=6.2243];
+	n7 -> n1	 [pos="e,489.03,561.38 539.25,614.17 525.18,599.38 510.43,583.87 496.05,568.76"];
+	n7 -> n6	 [pos="e,755.01,555.7 699.12,614.17 714.95,597.61 731.63,580.15 747.68,563.36"];
+	n8	 [height=2.5142,
+		label="Node8\ninput = {torch.CudaTensor[256x60x106]}\lmodule = nn.Sequential {\l  [input -> (1) -> (2) -> output]\l  (1): nn.SpatialConvolution(\
+256 -> 384, 3x3, 1,1, 1,1)\l  (2): nn.ReLU\l}\lreverseMap = {}",
+		pos="619,917",
+		tooltip="[./models/ZF_model_utilities_3d_reshape.lua]:87_",
+		width=6.2243];
+	n8 -> n7	 [pos="e,619,789.8 619,826.27 619,817.61 619,808.78 619,800.03"];
+	n9	 [height=3.1034,
+		label="Node9\ninput = {torch.CudaTensor[96x120x213]}\lmodule = nn.Sequential {\l  [input -> (1) -> (2) -> (3) -> (4) -> output]\l  (1): \
+nn.SpatialConvolution(96 -> 256, 5x5, 1,1, 2,2)\l  (2): nn.ReLU\l  (3): nn.SpatialCrossMapLRN\l  (4): nn.SpatialMaxPooling(3x3, \
+2,2)\l}\lreverseMap = {}",
+		pos="619,1156",
+		tooltip="[./models/ZF_model_utilities_3d_reshape.lua]:87_",
+		width=6.0862];
+	n9 -> n8	 [pos="e,619,1007.8 619,1044.1 619,1035.4 619,1026.6 619,1017.9"];
+	n10	 [height=3.6927,
+		label="Node10\ninput = {torch.CudaTensor[3x3x480x853]}\lmodule = nn.Sequential {\l  [input -> (1) -> (2) -> (3) -> (4) -> (5) -> (6) -> \
+output]\l  (1): nn.VolumetricConvolution(3 -> 96, 1x7x7, 1,2,2, 0,1,1)\l  (2): nn.ReLU\l  (3): nn.VolumetricMaxPooling(1x3x3, 1,\
+2,2, 0,1,1)\l  (4): nn.VarReshape(288x120x213)\l  (5): nn.SpatialConvolution(288 -> 96, 1x1)\l  (6): nn.ReLU\l}\lreverseMap = {}",
+		pos="619,1437",
+		tooltip="[./models/ZF_model_utilities_3d_reshape.lua]:67_",
+		width=6.9824];
+	n10 -> n9	 [pos="e,619,1268.1 619,1303.9 619,1295.3 619,1286.8 619,1278.3"];
+	n11	 [height=1.3356,
+		label="Node11\ninput = {torch.CudaTensor[3x3x480x853]}\lmodule = nn.Identity\lreverseMap = {}",
+		pos="619,1654",
+		tooltip="[./models/ZF_model_utilities_3d_reshape.lua]:46_",
+		width=4.9806];
+	n11 -> n10	 [pos="e,619,1570.3 619,1605.8 619,1597.9 619,1589.4 619,1580.5"];
+	n12	 [height=1.041,
+		label="Node12\ninput = {torch.CudaTensor[3x3x480x853]}\lreverseMap = {}",
+		pos="619,1776",
+		tooltip="[[C]]:-1_",
+		width=4.9806];
+	n12 -> n11	 [pos="e,619,1702.5 619,1738.3 619,1730.2 619,1721.4 619,1712.7"];
+}
